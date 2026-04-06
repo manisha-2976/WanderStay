@@ -1,0 +1,795 @@
+body {
+  margin: 0;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+/* EDIT LISTINGS *******/
+.scroll-container{
+  height: 100%;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+  scroll-behavior: smooth;
+}
+.edit-page{
+  height: 90vh;
+}
+
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  /* border: 1px solid rgb(14, 13, 13); */
+}
+
+.form-width {
+  width: 100%;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/* navbar */
+.navbar {
+  height: 5rem;
+  background: white;
+}
+
+.fa-compass {
+  color: red;
+  font-size: 2rem;
+}
+
+.nav-link {
+  color: #222222;
+}
+
+.avatar{
+ border-radius: 2rem;
+ background-color: rgb(54, 25, 25);
+ padding-left: 13px !important;
+ padding-right: 13px !important;
+ color: white !important;
+}
+.profile:hover{
+  color: white;
+}
+
+
+/* footer */
+
+.f-info-links a {
+  text-decoration: none;
+  color: #222222;
+}
+
+.f-info-links a:hover {
+  text-decoration: underline;
+
+}
+
+.f-info {
+
+  text-align: center;
+  display: flex;
+  height: 8rem;
+  background: #ebebeb;
+  flex-wrap: wrap;
+  justify-content: center !important;
+  align-items: space-evenly;
+}
+
+.f-info-links,
+.f-info-socials,
+.f-info-brand {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.f-info-socials i {
+  font-size: 1.2rem;
+  margin-right: 1rem;
+}
+
+/* listing cards */
+
+.listing-card {
+  border: none;
+  margin-bottom: 2rem;
+}
+
+.listing-card:hover {
+  /* opacity: .8;
+  transition-duration: .6s; */
+  /* background-color: white; */
+}
+
+.card-img-top {
+  border-radius: 1rem;
+  width: 100%;
+  object-fit: cover;
+}
+
+.card-body {
+  padding: 0%;
+}
+
+.card-text p {
+  font-weight: 400;
+}
+
+.listing-link {
+  text-decoration: none;
+}
+
+
+/* ShowPage */
+/* DetailsPage */
+.btns {
+  display: flex;
+}
+
+.delete {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.show-img {
+  height: 22rem;
+}
+
+/* hosting 
+navbar */
+
+.custom-link {
+  text-decoration: none;
+}
+
+.menu {
+  text-decoration: none;
+  font-weight: 600;
+  color: rgb(109, 104, 104) !important;
+}
+
+.menu.selected {
+  color: black !important;
+  text-decoration: underline !important;
+}
+
+.menu:hover {
+  color: black !important;
+  text-decoration: underline;
+}
+
+.custom-navbar {
+  display: flex;
+  align-items: center;
+}
+
+.heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+}
+
+.heading h3,
+.link {
+  height: 100%;
+  margin-top: 0.5rem;
+}
+
+.heading .link {
+  background: rgb(247, 246, 244);
+  color: black;
+  padding: .5rem .6rem .5rem .6rem;
+  /* padding: .5rem; */
+  border-radius: 2rem;
+  /* border: 2px solid #222222; */
+}
+
+.heading .link:hover {
+  background: rgb(231, 231, 228);
+
+}
+
+/* create listing form*/
+.address,.info {
+  margin-top: 0%;
+}
+
+.address label{
+  font-size: 14px;
+}
+
+.select{
+  margin-top: 2px;
+  padding: 6px;
+  font-size: 14px;
+}
+
+.address input{
+  height: 3rem !important;
+}
+
+.ps-4 p {
+  font-size: smaller;
+}
+
+.discount-card h6 {
+  font-weight: 600 !important;
+}
+
+.badge-box {
+  font-weight: bolder !important;
+  width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.discount-card small {
+  font-size: smaller;
+}
+
+.discount-card input {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  accent-color: black;
+}
+
+.propertytype option {
+  padding: 1rem;
+  /* width: 10rem !important; */
+}
+
+/* hostDashboard */
+/* listing.js */
+.hostCard {
+  text-decoration: none;
+  color: black;
+  font-size: 15px;
+}
+
+.hostCard div:hover {
+  background: rgb(247, 246, 244);
+}
+
+.booking-card {
+  position: sticky;
+  top: 90px;
+  height: fit-content;
+}
+
+.map-container {
+  height: 60vh !important;
+  width: 100% !important;
+}
+
+/* PROFILE PAGE */
+.profile-menu{
+  min-height: 85vh;
+  /* width: 20rem; */
+  flex-basis: 27%;
+  position: "";
+}
+
+.profile-content{
+  flex-basis: 73%;
+}
+
+.nav-link p:hover{
+  background-color: rgb(247, 246, 244);
+}
+
+.link{
+   background-color: rgb(247, 246, 244);
+}
+
+.nav-link p{
+  /* margin-bottom: .5rem; */
+  border-radius: .9rem;
+  width: 16rem;
+  padding: 1rem;
+}
+
+.trip-content p{
+  font-size: small;
+}
+
+.trip-container{
+  color: black;
+  text-decoration: none;
+}
+
+/* TODAY PAGE *******/
+.today{
+  padding: 0;
+  height: 112vh;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr 1fr 1fr 1.2fr;
+  grid-template-rows: 1fr 2fr 2fr 2fr;
+}
+
+.check-ins{
+  display: grid;
+  grid-column: 1/4;
+  grid-row: 2/3;
+  gap: 1rem;
+  overflow: hidden;
+  grid-template-columns: 1fr 1fr;
+}
+
+.card{
+  overflow-y: hidden;
+}
+
+/* .check-ins .card {
+  max-height: 220px;
+  overflow-y: hidden;
+} */
+
+.listing-performance{
+  display: grid;
+  grid-column: 1/5;
+  grid-row: 4/5;
+  gap: 2rem;
+  overflow-y: hidden;
+  grid-template-columns: 1fr 1fr;
+}
+
+.calendar-message{
+  grid-row: 2/4;
+  grid-column: 4/5;
+  display: grid;
+  /* gap: 1rem; */
+  grid-template-rows: 3fr .5fr;
+}
+
+
+.current-guests{
+  grid-column: 1/4;
+  grid-row: 3/4;
+}
+
+.guests{
+  overflow-y: hidden;
+}
+
+/* MINI-CALENDAR */
+
+.react-calendar__navigation__label {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.react-calendar__navigation__prev2-button,
+.react-calendar__navigation__next2-button {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.react-calendar {
+  font-size: 14px;
+  padding: 0 !important;
+  border: none !important;
+  width: 250px !important;
+}
+
+.react-calendar__navigation {
+  height: 35px;
+  margin-bottom: 2px !important;
+}
+
+.react-calendar__tile {
+  padding: 0 !important;
+  height: 32px;
+}
+
+
+.react-calendar__month-view__weekdays {
+  font-size: 11px;
+}
+
+.react-calendar__month-view__days__day--weekend {
+  color: black !important;
+}
+
+.single-booking {
+  color: green !important;
+  font-weight: bold;
+}
+
+.multi-booking {
+  color: orangered !important;
+  font-weight: bold;
+}
+
+.react-calendar__tile--now {
+  background: #007bff !important;
+  color: white !important;
+  border-radius: 50%;
+}
+
+/* make tile relative so dots can be positioned */
+.react-calendar__tile {
+  position: relative;
+}
+
+/* dot container positioned at bottom */
+.booking-dot-container {
+  position: absolute;
+  bottom: 4px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 2px;
+}
+
+/* dots */
+.dot-green,
+.dot-orange {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+}
+
+.dot-green {
+  background: green;
+}
+
+.dot-orange {
+  background: orangered;
+}
+
+
+/* MAIN CALENDAR */
+
+.main-calendar{
+
+}
+
+.year-calendar{
+max-height: 80vh;
+border-right: 1px solid rgb(230, 227, 227);
+width: 52rem;
+display: grid;
+grid-template-columns:repeat(1,1fr);
+gap:30px;
+}
+
+/* Month box */
+
+.month{
+/* border:1px solid #ddd; */
+padding:10px 20px 10px 20px;
+border-radius:10px;
+
+}
+
+/* Month title */
+
+.month-title{
+
+text-align: left;
+font-weight:600;
+margin-bottom:1rem;
+
+}
+
+/* Weekdays */
+
+.weekdays{
+display:grid;
+gap: 1rem;
+grid-template-columns:repeat(7,1fr);
+font-size:14px;
+color:#777;
+margin-bottom:5px;
+
+}
+
+/* Calendar grid */
+
+.month-grid{
+display:grid;
+grid-template-columns:repeat(7,1fr);
+gap:10px;
+
+}
+
+/* Day cell */
+
+.day-cell{
+height:100px;
+border:1px solid #eee;
+border-radius:12px;
+padding:6px;
+padding-top: 22px;
+font-size:15px;
+
+}
+
+/* Blocked */
+
+.day-cell.blocked{
+
+background:#c9c9c9;
+color:#504f4f;
+
+}
+
+/* PRICE SETTING */
+
+.section {
+border: 1px solid #e0dfdf;
+border-radius: 10px;
+margin-bottom: 15px;
+}
+
+.section label {
+  font-size: 14px;
+  font-weight: 600;
+  color: rgb(99, 96, 96);
+}
+
+.section input {
+
+}
+
+.price-panel{
+  max-height: 80vh;
+  width: 20rem;
+}
+
+.section input{
+  width: 7rem;
+  border: none;
+  font-size: x-large;
+  font-weight: bolder;
+  margin-top: 1rem;
+}
+
+.section button {
+  padding: 3px;
+  border-radius: 6px;
+  border: none;
+  background: white;
+  color: black;
+  font-size: 13px;
+}
+
+.section button:hover{
+  background-color: #ffdede;
+}
+
+/* DAT SETTINGS PANEL */
+.day-panel {
+  width: 20rem;
+  height: 80vh;
+  background: white;
+  color: white;
+  padding: 20px;
+  border-radius: 20px 0 0 20px;
+}
+
+/* Header */
+.panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.date-pill {
+  background: #222;
+  padding: 8px 15px;
+  border-radius: 20px;
+}
+
+.close-btn {
+  background: #222;
+  border: none;
+  color: white;
+  border-radius: 50%;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+/* Card */
+.panel-card {
+  background: #1c1c1c;
+  padding: 15px;
+  border-radius: 15px;
+  margin-bottom: 15px;
+}
+
+/* Status */
+.status {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.green {
+  background: #00ff7f;
+}
+
+.red {
+  background: red;
+}
+
+/* Toggle */
+.toggle {
+  display: flex;
+  margin-top: 10px;
+  background: #333;
+  border-radius: 20px;
+}
+
+/* .btn {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  background: transparent;
+  color: white;
+  cursor: pointer;
+} */
+
+.btn.active {
+  background: white;
+  color: black;
+  border-radius: 20px;
+}
+
+/* Price */
+.label {
+  color: #aaa;
+}
+
+.price-input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 10px;
+  border: none;
+}
+
+.save-btn {
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  background: white;
+  color: black;
+  border: none;
+}
+
+.save-btn:hover{
+  background: rgb(247, 244, 244);
+}
+
+.day-cell {
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+/* Selected (Airbnb style) */
+.day-cell.selected {
+  background: black;
+  color: white;
+}
+
+/* Optional hover */
+.day-cell:hover {
+  border: black
+}
+
+.host-image.selected {
+  border: 2px solid green;
+}
+
+.host-image:hover{
+  border: 2px solid rgb(85, 80, 80);
+}
+
+/* REVIEW */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  z-index: 9999;
+}
+
+.modal-box {
+  width: 40vw;      
+  height: 50vh;    
+
+  background: #fff;
+  border-radius: 16px;
+  padding: 20px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Close button */
+.close-btn {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  border: none;
+  background: transparent;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+/* AMENITIES ************ */  
+.amenities-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 🔥 2 column */
+  gap: 12px;
+}
+
+/* Box */
+.amenity-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #1c1c1c;
+  /* border: 1px solid #ddd; */
+  border-radius: 10px;
+  padding: 10px;
+}
+
+/* Icon */
+.icon {
+  font-size: 18px;
+}
+
+/* Text */
+.label {
+  color: #1c1c1c;
+  font-size: 14px;
+}
+
+/* IMAGE UPLOADER *************/
+.upload-box {
+  border: 2px dashed #ccc;
+  border-radius: 12px;
+  background-color: #fafafa;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.upload-box:hover {
+  border-color: black;
+  background-color: #f0f0f0;
+}
+
