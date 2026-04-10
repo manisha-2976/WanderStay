@@ -36,7 +36,8 @@ module.exports.signup = async (req, res, next) => {
   res.cookie("token", token, {
     httpOnly: true,
     secure: isProd,
-    sameSite: isProd ? "None" : "Lax"
+    sameSite: isProd ? "None" : "Lax",
+    path: "/"
   });
 
   res.status(201).json({ message: "Signup Successful", user });
@@ -46,7 +47,6 @@ module.exports.signup = async (req, res, next) => {
 module.exports.login = async (req, res, next) => {
   const { email, password } = req.body;
   const user = await User.findOne({ email });
-
   if (!user) {
     return res.status(400).json({ message: "Invalid Email" });
   }
@@ -67,7 +67,8 @@ module.exports.login = async (req, res, next) => {
   res.cookie("token", token, {
     httpOnly: true,
     secure: isProd,
-    sameSite: isProd ? "None" : "Lax"
+    sameSite: isProd ? "None" : "Lax",
+    path: "/"
   });
   res.status(201).json({ message: "Login Successful", user });
 };
@@ -88,7 +89,8 @@ module.exports.logout = async (req, res, next) => {
   res.clearCookie("token", {
     httpOnly: true,
     secure: isProd,
-    sameSite: isProd ? "None" : "Lax"
+    sameSite: isProd ? "None" : "Lax",
+    path: "/"
   });
 
   res.status(200).json({
