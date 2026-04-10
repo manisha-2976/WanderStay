@@ -11,7 +11,7 @@ export const Today = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get("http://localhost:3001/host/dashboard", { withCredentials: true });
+        const res = await axios.get(`${process.env.REACT_APP_API_URL}/host/dashboard`, { withCredentials: true });
         setData(res.data)
         // console.log(data)
       } catch (err) {

@@ -21,7 +21,7 @@ export const SignUp = () => {
     const onSubmit = async (data) => {
         try {
             console.log(data);
-            const res = await axios.post("http://localhost:3001/users/signup", data,
+            const res = await axios.post(`${process.env.REACT_APP_API_URL}//users/signup`, data,
                 {
                     withCredentials: true
                 }

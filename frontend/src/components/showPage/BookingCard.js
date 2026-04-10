@@ -24,14 +24,13 @@ export const BookingCard = ({
 
   // total price
   const totalPrice = nights * (listing?.price || 0);
-
   const handleReserve = async () => {
     if (!selectedDates?.startDate || !selectedDates?.endDate) {
       return alert("Select dates");
     }
     try {
       const check = await axios.post(
-        "http://localhost:3001/listing/checkAvailability",
+        `${process.env.REACT_APP_API_URL}/listing/checkAvailability`,
         {
           listingId: listing._id,
           checkIn: selectedDates.startDate,
@@ -42,7 +41,7 @@ export const BookingCard = ({
         return alert("Dates not available");
       }
 
-      await axios.post("http://localhost:3001/listing/book",
+      await axios.post(`${process.env.REACT_APP_API_URL}/listing/book`,
         {
           listingId: listing._id,
           checkIn: selectedDates.startDate,

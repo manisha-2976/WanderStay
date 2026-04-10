@@ -23,7 +23,7 @@ export const ImageUpload = () => {
 
   const fetchImages = async () => {
     try {
-      const res = await axios.get(`http://localhost:3001/listing/${id}`);
+      const res = await axios.get(`${process.env.REACT_APP_API_URL}/listing/${id}`);
       setListingImages(
         res.data.images.filter(img => img.category === roomName.toLowerCase())
       );
@@ -76,7 +76,7 @@ export const ImageUpload = () => {
       currentFiles.forEach(f => formData.append("images", f));
 
       await axios.post(
-        `http://localhost:3001/listing/${id}/image/upload/${roomName}`, formData,
+        `${process.env.REACT_APP_API_URL}/listing/${id}/image/upload/${roomName}`, formData,
         { withCredentials: true }
       );
 
@@ -102,7 +102,7 @@ export const ImageUpload = () => {
   const handleDelete = async (imageId) => {
     try {
       await axios.delete(
-        `http://localhost:3001/listing/${id}/image/${imageId}`, { withCredentials: true }
+        `${process.env.REACT_APP_API_URL}/listing/${id}/image/${imageId}`, { withCredentials: true }
       );
       fetchImages();
     } catch {

@@ -16,14 +16,14 @@ export const Details = () => {
   const [selectedDates, setSelectedDates] = useState(null);
 
   useEffect(() => {
-    axios.get(`http://localhost:3001/listing/calendar/${id}`)
+    axios.get(`${process.env.REACT_APP_API_URL}/listing/calendar/${id}`)
       .then(res => setFullyBookedDates(res.data.fullyBookedDates));
   }, [id]);
 
   useEffect(() => {
     const fetchListing = async () => {
       try {
-        const res = await axios.get(`http://localhost:3001/listing/${id}`);
+        const res = await axios.get(`${process.env.REACT_APP_API_URL}/listing/${id}`);
         setListing(res.data);
         console.log(res.data);
       } catch (error) {

@@ -28,7 +28,7 @@ export const MainCalendar = () => {
       const requests = [];
       for (let month = 1; month <= 12; month++) {
         requests.push(
-          axios.get(`http://localhost:3001/listing/${id}/calendar?month=${month}&year=${year}`,  { withCredentials: true })
+          axios.get(`${process.env.REACT_APP_API_URL}/listing/${id}/calendar?month=${month}&year=${year}`,  { withCredentials: true })
         );
       }
       const responses = await Promise.all(requests);
@@ -52,7 +52,7 @@ export const MainCalendar = () => {
     setSelectedDate(day.date);
 
     const res = await axios.get(
-      `http://localhost:3001/listing/${id}/calendar/day?date=${day.date}`, { withCredentials: true });
+      `${process.env.REACT_APP_API_URL}/listing/${id}/calendar/day?date=${day.date}`, { withCredentials: true });
 
     setSelectedDayData(res.data);
   };

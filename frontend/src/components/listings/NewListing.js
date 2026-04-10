@@ -19,7 +19,7 @@ export const NewListing = () => {
         formData.append("images", file);
         formData.append("category", "additional");
       });
-      await axios.post("http://localhost:3001", formData, {
+      await axios.post(`${process.env.REACT_APP_API_URL}`, formData, {
         withCredentials: true,
         headers: {
           "Content-Type": "multipart/form-data"

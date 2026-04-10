@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import axios from "axios";
 import { useForm } from "react-hook-form";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { FormInput } from "./FormInput";
 import { PhotoTour } from "./PhotoTour";
 
@@ -12,7 +12,7 @@ export const EditListings = () => {
     useEffect(() => {
         const fetchListing = async () => {
             try {
-                const res = await axios.get(`http://localhost:3001/host/listing/${id}/edit`, { withCredentials: true });
+                const res = await axios.get(`${process.env.REACT_APP_API_URL}/host/listing/${id}/edit`, { withCredentials: true });
                 reset({
                     title: res.data.title,
                     description: res.data.description,
@@ -39,7 +39,7 @@ export const EditListings = () => {
     const handleSave = async (field, value) => {
         try {
             await axios.put(
-                `http://localhost:3001/listing/${id}`,
+                `${process.env.REACT_APP_API_URL}/listing/${id}`,
                 {
                     field,
                     value

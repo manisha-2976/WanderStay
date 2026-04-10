@@ -44,7 +44,7 @@ export const PhotoTour = () => {
     const fetchImages = async () => {
       try {
         const { data } = await axios.get(
-          `http://localhost:3001/listing/${id}`
+          `${process.env.REACT_APP_API_URL}/listing/${id}`
         );
 
         // group images by category

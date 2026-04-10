@@ -15,7 +15,7 @@ export const Navbar = () => {
   useEffect(() => {
     const fetchListings = async () => {
       try {
-        const res = await axios.get("http://localhost:3001/host/listings", { withCredentials: true });
+        const res = await axios.get(`${process.env.REACT_APP_API_URL}/host/listings`, { withCredentials: true });
         setListings(res.data);
       } catch (err) {
         console.log(err);
@@ -26,7 +26,7 @@ export const Navbar = () => {
 
   const handleLogout = async (data) => {
     try {
-      const res = await axios.get("http://localhost:3001/users/logout", { withCredentials: true });
+      const res = await axios.get(`${process.env.REACT_APP_API_URL}/users/logout`, { withCredentials: true });
       console.log("user logged out")
       await fetchUser();
 

@@ -23,13 +23,13 @@ export const CustomSettingsPanel = ({
   if (!selectedDate) return null;
 
   const blockDate = async () => {
-    await axios.post(`http://localhost:3001/listing/${listingId}/block`, {dates: [selectedDate] });
+    await axios.post(`${process.env.REACT_APP_API_URL}/listing/${listingId}/block`, {dates: [selectedDate] });
     setBlocked(true);
     reload();
   };
 
   const unblockDate = async () => {
-    await axios.post(`http://localhost:3001/listing/${listingId}/unblock`, {
+    await axios.post(`${process.env.REACT_APP_API_URL}/listing/${listingId}/unblock`, {
       dates: [selectedDate]
     });
 
@@ -38,7 +38,7 @@ export const CustomSettingsPanel = ({
   };
 
   const updatePrice = async () => {
-    await axios.post(`http://localhost:3001/listing/${listingId}/set-custom-price`, {
+    await axios.post(`${process.env.REACT_APP_API_URL}/listing/${listingId}/set-custom-price`, {
       dates: [selectedDate],
       price: Number(price)
     });

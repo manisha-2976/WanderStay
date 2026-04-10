@@ -18,7 +18,7 @@ export const HostCalendar = () => {
     const fetchListings = async () => {
         try {
             const res = await axios.get(
-                "http://localhost:3001/host/listings",
+                `${process.env.REACT_APP_API_URL}/host/listings`,
                 { withCredentials: true }
             );
             setListings(res.data);

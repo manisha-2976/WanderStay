@@ -17,7 +17,7 @@ export const Review = ({ onClose, id }) => {
 
   const onSubmit = async (data) => {
     try {
-      await axios.post(`http://localhost:3001/listing/${id}/reviews`, data, { withCredentials: true });
+      await axios.post(`${process.env.REACT_APP_API_URL}/listing/${id}/reviews`, data, { withCredentials: true });
       reset();
     } catch (err) {
       console.error(err);

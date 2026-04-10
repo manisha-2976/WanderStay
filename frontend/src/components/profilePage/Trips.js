@@ -13,7 +13,7 @@ export const Trips = () => {
     const fetchBookings = async () => {
       try {
         const res = await axios.get(
-          "http://localhost:3001/users/profile/bookings",
+          `${process.env.REACT_APP_API_URL}/users/profile/bookings`,
           { withCredentials: true }
         );
 

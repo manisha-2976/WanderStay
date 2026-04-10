@@ -16,8 +16,7 @@ export const Chart = () => {
 
     const fetchData = async () => {
 
-      const res = await axios.get(
-        "http://localhost:3001/host/monthly-earnings",
+      const res = await axios.get(`${process.env.REACT_APP_API_URL}/host/monthly-earnings`,
         { withCredentials: true }
       );
 

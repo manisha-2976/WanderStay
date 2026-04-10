@@ -9,7 +9,7 @@ export const MiniCalendar = () => {
 
     useEffect(() => {
 
-        axios.get("http://localhost:3001/mini-calendar", { withCredentials: true })
+        axios.get(`${process.env.REACT_APP_API_URL}/mini-calendar`, { withCredentials: true })
             .then((res) => {
                 setBookingCounts(res.data);
             });

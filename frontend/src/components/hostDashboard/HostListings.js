@@ -10,7 +10,7 @@ export const HostListings = () => {
     const fetchListings = async () => {
       try {
         const res = await axios.get(
-          "http://localhost:3001/host/listings",
+          `${process.env.REACT_APP_API_URL}/host/listings`,
           { withCredentials: true }
         );
 
@@ -27,7 +27,7 @@ export const HostListings = () => {
 
   const handleDelete = async (id) => {
     try {
-      const res = await axios.delete(`http://localhost:3001/listing/${id}`, { withCredentials: true });
+      const res = await axios.delete(`${process.env.REACT_APP_API_URL}/listing/${id}`, { withCredentials: true });
       setListings(prev => prev.filter(listing => listing._id !== id));
     } catch (e) {
       console.log(e);

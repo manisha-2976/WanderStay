@@ -7,8 +7,7 @@ export const Analytics = () => {
     useEffect(() => {
         const fetchAnalytics = async () => {
             try {
-                const res = await axios.get(
-                    "http://localhost:3001/host/analytics",
+                const res = await axios.get(`${process.env.REACT_APP_API_URL}/host/analytics`,
                     { withCredentials: true }
                 );
 

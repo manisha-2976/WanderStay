@@ -30,9 +30,7 @@ export const App = () => {
     <>
       <div className='d-flex flex-column min-vh-100'>
 
-        {/* {!location.pathname.startsWith("/host") && <Navbar/>} */}
         {!location.pathname.startsWith("/host") ? <Navbar /> : <HostNavbar />}
-        {/* {location.pathname.startsWith("/host") ? <BottomNavbar/> : ""} */}
 
         <main className='flex-grow-1'>
           <Routes>

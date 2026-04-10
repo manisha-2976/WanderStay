@@ -7,18 +7,11 @@ export const Listings = () => {
 const location = useLocation();
 const [allListings, setAllListings] = useState([]);
 
-  // useEffect(() => {
-  //   axios.get("http://localhost:3001").then((res) => {
-  //     // console.log(res.data);
-  //     setAllListings(res.data);
-  //   });
-  // }, []);
-
   useEffect(() => {
   if (location.state?.listings) {
     setAllListings(location.state.listings);
   } else {
-    axios.get("http://localhost:3001").then((res) => {
+    axios.get(`${process.env.REACT_APP_API_URL}`).then((res) => {
       setAllListings(res.data);
     });
   }

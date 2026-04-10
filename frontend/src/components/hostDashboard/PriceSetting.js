@@ -14,7 +14,7 @@ export const PriceSetting = ({ listingId, reload }) => {
 
     const loadPricing = async () => {
         const res = await axios.get(
-            `http://localhost:3001/listing/${listingId}/get/price`
+            `${process.env.REACT_APP_API_URL}/listing/${listingId}/get/price`
         );
 
         setPrice(res.data.price);
@@ -27,7 +27,7 @@ export const PriceSetting = ({ listingId, reload }) => {
     const updateField = async (field, value) => {
 
         await axios.patch(
-            `http://localhost:3001/listing/${listingId}/price`,
+            `${process.env.REACT_APP_API_URL}/listing/${listingId}/price`,
             {
                 [field]: value
             }
