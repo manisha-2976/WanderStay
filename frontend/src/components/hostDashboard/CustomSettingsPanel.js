@@ -42,7 +42,6 @@ export const CustomSettingsPanel = ({
       dates: [selectedDate],
       price: Number(price)
     });
-
     reload();
   };
 
@@ -55,47 +54,40 @@ export const CustomSettingsPanel = ({
           {format(new Date(selectedDate), "d MMM")}
         </div>
 
-        <button className="close-btn" onClick={onClose}>
+        <button className="closeBtn" onClick={onClose}>
           <i class="fa-solid fa-xmark"></i>
         </button>
       </div>
 
       {/* Availability */}
       <div className="panel-card">
-
         <div className="status">
           <span>
             {blocked ? "Blocked" : "Available"}
           </span>
-
           <span className={`dot ${blocked ? "red" : "green"}`}></span>
         </div>
 
         <div className="toggle">
-
           <button
-            className={`btn ${blocked ? "active" : ""}`}
+            className={`tog-btn ${blocked ? "active" : ""}`}
             onClick={blockDate}
           >
             <i class="fa-solid fa-xmark"></i>
           </button>
 
           <button
-            className={`btn ${!blocked ? "active" : ""}`}
+            className={`tog-btn ${!blocked ? "active" : ""}`}
             onClick={unblockDate}
           >
             <i class="fa-solid fa-check"></i>
           </button>
-
         </div>
-
       </div>
 
       {/* Price */}
       <div className="panel-card">
-
-        <p className="label">Price per night</p>
-
+        <p className="label">Price per night &#8377;</p>
         <input
           className="price-input"
           value={price}
@@ -105,10 +97,8 @@ export const CustomSettingsPanel = ({
         <button className="save-btn" onClick={updatePrice}>
           Save Price
         </button>
-
       </div>
 
     </div>
-
   );
 };

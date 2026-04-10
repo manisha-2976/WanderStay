@@ -1,0 +1,39 @@
+.rdrCalendarWrapper{
+    max-width: 700px !important;
+}
+
+.rdrMonthAndYearWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Hide dropdown arrow only */
+.rdrMonthAndYearWrapper svg {
+  display: none !important;
+}
+
+/* Hide duplicate top month text */
+.rdrMonthAndYearWrapper span {
+  display: none !important;
+}
+
+/*  Show individual month names */
+.rdrMonthName {
+  display: block !important;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: black !important;
+}
+
+/* Spacing between months */
+.rdrMonths {
+  display: flex;
+  gap: 40px;
+}
+
+/* .single-month .rdrNextButton {
+  margin-right: 10px !important; 
+} */

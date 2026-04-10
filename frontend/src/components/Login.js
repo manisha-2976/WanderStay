@@ -21,7 +21,8 @@ export const Login = () => {
     const onSubmit = async (data) => {
         try {
             console.log(data);
-            const res = await axios.post("http://localhost:3001/users/login", data, { withCredentials: true}
+            const res = await axios.post("http://localhost:3001/users/login", data, 
+            { withCredentials: true}
             );
             await fetchUser();
             navigate(from, { replace: true });
@@ -79,11 +80,8 @@ export const Login = () => {
                                 })}
                             />
 
-                            {errors.password && (
-                                <div className="invalid-feedback">
-                                    {errors.password.message}
-                                </div>
-                            )}
+                            {errors.password && 
+                            (<div className="invalid-feedback"> {errors.password.message}</div>)}
                         </div>
                         </div>
 

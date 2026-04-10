@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import axios from "axios"
 import { MonthView } from "./MonthView"
 import { useParams } from "react-router-dom";
 import { PriceSetting } from "./PriceSetting";
 import { CustomSettingsPanel } from "./CustomSettingsPanel";
+import "./MainCalendar.css"
 
 export const MainCalendar = () => {
 
@@ -21,29 +22,20 @@ export const MainCalendar = () => {
     }
   }, [id]);
 
-
   const loadYearCalendar = async () => {
-
     const year = new Date().getFullYear();
-
     try {
-
       const requests = [];
-
       for (let month = 1; month <= 12; month++) {
         requests.push(
           axios.get(`http://localhost:3001/listing/${id}/calendar?month=${month}&year=${year}`,  { withCredentials: true })
         );
       }
-
       const responses = await Promise.all(requests);
-
       const data = {};
-
       responses.forEach((res, index) => {
         data[index + 1] = res.data;
       });
-
       setCalendarData(data);
 
     } catch (err) {
@@ -52,13 +44,11 @@ export const MainCalendar = () => {
   };
 
   const handleSelect = async (day) => {
-
     if (selectedDate === day.date) {
       setSelectedDate(null);
       setSelectedDayData(null);
       return;
     }
-
     setSelectedDate(day.date);
 
     const res = await axios.get(
@@ -70,9 +60,9 @@ export const MainCalendar = () => {
   return (
 
     <div className="main-calendar d-flex p-0 m-0">
-      <div className="year-calendar overflow-y-auto">
-        {Object.keys(calendarData).map(month => (
+      <div className="year-calendar">
 
+        {Object.keys(calendarData).map(month => (
           <MonthView
             listingId={id}
             key={month}
@@ -80,11 +70,10 @@ export const MainCalendar = () => {
             onSelect={handleSelect}
             selectedDate={selectedDate}
           />
-
         ))}
       </div>
 
-      <div className="price-setting">
+      <div className="price-setting d-none d-lg-block">
         {selectedDate ? (
 
           <CustomSettingsPanel

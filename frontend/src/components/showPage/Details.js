@@ -1,11 +1,12 @@
-import React, { useEffect, useState, useContext, useMemo } from "react";
+import React, { useEffect, useState, } from "react";
 import axios from "axios";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { Calendar } from "./Calendar";
 import { BookingCard } from "./BookingCard";
 import { Mapbox } from "./Mapbox";
 import { amenitiesMap } from "./AmenitiesIcons";
 import { safetyMap } from "./AmenitiesIcons";
+import "./Details.css";
 
 export const Details = () => {
   const { id } = useParams();
@@ -55,17 +56,21 @@ export const Details = () => {
           {listing?.title}
         </h3>
 
-        <div className=" show-card listing-card">
+        <div className="show-card listing-card border-bottom mb-5 pb-5">
 
-          <div className="d-flex gap-2 mb-2">
-            <img src={listing?.images?.[0]?.url} className="mb-2 w-50 show-img" alt="Listing_image" />
-            <img src={listing?.images?.[1]?.url} className="mb-2 w-50 show-img" alt="Listing_image" /> 
-            {/* card-img-top */}
+          <div className="row g-2 mb-2">
+            <div className="col-12 col-md-6">
+              <img src={listing?.images?.[0]?.url} className="w-100 show-img" />
+            </div>
+
+            <div className="col-md-6 d-none d-md-block">
+              <img src={listing?.images?.[1]?.url} className="w-100 show-img" />
+            </div>
           </div>
 
+          {/* LEFT PANEL*/}
           <div className="row m-0">
-
-            <div className="col-md-7 card-body">
+            <div className="col-12 col-md-7 col-lg-7 card-body">
               <p className="card-text mb-1">{listing?.street}, {listing?.city}, {listing?.country}</p>
               <div style={{ color: "rgb(14, 13, 13)" }} className="d-flex gap-3" >
                 <span>{listing?.guest} guests</span>
@@ -83,12 +88,14 @@ export const Details = () => {
                 </div>
               </div>
 
-              <p style={{ whiteSpace: "pre-line" }} className="card-text">{listing?.description}</p>
+              <p style={{ whiteSpace: "pre-line" }} className="card-text">
+                {listing?.description?.replace(/\.\s*/g, ".\n\n")}
+              </p>
 
               <div className="amenities-container mt-3">
                 {amenitiesList.length > 0 ? <h5 className="fw-semibold">What this place offers</h5> : ""} <br></br>
                 {amenitiesList.map((item, index) => {
-                  const key = normalizeKey(item); // Normalize the key to match the amenitiesMap keys
+                  const key = normalizeKey(item);
                   const amenity = amenitiesMap[key];
 
                   if (!amenity) return null;
@@ -105,7 +112,7 @@ export const Details = () => {
               <div className="amenities-container mt-4">
                 {safetyList.length > 0 ? <h5 className="fw-semibold">Safety items</h5> : ""} <br></br>
                 {safetyList.map((item, index) => {
-                  const key = normalizeKey(item); 
+                  const key = normalizeKey(item);
                   const safety = safetyMap[key];
 
                   if (!safety) {
@@ -129,11 +136,13 @@ export const Details = () => {
                 <Calendar
                   fullyBookedDates={fullyBookedDates || []}
                   onDateChange={setSelectedDates}
+                  selectedDates={selectedDates}
                 />
               </div>
             </div>
 
-            <div className="col-md-5 bg-white d-flex justify-content-end pe-0 pt-3 booking-card">
+            {/* RIGHT PANEL */}
+            <div className="col-12 col-md-5 col-lg-5 d-flex justify-content-end pe-0 pt-3 booking-card">
               <BookingCard
                 listing={listing}
                 selectedDates={selectedDates}

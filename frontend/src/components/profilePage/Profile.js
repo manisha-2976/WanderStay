@@ -17,7 +17,7 @@ export const Profile = () => {
 
     return (
         <div className='container d-flex ps-0 pe-0'>
-            <div className='border-end profile-menu mb-3 pt-5 '>
+            <div className='border-end profile-menu mb-3 pt-5 d-none d-md-block'>
                 <h1><b>Profile</b></h1>
                 <div className='mt-5' id='profile-menu'>
                     <Link className='nav-link' to="/users/profile"  onClick={() => handleMenuClick(0)}>

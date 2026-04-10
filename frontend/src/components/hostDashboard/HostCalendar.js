@@ -1,23 +1,19 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Link } from "react-router-dom";
 import axios from "axios"
-import { Route, Routes, useNavigate } from 'react-router-dom'
-import { MainCalendar } from './MainCalendar'
+import {  useNavigate } from 'react-router-dom'
 import { useParams } from "react-router-dom";
 import { Outlet } from "react-router-dom";
 
 
 export const HostCalendar = () => {
     const [listings, setListings] = useState([]);
-
     const { id } = useParams();
-    console.log("id: ", id);
     const navigate = useNavigate();
 
     useEffect(() => {
         fetchListings();
     }, [])
-
 
     const fetchListings = async () => {
         try {
@@ -25,7 +21,6 @@ export const HostCalendar = () => {
                 "http://localhost:3001/host/listings",
                 { withCredentials: true }
             );
-
             setListings(res.data);
         } catch (err) {
             console.log(err);
@@ -33,6 +28,10 @@ export const HostCalendar = () => {
             console.log(message);
         }
     };
+
+    const navListing = listings.find(
+        (listing) => listing._id === id
+    );
 
     useEffect(() => {
         if (!id && listings.length > 0) {
@@ -42,27 +41,43 @@ export const HostCalendar = () => {
 
 
     return (
-        <div className='m-5 mb-0 d-flex p-0 host-calendar'>
+         <div className='host-calendar-container'>
+
+            {navListing?.images?.length > 0 && (
+                <Link
+                    to={`/host/calendar/listing/${navListing?._id}`}
+                    style={{ top: "-6.5rem", left: "2rem", zIndex: 1050 }}
+                    className="position-relative d-lg-none"
+                >
+                    <img
+                        src={navListing.images[0].url}
+                        alt="listing img"
+                        className={`mb-4 rounded ${id === navListing._id ? "shadow" : ""}`}
+                        style={{ height: "2rem", width: "2rem" }}
+                    />
+                </Link>
+            )}
 
 
-            <div className='pe-4'>
+            <div className='p-3 scroll-container me-3 d-none d-lg-block' style={{ maxHeight: "85vh" }}>
                 {listings.map((listing, index) => {
 
                     return (
-                        <Link key={listing._id} to={`/host/calendar/listing/${listing?._id}`}   className=''>
-                            <div className={`rounded-4 mb-3 ${id === listing._id ? "shadow" : ""}`}>
-
-                                <img src={listing.images[0].url} className="rounded-4" alt="listing img" style={{ height: "5rem", width: "6rem" }} />
+                        <Link key={listing._id} to={`/host/calendar/listing/${listing?._id}`} >
+                            <div>
+                                <img src={listing.images[0].url} alt="listing img"
+                                    className={`mb-4 rounded-4 ${id === listing._id ? "shadow" : ""}`}
+                                    style={{ height: "90px", width: "100%", objectFit: "cover" }} />
                             </div>
                         </Link>
                     );
                 })}
             </div>
 
-            <div>
+            <div className='host-content'>
                 <Outlet />
             </div>
-            
+
         </div>
     )
 }

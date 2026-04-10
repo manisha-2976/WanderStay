@@ -1,20 +1,35 @@
-import { DateRange } from "react-date-range";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
+import { DateRange } from "react-date-range";
+import "./Calendar.css";
 
-export const Calendar = ({ fullyBookedDates, onDateChange }) => {
+export const Calendar = ({ fullyBookedDates, onDateChange, selectedDates }) => {
+  const [monthsToShow, setMonthsToShow] = useState(2);
 
-  const [range, setRange] = useState([
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 992) {
+        setMonthsToShow(1);
+      } else {
+        setMonthsToShow(2);
+      }
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+  
+  // Create range from selectedDates prop
+  const range = [
     {
-      startDate: null,
-      endDate: null,
+      startDate: selectedDates?.startDate || null,
+      endDate: selectedDates?.endDate || null,
       key: "selection"
     }
-  ]);
+  ];
 
   const handleSelect = (item) => {
-
     const { startDate } = item.selection;
     const startKey = startDate?.toLocaleDateString("en-CA");
 
@@ -22,53 +37,35 @@ export const Calendar = ({ fullyBookedDates, onDateChange }) => {
       alert("This date is fully booked");
       return;
     }
-    setRange([item.selection]);
+
     onDateChange(item.selection);
   };
 
   const handleClear = () => {
-
-    const cleared = {
-      startDate: null,
-      endDate: null,
-      key: "selection"
-    };
-
-    setRange([cleared]);
-
-    onDateChange({
-      startDate: null,
-      endDate: null
-    });
+    onDateChange({ startDate: null, endDate: null });
   };
 
   return (
-    <>
-    <DateRange
-      ranges={range}
-      onChange={handleSelect}
-      minDate={new Date()}
-      months={2}
-      direction="horizontal"
-      moveRangeOnFirstSelection={false}
-    />
+    <div className={`bg-white ${monthsToShow === 1 ? "single-month" : ""}`}>
+      <DateRange
+        ranges={range}
+        onChange={handleSelect}
+        minDate={new Date()}
+        months={monthsToShow}
+        direction="horizontal"
+        moveRangeOnFirstSelection={false}
+        rangeColors={["#000"]}
+        showDateDisplay={false}
+        showMonthAndYearPickers={false}
+      />
 
-
-      <div style={{ marginTop: "10px", textAlign: "left" }}>
-        <button
-          onClick={handleClear}
-          style={{
-            background: "none",
-            border: "none",
-            color: "#1b1a1aff",
-            cursor: "pointer",
-            fontWeight: "bold"
-          }}
+      <div style={{ marginTop: "0", textAlign: "right", paddingRight: "4.5rem" }}>
+        <button onClick={handleClear}
+          className="cursor-pointer fw-semibold bg-white border-0"
         >
           Clear dates
         </button>
       </div>
-      </>
-
+    </div>
   );
 };

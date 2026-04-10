@@ -41,7 +41,7 @@ export const Mapbox = ({ listing }) => {
         <div
             ref={mapContainerRef}
             className="map-container"
-            style={{ height: "400px", width: "100%" }}
+            style={{ maxHeight: "400px", width: "100%" }}
         />
     );
 };

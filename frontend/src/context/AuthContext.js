@@ -8,9 +8,7 @@ export const AuthProvider = ({ children }) => {
 
   const fetchUser = async () => {
     try {
-      const res = await fetch("http://localhost:3001/users/me", {
-        credentials: "include"
-      });
+      const res = await fetch("http://localhost:3001/users/me", {credentials: "include"});
 
       if (!res.ok) throw new Error();
 
@@ -28,9 +26,7 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   const logout = async () => {
-    await fetch("http://localhost:3000/users/logout", {
-      credentials: "include"
-    });
+    await fetch("http://localhost:3000/users/logout", { credentials: "include" });
     setUser(null);
   };
 

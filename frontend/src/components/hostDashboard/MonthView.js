@@ -15,13 +15,11 @@ export const MonthView = ({ days, onSelect, selectedDate }) => {
 
   return (
 
-    <div className="month">
-
-      <h3 className="month-title">{monthName}</h3>
-
+    <div className="rounded-4">
+      <h3 className="text-start fw-semibold mb-2">{monthName}</h3>
       <div className="weekdays">
-        {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map(d => (
-          <div key={d}>{d}</div>
+        {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map(day => (
+          <div key={day}>{day}</div>
         ))}
       </div>
 

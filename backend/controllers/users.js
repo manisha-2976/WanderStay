@@ -52,7 +52,7 @@ module.exports.login = async(req, res, next) => {
   }
    // compare password
   const isMatch = await bcrypt.compare(password, user.password);
-  console.log(isMatch);
+  console.log("isMatch", isMatch);
 
   if(!isMatch){
      return res.status(400).json({message:"Wrong Password"});

@@ -5,7 +5,6 @@ const {listingSchema, reviewSchema} = require("./schema.js");
 
 
 module.exports.isLoggedIn = async(req, res, next) => {
-
  const token = req.cookies.token;
 //  console.log(req.cookies);
 //  console.log("Raw Header:", req.headers.cookie);

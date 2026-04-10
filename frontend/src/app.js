@@ -18,19 +18,21 @@ import { Today } from './components/hostDashboard/Today';
 import { HostCalendar } from './components/hostDashboard/HostCalendar';
 import { MainCalendar } from './components/hostDashboard/MainCalendar';
 import { HostListings } from './components/hostDashboard/HostListings';
-import { Messages } from './components/hostDashboard/Messages';
 import { ImageUpload } from './components/editListing/ImageUpload';
+import { BottomNavbar } from './components/hostDashboard/BottomNavbar';
 
 
 export const App = () => {
   const location = useLocation();
   const hideFooter = location.pathname.startsWith("/host/calendar");
+  const showBottomNavbar = location.pathname.startsWith("/host");
   return (
     <>
       <div className='d-flex flex-column min-vh-100'>
 
         {/* {!location.pathname.startsWith("/host") && <Navbar/>} */}
         {!location.pathname.startsWith("/host") ? <Navbar /> : <HostNavbar />}
+        {/* {location.pathname.startsWith("/host") ? <BottomNavbar/> : ""} */}
 
         <main className='flex-grow-1'>
           <Routes>
@@ -46,7 +48,6 @@ export const App = () => {
               <Route path="listing/:id" element={<MainCalendar />} />
             </Route>
             <Route path="/host/listings" element={<HostListings />} />
-            <Route path="/host/messages" element={<Messages />} />
             <Route path="/listing/:id/image/upload/:roomName" element={<ImageUpload />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
@@ -54,6 +55,7 @@ export const App = () => {
         {/* <Footer /> */}
         {!hideFooter && <Footer />}
       </div>
+      {showBottomNavbar && <BottomNavbar/>}
     </>
   )
 }

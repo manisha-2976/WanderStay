@@ -51,7 +51,7 @@ export const Navbar = () => {
         { query: searchQuery }
       );
 
-      // 👉 send results to Listings page
+      // send results to Listings page
       navigate("/", { state: { listings: res.data.listings } });
 
     } catch (err) {
@@ -63,9 +63,9 @@ export const Navbar = () => {
   return (
     <>
       <nav className="navbar navbar-expand-md bg-body-light border-bottom sticky-top">
-        <div className="container-fluid">
+        <div className="container-fluid bg-white">
           <Link className="navbar-brand" to="/"><i className="fa-regular fa-compass"></i></Link>
-          <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup">
+          <button className="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup">
             <span className="navbar-toggler-icon"></span>
           </button>
 
@@ -74,12 +74,12 @@ export const Navbar = () => {
               <Link className="nav-link" aria-current="page" to="/">WanderStay</Link>
             </div>
 
-            <div className="navbar-nav ms-auto ">
+            <div className="navbar-nav ms-auto d-none d-md-block">
               <form className="d-flex ms-auto" onSubmit={handleSearch}>
                 <input
                   className="form-control me-2 p-2" style={{ width: "450px", fontSize: "14px" }}
                   type="search"
-                  placeholder="Search.... Beach villa in goa for 4 persons with pool"
+                  placeholder="Search Beach villa in goa for 4 guests with pool"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                 />
@@ -101,7 +101,11 @@ export const Navbar = () => {
                 </Link>
               }
 
-              {user ? <div className='ps-2 pe-2'><Link className="nav-link avatar" to="/users/profile">
+              {user ? <div className='d-block d-md-none'><Link className="nav-link" to="/users/profile">
+                Profile
+              </Link> </div> : ""}
+
+              {user ? <div className='ps-2 pe-2 d-none d-md-block'><Link className="nav-link avatar" to="/users/profile">
                 M
               </Link> </div> : ""}
               {user ? "" : <Link className="nav-link" to="/users/signup"><b>Sign up</b></Link>}

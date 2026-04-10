@@ -1,0 +1,20 @@
+.btns {
+    display: flex;
+}
+
+.delete {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-box {
+    flex: 1;
+}
+
+.show-img {
+    height: 22rem;
+    object-fit: cover;
+    object-fit: cover;
+    width: 100%;
+}

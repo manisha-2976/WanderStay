@@ -4,6 +4,7 @@ body {
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
+  overflow-x: hidden !important;
 }
 /* EDIT LISTINGS *******/
 .scroll-container{
@@ -37,7 +38,7 @@ code {
 
 /* navbar */
 .navbar {
-  height: 5rem;
+  height: 12vh;
   background: white;
 }
 
@@ -106,11 +107,11 @@ code {
   margin-bottom: 2rem;
 }
 
-.listing-card:hover {
-  /* opacity: .8;
-  transition-duration: .6s; */
-  /* background-color: white; */
-}
+/* .listing-card:hover {
+  opacity: .8;
+  transition-duration: .6s; 
+  background-color: white;
+} */
 
 .card-img-top {
   border-radius: 1rem;
@@ -131,25 +132,6 @@ code {
 }
 
 
-/* ShowPage */
-/* DetailsPage */
-.btns {
-  display: flex;
-}
-
-.delete {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.show-img {
-  height: 22rem;
-}
-
-/* hosting 
-navbar */
-
 .custom-link {
   text-decoration: none;
 }
@@ -162,12 +144,10 @@ navbar */
 
 .menu.selected {
   color: black !important;
-  text-decoration: underline !important;
 }
 
 .menu:hover {
   color: black !important;
-  text-decoration: underline;
 }
 
 .custom-navbar {
@@ -454,262 +434,6 @@ navbar */
 }
 
 
-/* MAIN CALENDAR */
-
-.main-calendar{
-
-}
-
-.year-calendar{
-max-height: 80vh;
-border-right: 1px solid rgb(230, 227, 227);
-width: 52rem;
-display: grid;
-grid-template-columns:repeat(1,1fr);
-gap:30px;
-}
-
-/* Month box */
-
-.month{
-/* border:1px solid #ddd; */
-padding:10px 20px 10px 20px;
-border-radius:10px;
-
-}
-
-/* Month title */
-
-.month-title{
-
-text-align: left;
-font-weight:600;
-margin-bottom:1rem;
-
-}
-
-/* Weekdays */
-
-.weekdays{
-display:grid;
-gap: 1rem;
-grid-template-columns:repeat(7,1fr);
-font-size:14px;
-color:#777;
-margin-bottom:5px;
-
-}
-
-/* Calendar grid */
-
-.month-grid{
-display:grid;
-grid-template-columns:repeat(7,1fr);
-gap:10px;
-
-}
-
-/* Day cell */
-
-.day-cell{
-height:100px;
-border:1px solid #eee;
-border-radius:12px;
-padding:6px;
-padding-top: 22px;
-font-size:15px;
-
-}
-
-/* Blocked */
-
-.day-cell.blocked{
-
-background:#c9c9c9;
-color:#504f4f;
-
-}
-
-/* PRICE SETTING */
-
-.section {
-border: 1px solid #e0dfdf;
-border-radius: 10px;
-margin-bottom: 15px;
-}
-
-.section label {
-  font-size: 14px;
-  font-weight: 600;
-  color: rgb(99, 96, 96);
-}
-
-.section input {
-
-}
-
-.price-panel{
-  max-height: 80vh;
-  width: 20rem;
-}
-
-.section input{
-  width: 7rem;
-  border: none;
-  font-size: x-large;
-  font-weight: bolder;
-  margin-top: 1rem;
-}
-
-.section button {
-  padding: 3px;
-  border-radius: 6px;
-  border: none;
-  background: white;
-  color: black;
-  font-size: 13px;
-}
-
-.section button:hover{
-  background-color: #ffdede;
-}
-
-/* DAT SETTINGS PANEL */
-.day-panel {
-  width: 20rem;
-  height: 80vh;
-  background: white;
-  color: white;
-  padding: 20px;
-  border-radius: 20px 0 0 20px;
-}
-
-/* Header */
-.panel-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
-.date-pill {
-  background: #222;
-  padding: 8px 15px;
-  border-radius: 20px;
-}
-
-.close-btn {
-  background: #222;
-  border: none;
-  color: white;
-  border-radius: 50%;
-  padding: 8px 12px;
-  cursor: pointer;
-}
-
-/* Card */
-.panel-card {
-  background: #1c1c1c;
-  padding: 15px;
-  border-radius: 15px;
-  margin-bottom: 15px;
-}
-
-/* Status */
-.status {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-}
-
-.green {
-  background: #00ff7f;
-}
-
-.red {
-  background: red;
-}
-
-/* Toggle */
-.toggle {
-  display: flex;
-  margin-top: 10px;
-  background: #333;
-  border-radius: 20px;
-}
-
-/* .btn {
-  flex: 1;
-  padding: 10px;
-  border: none;
-  background: transparent;
-  color: white;
-  cursor: pointer;
-} */
-
-.btn.active {
-  background: white;
-  color: black;
-  border-radius: 20px;
-}
-
-/* Price */
-.label {
-  color: #aaa;
-}
-
-.price-input {
-  width: 100%;
-  padding: 10px;
-  margin-top: 10px;
-  border-radius: 10px;
-  border: none;
-}
-
-.save-btn {
-  width: 100%;
-  margin-top: 10px;
-  padding: 10px;
-  border-radius: 10px;
-  background: white;
-  color: black;
-  border: none;
-}
-
-.save-btn:hover{
-  background: rgb(247, 244, 244);
-}
-
-.day-cell {
-  cursor: pointer;
-  transition: 0.2s;
-}
-
-/* Selected (Airbnb style) */
-.day-cell.selected {
-  background: black;
-  color: white;
-}
-
-/* Optional hover */
-.day-cell:hover {
-  border: black
-}
-
-.host-image.selected {
-  border: 2px solid green;
-}
-
-.host-image:hover{
-  border: 2px solid rgb(85, 80, 80);
-}
-
 /* REVIEW */
 .modal-overlay {
   position: fixed;
@@ -792,4 +516,3 @@ margin-bottom: 15px;
   border-color: black;
   background-color: #f0f0f0;
 }
-

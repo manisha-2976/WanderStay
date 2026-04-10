@@ -28,7 +28,7 @@ const [allListings, setAllListings] = useState([]);
   return (
     <div className='container'>
       <h3>Listings</h3>
-      <div className='row row-cols-lg-4 row-cols-md-2 row-cols-sm-1'>
+      <div className='row row-cols-lg-4 row-cols-md-3 row-cols-sm-2'>
         {allListings.map((listing, index) => {
 
           return ( 
