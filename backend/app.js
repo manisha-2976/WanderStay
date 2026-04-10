@@ -25,7 +25,7 @@ const { date } = require("joi");
 
 
 app.use(cors({
-    origin: "http://localhost:3000",
+    origin: "https://wanderstay-frontend-fqg1.onrender.com/",
     credentials:true
 }));
 app.use(bodyParser.json());
