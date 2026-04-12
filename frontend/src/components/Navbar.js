@@ -8,14 +8,14 @@ import { useNavigate } from "react-router-dom";
 export const Navbar = () => {
   const { user, logout, fetchUser } = useContext(AuthContext);
   const [listings, setListings] = useState([]);
-
   const [searchQuery, setSearchQuery] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
     const fetchListings = async () => {
       try {
-        const res = await axios.get(`${process.env.REACT_APP_API_URL}/host/listings`, { withCredentials: true });
+        const res = await axios.get(`${process.env.REACT_APP_API_URL}/host/listings`, 
+        { withCredentials: true });
         setListings(res.data);
       } catch (err) {
         console.log(err);
@@ -29,9 +29,6 @@ export const Navbar = () => {
       const res = await axios.get(`${process.env.REACT_APP_API_URL}/users/logout`, { withCredentials: true });
       console.log("user logged out")
       await fetchUser();
-
-
-
       // window.location.href = "/users/login"
     } catch (err) {
       console.log(err);
@@ -42,18 +39,14 @@ export const Navbar = () => {
 
   const handleSearch = async (e) => {
     e.preventDefault();
-
     if (!searchQuery.trim()) return;
-
     try {
       const res = await axios.post(
-        "http://localhost:3001/api/ai-search",
+        `${process.env.REACT_APP_API_URL}`,
         { query: searchQuery }
       );
-
       // send results to Listings page
       navigate("/", { state: { listings: res.data.listings } });
-
     } catch (err) {
       console.log("Search error:", err);
     }

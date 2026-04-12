@@ -22,10 +22,11 @@ const hybridSearchRouter = require("./routes/hybridSearch.js");
 
 
 const { date } = require("joi");
+const allowedOrigins = ["http://localhost:3000", "https://wanderstay-frontend-fqg1.onrender.com"];
 
 
 app.use(cors({
-    origin: "https://wanderstay-frontend-fqg1.onrender.com",
+    origin: allowedOrigins,
     credentials:true
 }));
 app.use(bodyParser.json());

@@ -59,7 +59,7 @@ export const HostCalendar = () => {
             )}
 
 
-            <div className='p-3 scroll-container me-3 d-none d-lg-block' style={{ maxHeight: "85vh" }}>
+            <div className='p-3 scroll me-3 d-none d-lg-block' style={{ maxHeight: "85vh" }}>
                 {listings.map((listing, index) => {
 
                     return (

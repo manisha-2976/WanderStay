@@ -1,5 +1,5 @@
 @media (min-width: 992px) {
-  .scroll-container {
+  .scroll {
     width: 9rem;
     flex-shrink: 0;
     overflow-y: auto;
