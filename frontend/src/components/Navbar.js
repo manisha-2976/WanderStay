@@ -42,7 +42,7 @@ export const Navbar = () => {
     if (!searchQuery.trim()) return;
     try {
       const res = await axios.post(
-        `${process.env.REACT_APP_API_URL}`,
+        `${process.env.REACT_APP_API_URL}/api/ai-search`,
         { query: searchQuery }
       );
       // send results to Listings page
