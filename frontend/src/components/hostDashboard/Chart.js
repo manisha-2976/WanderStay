@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from "react";
 import {
   LineChart,
   Line,
@@ -6,72 +5,47 @@ import {
   Tooltip,
   ResponsiveContainer
 } from "recharts";
-import axios from "axios";
 
-export const Chart = () => {
-
-  const [earnings, setEarnings] = useState([]);
-
-  useEffect(() => {
-
-    const fetchData = async () => {
-
-      const res = await axios.get(`${process.env.REACT_APP_API_URL}/host/monthly-earnings`,
-        { withCredentials: true }
-      );
-
-      setEarnings(res.data);
-    };
-
-    fetchData();
-
-  }, []);
-
-  const total = earnings.reduce((sum, e) => sum + e.revenue, 0);
+export const Chart = ({chartData}) => {
+  const total = chartData.reduce((sum, e) => sum + e.revenue, 0);
 
   return (
-
-    <div className="">
-
-      {/* Header */}
+    <div>
       <div className="mb-2">
-
         <small className="text-muted">Earnings</small>
-
         <h5 className="mb-0">
-          ₹{total.toLocaleString("en-IN")}
+          &#8377;{total.toLocaleString("en-IN")}
         </h5>
-
       </div>
 
       {/* Mini Chart */}
+      <div className="">
+        <ResponsiveContainer width="100%" height={90}>
+          <LineChart data={chartData}>
 
-      <ResponsiveContainer width="100%" height={90}>
+            <XAxis
+              dataKey="month"
+              tick={{ fontSize: 10 }}
+              axisLine={false}
+              tickLine={false}
+            />
 
-        <LineChart data={earnings}>
+            <Tooltip
+              formatter={(value) => `₹${value.toLocaleString("en-IN")}`}
+            />
 
-          <XAxis
-            dataKey="month"
-            tick={{ fontSize: 10 }}
-            axisLine={false}
-            tickLine={false}
-          />
+            <Line
+              type="monotone"
+              dataKey="revenue"
+              stroke="#3867ffff"
+              strokeWidth={2}
+              dot={false}
+            />
 
-          <Tooltip
-            formatter={(value)=>`₹${value.toLocaleString("en-IN")}`}
-          />
+          </LineChart>
 
-          <Line
-            type="monotone"
-            dataKey="revenue"
-            stroke="#FF385C"
-            strokeWidth={2}
-            dot={false}
-          />
-
-        </LineChart>
-
-      </ResponsiveContainer>
+        </ResponsiveContainer>
+      </div>
 
     </div>
   );

@@ -1,0 +1,32 @@
+.hostCard {
+  text-decoration: none;
+  color: black;
+  font-size: 15px;
+}
+
+.host-listing-container {
+  padding: 4% !important;
+}
+
+.hostCard div:hover {
+  background: rgb(247, 246, 244);
+}
+@media (min-width: 768px) {
+  .mob-location, .mob-status {
+    display: none;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .property-type,
+  .list-status,
+  .list-location,
+  .fa-angle-right,
+  .listing-header {
+    display: none;
+  }
+  .title{
+    font-size: 14px !important;
+  }
+}

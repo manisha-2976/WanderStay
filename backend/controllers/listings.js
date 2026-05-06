@@ -3,11 +3,19 @@ const mbxGeocoding = require('@mapbox/mapbox-sdk/services/geocoding');
 const mapToken = process.env.MAP_TOKEN
 const geocodingClient = mbxGeocoding({ accessToken: mapToken });
 const { formatArray } = require("../utils/formatArray");
-const openai = require("../utils/openaiClient");
+const openai = require("../utils/openaiService");
 
 
 module.exports.index = async (req, res, next) => {
-  let allListings = await Listing.find({})
+  let listings = await Listing.find({}).select("title price images city").limit(40);
+
+  const allListings = listings.map(listing => ({
+    _id: listing._id,
+    title: listing.title,
+    price: listing.price,
+    city: listing.city,
+    image: listing.images?.[0]?.url
+  }));
   res.json(allListings);
 }
 
@@ -74,12 +82,33 @@ module.exports.createListing = async (req, res, next) => {
 
 module.exports.showListing = async (req, res, next) => {
   let { id } = req.params;
-  const listing = await Listing.findById(id).populate("reviews").populate("host");
+  const listing = await Listing.findById(id)
+  .select("title price images description street city country guest bedroom bed bathroom amenities  safetyItems geometry reviews host")
+  .populate({path: "reviews",
+      populate: {
+        path: "user",
+        select: "firstName lastName"
+      }})
+  .populate({
+      path: "host",
+      select: "firstName lastName"
+    });
   res.json(listing);
 }
 
 module.exports.hostListing = async (req, res) => {
-  const listings = await Listing.find({ host: req.user._id });
+  const hostListings = await Listing.find({ host: req.user._id })
+  .select("_id images title street city propertyType")
+  .lean();
+
+  const listings = hostListings.map(l => ({
+    _id: l._id,
+    image: l.images?.[0]?.url || null,
+    title: l.title,
+    street: l.street,
+    city: l.city,
+    propertyType: l.propertyType
+  }));
   res.json(listings);
 }
 

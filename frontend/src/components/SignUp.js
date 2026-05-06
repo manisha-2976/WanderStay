@@ -1,7 +1,7 @@
 import { React, useState } from 'react'
 import axios from "axios";
 import { useForm } from "react-hook-form"
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 
@@ -21,7 +21,7 @@ export const SignUp = () => {
     const onSubmit = async (data) => {
         try {
             console.log(data);
-            const res = await axios.post(`${process.env.REACT_APP_API_URL}//users/signup`, data,
+            const res = await axios.post(`${process.env.REACT_APP_API_URL}/users/signup`, data,
                 {
                     withCredentials: true
                 }
@@ -38,133 +38,112 @@ export const SignUp = () => {
 
 
     return (
-        <div>
+        <div className="signup-page">
 
-            <div className="col-4 offset-4 pt-2">
-                <h3>SignUp</h3>
+            <div className="signup-card shadow-sm">
+                <h3 className="text-center mb-3">Sign Up</h3>
 
                 <form onSubmit={handleSubmit(onSubmit)} noValidate>
-                    <div>
-                        <div className='row'>
-                            <div className="mb-2 col-md-6">
-
-                                {/* first name */}
-                                <label className="mb-2 form-label">First Name</label>
-                                <input
-                                    type="text"
-                                    className={`mt-0 form-control ${errors.firstName ? "is-invalid" : ""}`}
-                                    placeholder="first name"
-                                    {...register("firstName", {
-                                        required: "first name is required", minLength: { value: 3, message: "First name must be at least 3 characters" }
-                                    })}
-                                />
-                                {errors.firstName && (
-                                    <div className="invalid-feedback">
-                                        {errors.firstName.message}
-                                    </div>
-                                )}
-                            </div>
-
-                            <div className="mb-2 col-md-6">
-
-                                {/* first name */}
-                                <label className="mb-2 form-label">Last Name</label>
-                                <input
-                                    type="text"
-                                    className={`mt-0 form-control ${errors.lastName ? "is-invalid" : ""}`}
-                                    placeholder="last name"
-                                    {...register("lastName", {
-                                        required: "last name is required", minLength: { value: 3, message: "Last name must be at least 3 characters" }
-                                    })}
-                                />
-                                {errors.lastName && (
-                                    <div className="invalid-feedback">
-                                        {errors.lastName.message}
-                                    </div>
-                                )}
-                            </div>
-
-                        </div>
-                        <div className="mb-2">
-
-                            {/* username */}
-                            <label className="mb-2 form-label">Username</label>
-
+                    <div className="row">
+                        <div className="col-12 col-md-6 mb-3">
+                            <label className="form-label">First Name</label>
                             <input
                                 type="text"
-                                className={`mt-0 form-control ${errors.username ? "is-invalid" : ""}`}
-                                placeholder="username"
-                                {...register("username", {
-                                    required: "username is required", minLength: { value: 3, message: "Title must be at least 3 characters" }
+                                className={`form-control ${errors.firstName ? "is-invalid" : ""}`}
+                                placeholder="First name"
+                                {...register("firstName", {
+                                    required: "First name is required",
+                                    minLength: { value: 3, message: "Minimum 3 characters" }
                                 })}
                             />
-
-                            {errors.title && (
-                                <div className="invalid-feedback">
-                                    {errors.username.message}
-                                </div>
+                            {errors.firstName && (
+                                <div className="invalid-feedback">{errors.firstName.message}</div>
                             )}
                         </div>
 
-                        <div className="mb-2">
-
-                            {/* email */}
-                            <label className="mb-2 form-label">Email</label>
-
+                        <div className="col-12 col-md-6 mb-3">
+                            <label className="form-label">Last Name</label>
                             <input
-                                type="email"
-                                className={`mt-0 form-control ${errors.email ? "is-invalid" : ""}`}
-                                placeholder="email"
-                                {...register("email", {
-                                    required: "email is required"
+                                type="text"
+                                className={`form-control ${errors.lastName ? "is-invalid" : ""}`}
+                                placeholder="Last name"
+                                {...register("lastName", {
+                                    required: "Last name is required",
+                                    minLength: { value: 3, message: "Minimum 3 characters" }
                                 })}
                             />
-
-                            {errors.email && (
-                                <div className="invalid-feedback">
-                                    {errors.email.message}
-                                </div>
-                            )}
-                        </div>
-
-                        <div className="mb-2">
-
-                            {/* password */}
-                            <label className="mb-2 form-label">Password</label>
-
-                            <input
-                                type="password"
-                                className={`mt-0 form-control ${errors.password ? "is-invalid" : ""}`}
-                                placeholder="password"
-                                {...register("password", {
-                                    required: "password is required"
-                                })}
-                            />
-
-                            {errors.password && (
-                                <div className="invalid-feedback">
-                                    {errors.password.message}
-                                </div>
+                            {errors.lastName && (
+                                <div className="invalid-feedback">{errors.lastName.message}</div>
                             )}
                         </div>
                     </div>
 
-                    <p className='text-danger'>{message}</p>
+                    {/* USERNAME */}
+                    <div className="mb-3">
+                        <label className="form-label">Username</label>
+                        <input
+                            type="text"
+                            className={`form-control ${errors.username ? "is-invalid" : ""}`}
+                            placeholder="Username"
+                            {...register("username", {
+                                required: "Username is required",
+                                minLength: { value: 3, message: "Minimum 3 characters" }
+                            })}
+                        />
+                        {errors.username && (
+                            <div className="invalid-feedback">{errors.username.message}</div>
+                        )}
+                    </div>
 
-                    {/* SUBMIT */}
+                    {/* EMAIL */}
+                    <div className="mb-3">
+                        <label className="form-label">Email</label>
+                        <input
+                            type="email"
+                            className={`form-control ${errors.email ? "is-invalid" : ""}`}
+                            placeholder="Email"
+                            {...register("email", {
+                                required: "Email is required"
+                            })}
+                        />
+                        {errors.email && (
+                            <div className="invalid-feedback">{errors.email.message}</div>
+                        )}
+                    </div>
 
-                    <input
-                        className="btn btn-dark add-btn mt-3 mb-3"
+                    {/* PASSWORD */}
+                    <div className="mb-3">
+                        <label className="form-label">Password</label>
+                        <input
+                            type="password"
+                            className={`form-control ${errors.password ? "is-invalid" : ""}`}
+                            placeholder="Password"
+                            {...register("password", {
+                                required: "Password is required"
+                            })}
+                        />
+                        {errors.password && (
+                            <div className="invalid-feedback">{errors.password.message}</div>
+                        )}
+                    </div>
+
+                    {message && <p className="text-danger small">{message}</p>}
+
+                    {/* BUTTON */}
+                    <button
+                        className="btn btn-dark w-100 mt-2"
                         disabled={isSubmitting}
                         type="submit"
-                        value={isSubmitting ? "Saving..." : "ADD"}
-                    />
-
-
+                    >
+                        {isSubmitting ? "Creating..." : "Create Account"}
+                    </button>
 
                 </form>
+                <p className="text-center mt-3 mb-0">
+                    Already have an account? 
+                    <Link className='text-decoration-none' to="/users/login">Login</Link>
+                </p>
             </div>
         </div>
-
-    )
+    );
 }

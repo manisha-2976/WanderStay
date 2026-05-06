@@ -50,7 +50,7 @@ export const CustomSettingsPanel = ({
     <div className="day-panel">
 
       <div className="panel-header">
-        <div className="date-pill">
+        <div className="date-pill text-white">
           {format(new Date(selectedDate), "d MMM")}
         </div>
 

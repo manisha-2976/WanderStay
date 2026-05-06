@@ -5,7 +5,7 @@ const { isLoggedIn } = require("../middleware.js");
 const wrapAsync = require("../utils/wrapAsync.js");
 
 router.get("/mini-calendar", isLoggedIn, wrapAsync(calendarController.miniCalendar));
-router.get("/listing/:id/calendar", isLoggedIn, wrapAsync(calendarController.listingCalendar));
+router.get("/listing/:id/calendar/year", isLoggedIn, wrapAsync(calendarController.yearCalendar));
 router.post("/listing/:id/block", wrapAsync(calendarController.blockDate));
 router.post("/listing/:id/unblock",  wrapAsync(calendarController.unblockDate));
 router.post("/listing/:id/set-custom-price",  wrapAsync(calendarController.setListingPrice));

@@ -24,10 +24,10 @@ export const PhotoTour = () => {
   const navigate = useNavigate();
 
   const [rooms, setRooms] = useState([]);
-  const [showModal, setShowModal] = useState(false);
   const [selectedRoom, setSelectedRoom] = useState(null);
-  const [imagesByRoom, setImagesByRoom] = useState({}); // ✅ NEW
-
+  const [imagesByRoom, setImagesByRoom] = useState({});
+  const [showModal, setShowModal] = useState(false);
+  
   // ---------- LOAD ROOMS ----------
   useEffect(() => {
     const savedRooms = localStorage.getItem("rooms");
@@ -84,7 +84,7 @@ export const PhotoTour = () => {
 
   return (
     <>
-      <div className="ps-4">
+      <div className="">
         <div className="d-flex justify-content-between mb-3">
           <h2>Image tour</h2>
 
@@ -97,10 +97,9 @@ export const PhotoTour = () => {
         </div>
 
         {/* ROOMS */}
-        <div className="d-flex flex-wrap gap-4">
+        <div className="d-flex rooms gap-4">
           {rooms.map((room, i) => {
             const roomImages = imagesByRoom[room.name.toLowerCase()] || [];
-
             return (
               <div key={i} className="room-card"
                 onClick={() => navigate(`/listing/${id}/image/upload/${room.name}`)}
@@ -112,7 +111,6 @@ export const PhotoTour = () => {
                     <span>Add photos</span>
                   )}
                 </div>
-
                 <p className="room-name text-center mb-0">{room.label}</p>
               </div>
             );
@@ -123,7 +121,7 @@ export const PhotoTour = () => {
       {/* MODAL */}
       {showModal && (
         <div className="overlay">
-          <div className="p-4 rounded bg-white overflow-y-auto" style={{ width: "43%" }}>
+          <div className="room-modal-box rounded bg-white p-4">
 
             <div className="d-flex justify-content-between">
               <h3>Choose a room or space</h3>
@@ -135,9 +133,9 @@ export const PhotoTour = () => {
               </button>
             </div>
 
-            <div className="d-flex gap-3 flex-wrap">
+            <div className="row g-2 gap-3">
               {ROOM_OPTIONS.map((room, i) => {
-                const Icon = room.icon; // 🔥 IMPORTANT
+                const Icon = room.icon;
 
                 return (
                   <div key={i}

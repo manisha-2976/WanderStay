@@ -2,6 +2,7 @@ import React from 'react'
 import { useState, useEffect } from 'react'
 import axios from "axios";
 import { Link } from "react-router-dom";
+import "./HostListings.css";
 
 export const HostListings = () => {
   const [listings, setListings] = useState([]);
@@ -35,12 +36,12 @@ export const HostListings = () => {
   };
 
   return (
-    <div className='container'>
+    <div className='host-listing-container mb-5'>
       <div className='heading'>
-        <h2 className='mb-4 mt-4 fw-bold'>Your Listings</h2>
-        <Link className="link" to="/newListing"><i class="fa-solid fa-plus"></i></Link>
+        <h2 className='mb-4 fw-bold'>Your Listings</h2>
+        <Link className="link" to="/host/newListing"><i class="fa-solid fa-plus"></i></Link>
       </div>
-      <div className='row mb-4 fw-semibold' style={{ width: "97%" }}>
+      <div className='row mb-4 fw-semibold listing-header' style={{ width: "97%" }}>
         <div className='col-md-5'>Listing</div>
         <div className='col-md-2'>Type</div>
         <div className='col-md-3'>Location</div>
@@ -56,21 +57,25 @@ export const HostListings = () => {
 
                 <div className="col-md-5 d-flex gap-4 align-items-center">
 
-                  <img src={listing?.images?.[0]?.url} className="card-img-top" alt="listing img" style={{ height: "5rem", width: "5rem" }} />
-                  <p className='mb-0 fw-bolder'>{listing?.title}</p>
+                  <img src={listing?.image} className="card-img-top" alt="listing img" style={{ height: "5rem", width: "5rem" }} />
+                  <div>
+                  <p className='mb-0 fw-bolder title'>{listing?.title}</p>
+                  <small className='mb-0 mob-location'>{listing?.street}&nbsp; &nbsp;{listing?.city}</small> <br />
+                  <small className='mb-0 mob-status'>hiiii mnbm mnbm</small>
+                  </div>
 
                 </div>
 
                 <div className='col-md-2 d-flex align-items-center'>
-                  <p className='mb-0'>{listing?.propertyType}</p>
+                  <p className='mb-0 property-type'>{listing?.propertyType}</p>
                 </div>
 
                 <div className='col-md-3 d-flex align-items-center'>
-                  <p className='mb-0'>{listing?.street}&nbsp; &nbsp;{listing?.city}</p>
+                  <p className='mb-0 list-location'>{listing?.street}&nbsp; &nbsp;{listing?.city}</p>
                 </div>
 
                 <div className='col-md-2 d-flex align-items-center justify-content-start gap-3'>
-                  <p className='mb-0'>hiiii mnbm mnbm</p>
+                  <p className='mb-0 list-status'>hiiii mnbm mnbm</p>
                   <i class="fa-solid fa-angle-right"></i>
                 </div>
 

@@ -1,0 +1,174 @@
+/* PROFILE PAGE */
+.username {
+  color: white;
+  border-radius: 50%;
+  font-size: 24px;
+  font-weight: bolder;
+  background-color: rgb(87, 21, 21);
+}
+
+.profile-container {
+  padding: 5%;
+}
+
+.profile-menu {
+  min-height: 85vh;
+  flex-basis: 20%;
+}
+
+.profile-content {
+  flex-basis: 80%;
+}
+
+.menu-item p:hover {
+  background-color: rgb(247, 246, 244);
+}
+
+.link {
+  background-color: rgb(247, 246, 244);
+}
+
+.menu-item p {
+  margin-bottom: .5rem;
+  border-radius: .9rem;
+  padding: 1rem;
+  margin-right: 1rem;
+}
+
+.trip-title p {
+  font-size: small;
+}
+
+.trip-content {
+  color: black;
+  text-decoration: none;
+}
+
+.trip-container .col-md-2 {
+  justify-content: flex-end !important;
+}
+
+.trip {
+  justify-content: space-between;
+}
+
+.trip-container{
+  margin-left: 5%;
+}
+
+@media(max-width: 992px){
+  .trip-container{
+    margin-left: 3%;
+  }
+}
+
+@media(min-width: 776px){
+  .userinfo-card{
+    min-width: 22rem;
+  }
+}
+
+@media(min-width: 769px) {
+
+  .about-container {
+    margin-left: 60px;
+  }
+
+  .curr-trip {
+    padding: 30px 70px 30px 70px;
+  }
+
+  .menu {
+    display: none;
+  }
+}
+
+@media (max-width: 769px) {
+  .profile-container {
+    flex-direction: column;
+  }
+
+  .curr-trip {
+    padding: 20px 10px 10px 10px;
+    
+  }
+
+  .review-container,
+  .profile-menu {
+    display: none !important;
+  }
+
+  /* .trip {
+    display: flex !important;
+  } */
+
+  .trip-header {
+    display: none;
+  }
+
+  .profile-content {
+    width: 100%;
+    flex-basis: 100%;
+  }
+
+  .trip {
+    flex-wrap: nowrap;
+  }
+
+  .userinfo-card {
+    width: 75%;
+  }
+}
+
+@media (max-width: 648px) {
+  .userinfo-card {
+    width: 100%;
+  }
+
+  .trip {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 10px;
+    border-top: 1px solid #eee;
+    border-radius: 10px;
+  }
+
+  .trip>div {
+    width: 100% !important;
+  }
+
+  .trip-date {
+    display: none;
+  }
+
+  /*CONTENT */
+  .trip .col-md-5 {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    justify-content: flex-start;
+  }
+
+  /* DATE */
+  .trip .col-md-4 {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5px;
+    /* font-size: small; */
+  }
+
+  /* PAYMENT + STATUS */
+  .trip .col-md-1,
+  .trip .col-md-2 {
+    display: flex;
+    justify-content: flex-start !important;
+    margin-top: 4px;
+  }
+
+  .trip-title p {
+    margin-bottom: 2px;
+    font-size: 13px;
+  }
+
+}

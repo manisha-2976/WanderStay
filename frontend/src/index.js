@@ -1,19 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import { BrowserRouter} from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import { App } from './app';
 
 import { AuthProvider } from "./context/AuthContext";
+import { SearchProvider } from './context/SearchContext';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-    <BrowserRouter>
+  <BrowserRouter>
     <AuthProvider>
-      <App/>
-      </AuthProvider>
-    </BrowserRouter>
+      <SearchProvider>
+        <App />
+      </SearchProvider>
+    </AuthProvider>
+  </BrowserRouter>
 );
 
 

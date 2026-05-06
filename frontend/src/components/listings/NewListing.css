@@ -1,0 +1,65 @@
+/* create listing form*/
+.address,
+.info {
+  margin-top: 0%;
+}
+
+.address label {
+  font-size: 14px;
+}
+
+.select {
+  margin-top: 2px;
+  padding: 6px;
+  font-size: 14px;
+}
+
+.address input {
+  height: 3rem !important;
+}
+
+.ps-4 p {
+  font-size: smaller;
+}
+
+.discount-card h6 {
+  font-weight: 600 !important;
+}
+
+.badge-box {
+  font-weight: bolder !important;
+  width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.discount-card small {
+  font-size: smaller;
+}
+
+.discount-card input {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  accent-color: black;
+}
+
+.propertytype option {
+  padding: 1rem;
+  /* width: 10rem !important; */
+}
+
+/* IMAGE UPLOADER *************/
+.upload-box {
+  border: 2px dashed #ccc;
+  border-radius: 12px;
+  background-color: #fafafa;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.upload-box:hover {
+  border-color: black;
+  background-color: #f0f0f0;
+}

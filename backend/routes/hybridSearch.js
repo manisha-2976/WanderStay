@@ -2,131 +2,127 @@ const express = require("express");
 const router = express.Router();
 const OpenAI = require("openai");
 const openai = new OpenAI({
-    apiKey: process.env.OPENAI_API_KEY,
+  apiKey: process.env.OPENAI_API_KEY,
 });
 
 const Listing = require("../models/listings.js");
-const getFiltersFromAI = require("../utils/openai.js");
+const Booking = require("../models/bookings.js");
+// const getFiltersFromAI = require("../utils/openai.js");
+
+const normalizeStart = (date) => {
+  const d = new Date(date);
+  d.setHours(12, 0, 0, 0);
+  return d;
+};
+
+const normalizeEnd = (date) => {
+  const d = new Date(date);
+  d.setHours(11, 0, 0, 0);
+  return d;
+};
+
+const embeddingCache = new Map();
+
+const getEmbedding = async (query) => {
+  if (!query) return null;
+  if (embeddingCache.has(query)) {
+    return embeddingCache.get(query);
+  }
+  const res = await openai.embeddings.create({
+    model: "text-embedding-3-small",
+    input: query,
+  });
+  const emb = res.data[0].embedding;
+  embeddingCache.set(query, emb);
+  if (embeddingCache.size > 500) embeddingCache.clear();
+
+  return emb;
+};
 
 // cosine similarity
 const cosineSimilarity = (a, b) => {
-    let dot = 0, normA = 0, normB = 0;
+  let dot = 0, normA = 0, normB = 0;
 
-    for (let i = 0; i < a.length; i++) {
-        dot += a[i] * b[i];
-        normA += a[i] * a[i];
-        normB += b[i] * b[i];
-    }
-    return dot / (Math.sqrt(normA) * Math.sqrt(normB));
+  for (let i = 0; i < a.length; i++) {
+    dot += a[i] * b[i];
+    normA += a[i] * a[i];
+    normB += b[i] * b[i];
+  }
+  return dot / (Math.sqrt(normA) * Math.sqrt(normB));
 };
 
+
 router.post("/ai-search", async (req, res) => {
-    try {
-        const { query } = req.body;
-        const filters = await getFiltersFromAI(query);
-        let mongoQuery = {};
-        let listings = [];
+  try {
+    const { query, startDate, endDate, guests } = req.body;
 
-        if (filters.location) {
-            mongoQuery.$or = [
-                { city: new RegExp(filters.location, "i") },
-                { state: new RegExp(filters.location, "i") },
-                { country: new RegExp(filters.location, "i") }
-            ];
-        }
+    // GET EMBEDDING + FETCH LISTINGS 
+    const [queryEmbedding, listings] = await Promise.all([
+      getEmbedding(query),
 
-        if (filters.guests > 0) {
-            mongoQuery.guest = { $gte: filters.guests };
-        }
+      Listing.find({ embedding: { $exists: true } })
+        .select("title price images guest city embedding")
+        .limit(120)
+    ]);
 
-        if (filters.minPrice || filters.maxPrice) {
-            mongoQuery.price = {};
-            if (filters.minPrice) mongoQuery.price.$gte = filters.minPrice;
-            if (filters.maxPrice) mongoQuery.price.$lte = filters.maxPrice;
-        }
-
-        if (filters.amenities?.length) {
-            mongoQuery.amenities = {
-                $all: filters.amenities.map(a => new RegExp(a, "i"))
-            };
-        }
-
-        if (filters.propertyType) {
-            mongoQuery.propertyType = new RegExp(`^${filters.propertyType}$`, "i");
-        }
-
-        if (filters.roomType) {
-            mongoQuery.roomType = new RegExp(`^${filters.roomType}$`, "i");
-        }
-
-        //CASE 1: LOCATION
-        if (filters.location) {
-            listings = await Listing.find(mongoQuery)
-                .select("+embedding")
-                .limit(30);
-
-            //fallback - nearby
-            if (listings.length === 0) {
-                const cityListing = await Listing.findOne({
-                    city: new RegExp(filters.location, "i")
-                });
-
-                if (cityListing) {
-                    const [lng, lat] = cityListing.geometry.coordinates;
-
-                    listings = await Listing.find({
-                        geometry: {
-                            $near: {
-                                $geometry: {
-                                    type: "Point",
-                                    coordinates: [lng, lat]
-                                },
-                                $maxDistance: 50000 // 50km radius
-                            }
-                        }
-                    }).select("+embedding").limit(30);
-                } else {
-                    listings = await Listing.find()
-                        .select("+embedding")
-                        .limit(30);
-                }
-            }
-        }
-
-        // CASE 2: NO LOCATION - SEMANTIC SEARCH
-        else {
-            listings = await Listing.find().select("+embedding").limit(50);
-        }
-
-        if (!listings.length) {
-            return res.json({ filters, listings: [] });
-        }
-
-        //Query embedding
-        const embeddingRes = await openai.embeddings.create({
-            model: "text-embedding-3-small",
-            input: query,
-            dimensions: 384,
-        });
-        const queryEmbedding = embeddingRes.data[0].embedding;
-
-        // Rank
-        const scored = listings
-            .filter(listing => listing.embedding && listing.embedding.length > 0)
-            .map(listing => ({
-                listing: listing,
-                score: cosineSimilarity(queryEmbedding, listing.embedding)
-            }));
-
-        scored.sort((a, b) => b.score - a.score);
-        const results = scored.slice(0, 10).map(i => i.listing);
-
-        res.json({ filters, listings: results });
-
-    } catch (err) {
-        console.log("Hybrid error:", err);
-        res.status(500).json({ error: "Search failed" });
+    if (!listings.length) {
+      return res.json({ listings: [] });
     }
+
+    // SEMANTIC RANKING
+    let scored = listings.map(l => {
+      let score = 0;
+      if (queryEmbedding && l.embedding) {
+        score = cosineSimilarity(queryEmbedding, l.embedding);
+      }
+      return { listing: l, score };
+    });
+
+    scored.sort((a, b) => b.score - a.score);
+
+    // APPLY FILTERS
+    let filtered = scored.map(i => i.listing);
+
+    // guests
+    if (guests) {
+      filtered = filtered.filter(l => l.guest >= guests);
+    }
+
+    // date filter
+    if (startDate && endDate) {
+      const start = normalizeStart(startDate);
+      const end = normalizeEnd(endDate);
+
+      const bookings = await Booking.find({
+        checkIn: { $lt: end },
+        checkOut: { $gt: start }
+      }).select("listing");
+
+      const bookedIds = new Set(
+        bookings.map(b => b.listing.toString())
+      );
+
+      filtered = filtered.filter(
+        l => !bookedIds.has(l._id.toString())
+      );
+    }
+
+    // RESPONSE
+    const results = filtered.slice(0, 30).map(l => ({
+      _id: l._id,
+      title: l.title,
+      price: l.price,
+      image: l.images?.[0]?.url || null,
+      guest: l.guest,
+      city: l.city
+    }));
+
+    res.json({ listings: results });
+
+  } catch (err) {
+    console.log("Search error:", err);
+    res.status(500).json({ error: "Search failed" });
+  }
 });
 
 module.exports = router;

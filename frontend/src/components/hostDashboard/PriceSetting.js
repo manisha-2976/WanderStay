@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
+import {  useNavigate } from 'react-router-dom'
 
 export const PriceSetting = ({ listingId, reload }) => {
-
+    const navigate = useNavigate();
     const [price, setPrice] = useState("");
     const [weekendPrice, setWeekendPrice] = useState("");
     const [weeklyDiscount, setWeeklyDiscount] = useState("");
@@ -33,12 +34,16 @@ export const PriceSetting = ({ listingId, reload }) => {
             }
         );
 
-        reload();
+        if (reload) {
+            reload();
+        } else {
+            navigate(-1);
+        }
     };
 
     return (
 
-        <div className="price-panel m-0 p-0 overflow-y-auto p-3 pt-0">
+        <div className="price-panel m-0 overflow-y-auto p-3 pt-0 ">
             <div>
                 <h4 className="fw-semibold mb-3">Price Settings</h4>
                 <small>These apply to all nights, unless you customise them by date.</small>

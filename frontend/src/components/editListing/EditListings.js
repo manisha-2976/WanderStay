@@ -56,11 +56,11 @@ export const EditListings = () => {
 
     return (
         <>
-            <div className="col ms-3 edit-page d-flex">
-                <div className="p-5 w-50 border-end" >
+            <div className="col ms-3 edit-page d-flex flex-column flex-lg-row">
+                <div className="listing-editor w-100 w-lg-50 border-end order-2 order-lg-1" >
                     <h3 className="p-3">Listing editor</h3>
                     <div className="scroll-container p-3">
-                        <div className="shadow mt-3 p-3 rounded d-flex justify-content-between">
+                        <div className="shadow p-3 rounded d-flex justify-content-between">
                             <div className="w-75">
                                 <FormInput
                                     label="Title"
@@ -237,7 +237,7 @@ export const EditListings = () => {
                     </div>
                 </div>
 
-                <div className="w-50 p-5">
+                <div className="w-100 w-lg-50 photo-tour order-1 order-lg-2">
                     <div className="scroll-container">
                         <PhotoTour />
                     </div>

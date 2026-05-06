@@ -1,0 +1,269 @@
+.filter {
+  width: 100%;
+  border-radius: 30px;
+  flex-wrap: wrap;
+  background: white;
+}
+
+.filter label {
+  font-size: 12px;
+}
+
+.filter input {
+  border: none;
+  font-size: 13px;
+  background: transparent;
+  outline: none;
+  margin: 0%;
+  padding: 0 !important;
+}
+
+.date-box input,
+.guest-box input {
+  max-width: 85px;
+}
+
+.date-box input,
+.date-box label {
+  text-align: center;
+}
+
+.dest-box input {
+  width: 240px;
+  max-width: 240px;
+}
+
+.hover:hover {
+  background-color: rgb(244, 249, 250);
+}
+
+.hover {
+  position: relative;
+  border-radius: 26px;
+  padding: 5px 10px 5px 10px;
+  flex: 1;
+  box-sizing: border-box;
+  border: 1px solid transparent;
+}
+
+.hover:focus-within {
+  border: .5px solid #89d3f5;
+  background-color: white;
+  box-shadow: 0 0 2px 2px rgba(126, 214, 230, 0.521) !important;
+}
+
+.search-icon {
+  border-radius: 50%;
+  background: #0d6efd;
+  color: white;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  outline: none;
+  cursor: pointer;
+
+  transition: all 0.25s ease;
+}
+
+/* expand */
+.search-icon:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* active press effect */
+.search-icon:active {
+  transform: scale(0.95);
+}
+
+.fa-wand-magic-sparkles {
+  color: #87d4e2;
+}
+
+.search-container {
+  position: relative;
+}
+
+.search-calendar {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2000;
+  /* above navbar */
+  margin-top: 10px;
+}
+
+/* create separator */
+
+@media (min-width: 698px) {
+  .hover:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 20%;
+    height: 60%;
+    width: 1px;
+    background: #c0bfbf;
+    transition: opacity 0.25s ease;
+  }
+
+  /* hide right separator */
+  .hover:hover::after,
+  .hover:focus-within::after {
+    opacity: 0;
+  }
+
+  /* DATE BOX is active - hide LEFT separator */
+  .filter:has(.date-box:hover) .hover:first-child::after,
+  .filter:has(.date-box:focus-within) .hover:first-child::after {
+    opacity: 0;
+  }
+
+  /* hide separator - guest box */
+  .filter:has(.guest-box:hover) .date-box::after,
+  .filter:has(.guest-box:focus-within) .date-box::after {
+    opacity: 0;
+  }
+}
+
+
+@media (max-width: 697px) {
+
+  .navbar {
+    height: fit-content !important;
+  }
+
+  .search-form {
+    display: flex;
+    justify-content: center;
+  }
+
+  input {
+    font-size: 13px;
+  }
+
+  label {
+    font-size: 11px;
+  }
+
+  .hover {
+    border: 1px solid #c0bfbf;
+    border-radius: 15px !important;
+    background: rgb(255, 255, 255);
+    box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075) !important;
+  }
+
+  .filter>div:first-child {
+    width: 100%;
+  }
+
+  .seperator {
+    display: none;
+  }
+
+  .filter {
+    flex-direction: column;
+    width: 100% !important;
+    gap: 6px;
+    background: none !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
+
+  .filter>div:nth-child(3) {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    width: 100%;
+  }
+
+  .guest-box {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .filter input {
+    font-size: 12px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .search-icon {
+    width: 36px;
+    height: 36px;
+    flex-shrink: 0;
+  }
+
+}
+
+@media (max-width: 400px) {
+  .search-form {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  input {
+    font-size: 11px;
+  }
+
+  label {
+    font-size: 10px;
+  }
+
+  .filter {
+    gap: 4px;
+    padding: 4px;
+  }
+
+  .hover {
+    padding: 4px 6px !important;
+  }
+
+  .date-box {
+    gap: 2px;
+  }
+
+  .container-fluid {
+    margin: 0% !important;
+    padding: 0 !important;
+  }
+
+  .date-box input {
+    text-align: left !important;
+    width: 70px;
+
+  }
+
+  .date-box label {
+    text-align: left !important;
+  }
+
+  .guest-box input {
+    width: 80px;
+  }
+
+  .guest-box {
+    flex: 1;
+    gap: 5px !important;
+    padding-right: 4px !important;
+  }
+
+  .filter label {
+    font-size: 9px;
+  }
+
+  .filter input {
+    font-size: 10px;
+  }
+
+  .search-icon {
+    width: 35px !important;
+    height: 35px !important;
+    font-size: 8px !important;
+  }
+}

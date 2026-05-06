@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useMemo, useState } from "react";
+import { useMemo, useState, useRef, useEffect } from "react";
 import { Calendar } from "./Calendar";
 
 export const BookingCard = ({
@@ -11,6 +11,8 @@ export const BookingCard = ({
 
   const [showCalendar, setShowCalendar] = useState(false);
   const [guests, setGuests] = useState(1);
+
+  const calendarRef = useRef();
 
   // calculate nights
   const nights = useMemo(() => {
@@ -41,13 +43,14 @@ export const BookingCard = ({
         return alert("Dates not available");
       }
 
-      await axios.post(`${process.env.REACT_APP_API_URL}/listing/book`,
+      const res = await axios.post(`${process.env.REACT_APP_API_URL}/listing/book`,
         {
           listingId: listing._id,
           checkIn: selectedDates.startDate,
           checkOut: selectedDates.endDate,
           guests
         }, { withCredentials: true });
+      console.log("booking details", res.data);
 
       alert("Booking successful!");
 
@@ -61,15 +64,28 @@ export const BookingCard = ({
     }
   };
 
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (calendarRef.current && !calendarRef.current.contains(event.target)) {
+        setShowCalendar(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   return (
     <div>
       <div className="w-100 col-12 col-md-6 col-lg-4 d-flex justify-content-end">
 
         <div className="p-4 rounded-4 shadow bg-white "
-         style={{ border: "1px solid #ddd", maxWidth: "", }}>
+          style={{ border: "1px solid #ddd", maxWidth: "", }}>
           {nights > 0 && (
             <h6 className="fw-semibold">
-              ₹{totalPrice.toLocaleString()} for {nights} nights
+              &#8377;{totalPrice.toLocaleString()} for {nights} nights
             </h6>
           )}
 
@@ -84,18 +100,22 @@ export const BookingCard = ({
               <div className="flex-fill border-end p-2 pe-4">
                 <p className="fw-semibold mb-0">Check-In</p>
                 <div>
-                  {selectedDates?.startDate
-                    ? new Date(selectedDates.startDate).toLocaleDateString()
-                    : "Add date"}
+                  <small>
+                    {selectedDates?.startDate
+                      ? new Date(selectedDates.startDate).toLocaleDateString("en-GB").replace(/\//g, "-")
+                      : "Add date"}
+                  </small>
                 </div>
               </div>
 
               <div className="flex-fill p-2 pe-4">
                 <p className="fw-semibold mb-0">Check-Out</p>
                 <div>
-                  {selectedDates?.endDate
-                    ? new Date(selectedDates.endDate).toLocaleDateString()
-                    : "Add date"}
+                  <small>
+                    {selectedDates?.endDate
+                      ? new Date(selectedDates.endDate).toLocaleDateString("en-GB").replace(/\//g, "-")
+                      : "Add date"}
+                  </small>
                 </div>
               </div>
 
@@ -103,25 +123,20 @@ export const BookingCard = ({
 
             {/* guests */}
             <div className="border-top p-2">
-
-              <p className="ps-2">Guest</p>
-              <select
+              <label className="">Guest</label>
+              <input
                 value={guests}
                 onChange={(e) => setGuests(e.target.value)}
                 className="w-100 p-1 border-0"
-              >
-                <option value={1}>1 guest</option>
-                <option value={2}>2 guests</option>
-                <option value={3}>3 guests</option>
-                <option value={4}>4 guests</option>
-              </select>
-
+                style={{outline: "none"}}
+                placeholder="Add guests"
+              />
             </div>
           </div>
 
           {/* reserve button */}
           <button
-            className="btn btn-danger w-100 mt-3"
+            className="btn reserve-btn bg-primary text-white w-100 mt-3"
             onClick={handleReserve}
           >
             Reserve
@@ -130,14 +145,13 @@ export const BookingCard = ({
       </div>
 
       {showCalendar && (
-        <div className="position-relative rounded-4 bg-white shadow p-2" style={{ top: "-170px" }}>
-          <div className="">
-            <Calendar
-              fullyBookedDates={fullyBookedDates || []}
-              onDateChange={setSelectedDates}
-              selectedDates={selectedDates}
-            />
-          </div>
+        <div ref={calendarRef} className="position-relative rounded-4 bg-white shadow p-2" style={{ top: "-170px" }}>
+          <Calendar
+            fullyBookedDates={fullyBookedDates || []}
+            onDateChange={setSelectedDates}
+            selectedDates={selectedDates}
+            onClose={() => setShowCalendar(false)}
+          />
         </div>
       )}
     </div>

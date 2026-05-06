@@ -125,10 +125,10 @@ export const ImageUpload = () => {
   };
 
   return (
-    <div className="container-fluid d-flex vh-100">
+    <div className="container-fluid d-flex flex-row vh-100">
 
       {/* LEFT PANEL */}
-      <div className="col-3 border-end p-3">
+      <div className="d-none d-md-block col-md-3 border-end p-3">
         <h5 className="fw-semibold">Rooms</h5>
 
         {rooms.map(({ name, label }) => (
@@ -143,8 +143,8 @@ export const ImageUpload = () => {
       </div>
 
       {/* RIGHT PANEL */}
-      <div className="col p-4 d-flex justify-content-center">
-        <div className="p-2" style={{ width: "33rem" }}>
+      <div className="col-12 col-md-9 p-3 p-md-4 d-flex justify-content-center">
+        <div className="p-2 w-100" style={{ maxWidth: "33rem" }}>
 
           <div className="d-flex justify-content-between align-items-center mb-4 mt-3">
 

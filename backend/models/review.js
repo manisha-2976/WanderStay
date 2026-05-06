@@ -8,6 +8,7 @@ const reviewSchema = new Schema({
         min: 1,
         max: 5
     },
+    user: { type: Schema.Types.ObjectId, ref: "User", required: true },
     createdAt: {
         type: Date,
         default: Date.now()

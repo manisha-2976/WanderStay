@@ -1,5 +1,5 @@
 const Booking = require("../models/bookings.js");
-const getDatesInRange = require("../utils/dateUtils.js")
+// const getDatesInRange = require("../utils/dateUtils.js")
 const Listing = require("../models/listings.js");
 
 
@@ -64,7 +64,6 @@ module.exports.checkAvailability = async (req, res) => {
 
 
 module.exports.book = async (req, res) => {
-
     const { listingId, checkIn, checkOut, guests } = req.body;
     const listing = await Listing.findById(listingId);
 
@@ -72,7 +71,6 @@ module.exports.book = async (req, res) => {
     const end = new Date(checkOut);
     start.setHours(0, 0, 0, 0);
     end.setHours(0, 0, 0, 0);
-
     if (end <= start) {
         return res.status(400).json({
             message: "Check-out must be after check-in"
@@ -82,7 +80,6 @@ module.exports.book = async (req, res) => {
     //overlap logic
     const bookings = await Booking.find({ listing: listingId });
     let isConflict = false;
-
     for (let booking of bookings) {
         const bookingStart = new Date(booking.checkIn);
         const bookingEnd = new Date(booking.checkOut);
@@ -95,7 +92,6 @@ module.exports.book = async (req, res) => {
             break;
         }
     }
-
     if (isConflict) {
         return res.status(400).json({
             message: "Property not available"
@@ -120,6 +116,5 @@ module.exports.book = async (req, res) => {
         guests,
         totalPrice
     });
-
     res.json({ message: "Booking successful", booking });
 };

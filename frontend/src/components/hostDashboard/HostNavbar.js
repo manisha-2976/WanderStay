@@ -1,55 +1,93 @@
-import React, { useState, useEffect } from 'react'
-import { Link, useLocation, useParams } from "react-router-dom";
-import axios from "axios";
+import { Link, useLocation, NavLink } from "react-router-dom";
+import { useContext, useRef, useEffect, useState } from "react";
+import { AuthContext } from "../../context/AuthContext";
+import "./HostNavbar.css"
 
 export const HostNavbar = () => {
-    const location = useLocation();
+    const [openMenu, setOpenMenu] = useState(false);
+    const { user, logout } = useContext(AuthContext);
+    const menuRef = useRef();
 
-    const menuClass = "menu";
-    const activeMenuClass = "menu selected";
+    const closeMenu = () => setOpenMenu(false);
 
-    const isActive = (path) => location.pathname.startsWith(path);
+    useEffect(() => {
+        const handleClickOutside = (e) => {
+            if (menuRef.current && !menuRef.current.contains(e.target)) {
+                setOpenMenu(false);
+            }
+        };
+
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => document.removeEventListener("mousedown", handleClickOutside);
+    }, []);
 
     return (
         <>
-            <nav className="navbar navbar-expand-md bg-body-light border-bottom sticky-top">
-                <div className="container-fluid bg-white">
-                    <Link className="navbar-brand d-none d-md-block" to="/">
-                        <i className="fa-regular fa-compass"></i>
-                    </Link>
-                    <button className="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup">
-                        <span className="navbar-toggler-icon"></span>
-                    </button>
+            <nav className="navbar host-nav bg-light border-bottom sticky-top">
+                <div className="container-fluid">
+                    <NavLink className="navbar-brand d-flex align-items-center" to="/">
+                        <i class="fa-brands fa-wordpress-simple fs-2 text-primary"></i>
+                        <p className="m-0 p-0 fs-6">WanderStay</p>
+                    </NavLink>
 
+                    <div className="center-menu">
+                        <NavLink to="/host" end
+                            className={({ isActive }) => `${isActive ? "activeMenu selected" : "activeMenu"}`}
+                        >
+                            Today
+                        </NavLink>
 
-                    <div className="gap-5 d-none d-lg-flex pe-5 navbar-nav mt-3">
-                        <Link className="custom-link" to="/host">
-                            <p className={isActive("/host") && !isActive("/host/calendar") && !isActive("/host/listings") ? activeMenuClass : menuClass}>
-                                Today
-                            </p>
-                        </Link>
+                        <NavLink to="/host/calendar"
+                            className={({ isActive }) => `${isActive ? "activeMenu selected" : "activeMenu"}`}
+                        >
+                            Calendar
+                        </NavLink>
 
-                        <Link className="custom-link" to="/host/calendar">
-                            <p className={isActive("/host/calendar") ? activeMenuClass : menuClass}>
-                                Calendar
-                            </p>
-                        </Link>
-
-                        <Link className="custom-link" to="/host/listings">
-                            <p className={isActive("/host/listings") ? activeMenuClass : menuClass}>
-                                Listings
-                            </p>
-                        </Link>
+                        <NavLink to="/host/listings"
+                            className={({ isActive }) => `${isActive ? "activeMenu selected" : "activeMenu"}`}
+                        >
+                            Listings
+                        </NavLink>
                     </div>
 
-                    <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div className='d-flex gap-2 align-items-center'>
+                        <NavLink className="nav-link d-none d-lg-flex" to="/">
+                            <b><small>Switch to travelling</small></b>
+                        </NavLink>
 
-                        <div className="navbar-nav ms-auto">
-                            <Link className="nav-link" to="/"><b>Switch to travelling</b></Link>
-                            <Link className="nav-link" to="/hosting/profile"><b>Profile</b></Link>
-                            <Link className="nav-link" to="/hosting/logout">Log out</Link>
+                        <NavLink className="nav-link avatar d-none d-lg-flex" to="/users/profile">
+                            {user?.firstName?.[0]?.toUpperCase()}
+                        </NavLink>
+
+                        <div ref={menuRef}>
+                            <button className="navbar-toggler nav-toggler" type="button"
+                                onClick={() => setOpenMenu(prev => !prev)}
+                            >
+                                <span className="navbar-toggler-icon"></span>
+                            </button>
+
+                            <div className={`custom-dropdown ${openMenu ? "show" : ""}`}>
+                                <div className="navbar-nav ms-auto">
+                                    <NavLink className="nav-link" to="/" onClick={closeMenu}>
+                                        <i class="fa-brands fa-dropbox me-2"></i>Switch to travelling
+                                    </NavLink>
+
+                                    <NavLink className="nav-link d-flex align-items-center" to="/host/newListing" onClick={closeMenu}>
+                                        <span><i class="fa-solid fa-plus pe-4"></i> </span>
+                                        Create a new listing
+                                    </NavLink>
+
+                                    <NavLink className="nav-link" to="/users/profile" onClick={closeMenu}>
+                                        <i class="fa-regular fa-user me-2"></i>Profile
+                                    </NavLink>
+
+                                    <NavLink className="nav-link" to="/" 
+                                    onClick={() => (closeMenu(), logout())}>
+                                        <i className="fa-solid fa-arrow-right-from-bracket me-2"></i>Log out
+                                    </NavLink>
+                                </div>
+                            </div>
                         </div>
-
                     </div>
                 </div>
             </nav>

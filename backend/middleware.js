@@ -2,8 +2,6 @@ const jwt = require("jsonwebtoken");
 const User = require("../backend/models/user.js");
 const {listingSchema, reviewSchema} = require("./schema.js");
 
-
-
 module.exports.isLoggedIn = async(req, res, next) => {
  const token = req.cookies.token;
 //  console.log(req.cookies);
@@ -15,19 +13,13 @@ module.exports.isLoggedIn = async(req, res, next) => {
   }
 
  try{
-
   const decoded = jwt.verify(token, process.env.JWT_SECRET);
-
   const user = await User.findById(decoded.id).select("-password");
-
   if (!user) {
       return res.status(404).json({ message: "User not found" });
     }
-  
   req.user = user;
   next();
-  
-
  } catch (err) {
     console.log(err);
     return res.status(401).json({ message: "Invalid token" });

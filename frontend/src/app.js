@@ -11,6 +11,7 @@ import { NotFound } from './components/NotFound';
 import { EditListings } from './components/editListing/EditListings';
 import { SignUp } from './components/SignUp';
 import { Login } from './components/Login';
+import { Trips } from './components/profilePage/Trips';
 import { ProtectedRoute } from './components/ProtectedRoute';
 import { Profile } from './components/profilePage/Profile';
 import { HostNavbar } from './components/hostDashboard/HostNavbar';
@@ -20,11 +21,15 @@ import { MainCalendar } from './components/hostDashboard/MainCalendar';
 import { HostListings } from './components/hostDashboard/HostListings';
 import { ImageUpload } from './components/editListing/ImageUpload';
 import { BottomNavbar } from './components/hostDashboard/BottomNavbar';
+import { MobileMenu } from './components/hostDashboard/MobileMenu';
+import { SearchBar } from './components/SearchBar';
+import { PriceSettingsMob } from './components/hostDashboard/PriceSettingsMob';
 
 
 export const App = () => {
   const location = useLocation();
-  const hideFooter = location.pathname.startsWith("/host/calendar");
+  const hideFooter = location.pathname.startsWith("/host/calendar") || 
+                     location.pathname.startsWith("/host/listing");
   const showBottomNavbar = location.pathname.startsWith("/host");
   return (
     <>
@@ -34,18 +39,26 @@ export const App = () => {
 
         <main className='flex-grow-1'>
           <Routes>
-            <Route path="/" element={<Listings />} />
+            <Route path="/" element={<Listings />} />ī
+            <Route path="/search" element={<Listings />} />
             <Route path="/users/signup" element={<SignUp />} />
             <Route path="/users/login" element={<Login />} />
+            <Route path="/users/trips" element={<Trips />} />
             <Route path="/users/profile/*" element={<ProtectedRoute> <Profile /> </ProtectedRoute>} />
-            <Route path="/newListing" element={<ProtectedRoute> <NewListing /> </ProtectedRoute>} />
+            <Route path="/host/newListing" element={<ProtectedRoute> <NewListing /> </ProtectedRoute>} />
             <Route path="/listing/:id" element={<Show />} />
-            <Route path="/host/listing/:id/edit" element={<ProtectedRoute><EditListings /></ProtectedRoute>} />
+            <Route path="/host/listing/:id/edit" element={<ProtectedRoute><EditListings />
+            </ProtectedRoute>} />
             <Route path="/host" element={<ProtectedRoute> <Today /> </ProtectedRoute>} />
+            <Route path="/search" element={<SearchBar />}></Route>
+
             <Route path="/host/calendar/*" element={<HostCalendar />}>
               <Route path="listing/:id" element={<MainCalendar />} />
+              <Route path="listing/:id/price-settings" element={<PriceSettingsMob  />} />
             </Route>
+
             <Route path="/host/listings" element={<HostListings />} />
+            <Route path="/host/menu" element={<MobileMenu />} />
             <Route path="/listing/:id/image/upload/:roomName" element={<ImageUpload />} />
             <Route path="*" element={<NotFound />} />
           </Routes>

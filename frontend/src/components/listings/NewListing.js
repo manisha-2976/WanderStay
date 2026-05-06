@@ -3,6 +3,7 @@ import axios from "axios";
 import { useForm } from "react-hook-form"
 import { useNavigate } from "react-router-dom";
 import { ImageUploader } from './ImageUploader';
+import "./NewListing.css"
 
 export const NewListing = () => {
   const navigate = useNavigate();
@@ -35,7 +36,7 @@ export const NewListing = () => {
   return (
     <>
       {isSubmitting && <div>Loading...</div>}
-      <div className="container p-3">
+      <div className="container p-3 mb-5">
         <h3>Create a New Listing</h3>
         <form onSubmit={handleSubmit(onSubmit)} noValidate encType='multipart/form-data'>
 
@@ -191,6 +192,8 @@ export const NewListing = () => {
                 />
               </div>
 
+              {/* ADDRESS */}
+
               <h5 className='fw-semibold mt-0'>Address</h5>
               <div className='row g-2 mb-2'>
                 <div className='col-md-6'>
@@ -277,74 +280,13 @@ export const NewListing = () => {
 
           {/* SUBMIT */}
           <input
-            className="btn btn-dark add-btn m-2 "
+            className="btn btn-dark add-btn mt-4 ms-2 "
             disabled={isSubmitting}
             type="submit"
-            value={isSubmitting ? "Saving..." : "ADD"}
+            value={isSubmitting ? "Saving..." : "Create Listing"}
           />
         </form>
       </div>
     </>
   )
 }
-
-{/* </div>
-                <h5 className='mb-0 fw-semibold'>Add discounts</h5>
-                <small>Help your place stand out to get booked faster</small>
-                <div className='p-2 rounded-3 mt-1'>
-
-                  <div className="discount-card address d-flex justify-content-between align-items-center mb-2 pe-2">
-                    <div className='d-flex gap-4 p-2'>
-                      <span className='badge-box'>20%</span>
-                      <div>
-                        <h6 className='mb-0'>New listing promotion</h6>
-                        <small>Offer 20% off your first 3 bookings</small>
-                      </div>
-                    </div>
-
-                    <input type="checkbox" {...register("discounts.newListingpromotion")} />
-                  </div>
-
-                  <div className="discount-card address d-flex justify-content-between align-items-center mb-2 pe-2">
-                    <div className='d-flex gap-4 p-2'>
-                      <span className='badge-box'>4%</span>
-                      <div>
-                        <h6 className='mb-0'>Last-minute discount</h6>
-                        <small>For stays booked 14 days before arrival</small>
-                      </div>
-                    </div>
-
-                    <input type="checkbox" {...register("discounts.lastMinuteDiscount")} />
-                  </div>
-
-                  <div className="discount-card address d-flex justify-content-between align-items-center mb-2 pe-2">
-                    <div className='d-flex gap-4 p-2'>
-                      <span className='badge-box'>10%</span>
-                      <div>
-                        <h6 className='mb-0'>Weekly discount</h6>
-                        <small>For stays of 7 nights or more</small>
-                      </div>
-                    </div>
-
-                    <input type="checkbox" {...register("discounts.weeklyDiscount")} />
-                  </div>
-
-                  <div className="discount-card address d-flex justify-content-between align-items-center mb-2 pe-2">
-                    <div className='d-flex gap-4 p-2'>
-                      <span className='badge-box'>10%</span>
-                      <div>
-                        <h6 className='mb-0'>Monthly discount</h6>
-                        <small>For stays of 28 nights or more</small>
-                      </div>
-                    </div>
-                    <input type="checkbox" {...register("discounts.monthlyDiscount")} />
-                  </div>
-
-                </div> */}
-
-
-
-
-
-
-

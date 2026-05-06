@@ -1,0 +1,53 @@
+.listing-card {
+  border: none;
+  margin-bottom: 2rem;
+}
+
+.listing-card:hover {
+  opacity: .9;
+  transition-duration: .4s;
+  background-color: white;
+}
+
+.card-img-top {
+  border-radius: 1rem;
+  width: 100%;
+  object-fit: cover;
+}
+
+.card-body {
+  padding: 0%;
+}
+
+.card-text p {
+  font-weight: 400;
+}
+
+.listing-link {
+  text-decoration: none;
+}
+
+
+.custom-link {
+  text-decoration: none;
+}
+
+.listing-img {
+  height: 13rem;
+  object-fit: cover;
+}
+
+@media (max-width: 768px) {
+  .listing-img {
+    height: 10rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .listing-img {
+    height: 9rem;
+  }
+  .listing-container{
+    padding: 5% !important;
+  }
+}

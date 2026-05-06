@@ -10,7 +10,7 @@
   -ms-overflow-style: none;
 }
 
-.overlay {
+/* .overlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -21,10 +21,21 @@
   align-items: center;
   justify-content: center;
   z-index: 9999;  
+} */
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  z-index: 9999;
 }
 
 .room-card {
-  width: 164px;             
+  width: 160px;             
   cursor: pointer;
 }
 
@@ -62,7 +73,8 @@
 }
 
 .modal-card {
-  width: 120px;
+  flex: 1 1 100px;
+  max-width: 130px;
   padding: 15px;
   border: 1px solid #ddd;
   border-radius: 10px;
@@ -83,4 +95,35 @@
   color: white;
   padding: 8px 15px;
   border-radius: 8px;
+}
+
+.room-modal-box {
+  width: 90%;
+  max-width: 600px;
+  max-height: 80vh;
+  overflow-y: auto;
+  border-radius: 14px;
+}
+
+.modal-box::-webkit-scrollbar {
+  display: none;
+}
+
+@media (max-width: 576px) {
+  .room-modal-box {
+    width: 80%;
+    max-height: 60vh;
+    padding: 15px;
+  }
+
+  h3{
+    font-size: 16px;
+  }
+}
+
+/* Medium screens */
+@media (min-width: 577px) and (max-width: 992px) {
+  .room-modal-box {
+    width: 80%;
+  }
 }

@@ -1,120 +1,221 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
+import { SearchBar } from './SearchBar';
+import { NavLink } from "react-router-dom";
+import "./Navbar.css"
 
 export const Navbar = () => {
-  const { user, logout, fetchUser } = useContext(AuthContext);
+  const { user, logout } = useContext(AuthContext);
   const [listings, setListings] = useState([]);
-  const [searchQuery, setSearchQuery] = useState("");
+  const [openMenu, setOpenMenu] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
   const navigate = useNavigate();
+  const menuRef = useRef();
+  const location = useLocation();
+
+  const closeMenu = () => setOpenMenu(false);
+
+  const showSearch = location.pathname === "/" || location.pathname.startsWith("/listing/") ||
+    location.pathname.startsWith("/search");
 
   useEffect(() => {
     const fetchListings = async () => {
       try {
-        const res = await axios.get(`${process.env.REACT_APP_API_URL}/host/listings`, 
-        { withCredentials: true });
+        const res = await axios.get(`${process.env.REACT_APP_API_URL}/host/listings`,
+          { withCredentials: true });
         setListings(res.data);
       } catch (err) {
         console.log(err);
       }
     }
-    fetchListings();
+    if (user) {
+      fetchListings();
+    } else {
+      setListings([]); // reset on logout
+    }
+
+  }, [user]);
+
+
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (menuRef.current && !menuRef.current.contains(e.target)) {
+        setOpenMenu(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  const handleLogout = async (data) => {
-    try {
-      const res = await axios.get(`${process.env.REACT_APP_API_URL}/users/logout`, { withCredentials: true });
-      console.log("user logged out")
-      await fetchUser();
-      // window.location.href = "/users/login"
-    } catch (err) {
-      console.log(err);
-      const message = err.response?.data?.message || "Server error";
-      console.log("SERVER ERROR:", message);
-    }
+
+  const handleSearch = (searchData) => {
+    const { query, startDate, endDate, guests } = searchData;
+
+    const params = new URLSearchParams();
+    if (query) params.append("query", query);
+    if (guests) params.append("guests", guests);
+    if (startDate)
+      params.append("startDate", new Date(startDate).toISOString());
+    if (endDate)
+      params.append("endDate", new Date(endDate).toISOString());
+
+    navigate(`/search?${params.toString()}`);
   };
 
-  const handleSearch = async (e) => {
-    e.preventDefault();
-    if (!searchQuery.trim()) return;
-    try {
-      const res = await axios.post(
-        `${process.env.REACT_APP_API_URL}/api/ai-search`,
-        { query: searchQuery }
-      );
-      // send results to Listings page
-      navigate("/", { state: { listings: res.data.listings } });
-    } catch (err) {
-      console.log("Search error:", err);
-    }
-  };
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const isHide = isMobile &&
+    (
+      location.pathname.startsWith("/users/profile") ||
+      location.pathname.startsWith("/users/trips") ||
+      location.pathname.startsWith("/users/login") ||
+      location.pathname.startsWith("/users/signup") 
+    );
+
+  // if (shouldHide) return null;
 
 
   return (
     <>
-      <nav className="navbar navbar-expand-md bg-body-light border-bottom sticky-top">
-        <div className="container-fluid bg-white">
-          <Link className="navbar-brand" to="/"><i className="fa-regular fa-compass"></i></Link>
-          <button className="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup">
-            <span className="navbar-toggler-icon"></span>
-          </button>
+    {!isHide &&(
+      <nav className="navbar bg-body-light sticky-top border-bottom">
+        <div className="container-fluid ps-1 pe-1">
+          <Link className="navbar-brand d-flex align-items-center m-0 ms-1" to="/">
+            <i class="fa-brands fa-wordpress-simple fs-2 text-primary"></i>
+          </Link>
 
-          <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div className="navbar-nav">
-              <Link className="nav-link" aria-current="page" to="/">WanderStay</Link>
-            </div>
+          <div className="navbar-nav">
+            <Link className="nav-link brand-name" aria-current="page" to="/">WanderStay</Link>
+          </div>
 
-            <div className="navbar-nav ms-auto d-none d-md-block">
-              <form className="d-flex ms-auto" onSubmit={handleSearch}>
-                <input
-                  className="form-control me-2 p-2" style={{ width: "450px", fontSize: "14px" }}
-                  type="search"
-                  placeholder="Search Beach villa in goa for 4 guests with pool"
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                />
-                <button className="btn btn-outline-dark" type="submit">
-                  Search
-                </button>
-              </form>
-            </div>
+          <div className="search-wrapper mx-auto">
+            {showSearch && <SearchBar onSearch={handleSearch} />}
+          </div>
 
+          <div className="d-flex align-items-center me-2 d-none d-lg-flex fs-6">
+            {listings.length > 0 && user ? (
+              <Link className="nav-link me-3" to="/host">
+                <b><small>Switch to Hosting</small></b>
+              </Link>
+            ) : (
+              <Link className="nav-link me-3" to="/host/newListing">
+                <b><small>Become a Host</small></b>
+              </Link>
+            )}
 
-            <div className="navbar-nav ms-auto">
-              {listings.length > 0 && user ? (
-                <Link className="nav-link" to="/host">
-                  <b>Switch to Hosting</b>
-                </Link>
-              ) :
-                <Link className="nav-link" to="/newListing">
-                  <b>Become a Host</b>
-                </Link>
-              }
+            {user && (
+              <Link className="nav-link avatar" to="/users/profile">
+                {user?.firstName?.[0]?.toUpperCase()}
+              </Link>
+            )}
+          </div>
 
-              {user ? <div className='d-block d-md-none'><Link className="nav-link" to="/users/profile">
-                Profile
-              </Link> </div> : ""}
+          <div ref={menuRef}>
+            <button
+              className="navbar-toggler nav-toggler"
+              type="button"
+              onClick={() => setOpenMenu(prev => !prev)}
+            >
+              <span className="navbar-toggler-icon"></span>
+            </button>
 
-              {user ? <div className='ps-2 pe-2 d-none d-md-block'><Link className="nav-link avatar" to="/users/profile">
-                M
-              </Link> </div> : ""}
-              {user ? "" : <Link className="nav-link" to="/users/signup"><b>Sign up</b></Link>}
+            <div className={`custom-dropdown ${openMenu ? "show" : ""}`}>
+              <div className="navbar-nav ms-auto">
+                {listings.length > 0 && user ? (
+                  <Link onClick={closeMenu} className="nav-link d-block d-lg-none" to="/host">
+                    Switch to Hosting
+                  </Link>
+                ) : (
+                  <Link onClick={closeMenu} className="nav-link d-block d-lg-none" to="/newListing">
+                    Become a Host
+                  </Link>
+                )}
 
-              {user ? "" : <Link className="nav-link" to="/users/login"><b>Log in</b></Link>}
+                {user && (
+                  <div className='d-block d-lg-none'>
+                    <Link onClick={closeMenu} className="nav-link" to="/users/profile">Profile</Link>
+                  </div>
+                )}
 
-              {!user ? "" : <Link className="nav-link" onClick={handleLogout}>Log out</Link>}
+                {!user &&
+                  <Link onClick={closeMenu} className="nav-link" to="/users/signup">Sign up</Link>}
 
-              {/* <Link className="nav-link" to="/host">
-                <i class="fa-solid fa-bars"></i>
-              </Link> */}
+                {!user && <Link onClick={closeMenu} className="nav-link" to="/users/login">Log in</Link>}
 
+                {user && <Link onClick={closeMenu} className="nav-link" to="/users/trips">Trips</Link>}
+                {user &&
+                  <Link onClick={() => (closeMenu(), logout())} className="nav-link">Log out</Link>}
+              </div>
             </div>
           </div>
         </div>
       </nav>
+    )}
+
+      <div
+        className="pt-3 d-flex mobile-navbar justify-content-center gap-5 align-items-center bg-white border-top shadow"
+        style={{
+          position: "fixed",
+          bottom: -1.5,
+          left: 0,
+          width: "100vw",
+          height: "60px",
+          zIndex: 1000,
+        }}
+      >
+        <NavLink to="/"
+          className={({ isActive }) => `navMenu text-center ${isActive ? "mobileMenu selected" : "mobileMenu"}`}
+        >
+          <i className="nav-icon fa-solid fa-rocket"></i>
+          <p>Explore</p>
+        </NavLink>
+
+        {user && (
+          <NavLink to="/users/trips"
+            className={({ isActive }) => `text-center ${isActive ? "mobileMenu selected" : "mobileMenu"}`}
+          >
+            <span><i className="nav-icon fa-solid fa-suitcase"></i></span>
+            <p>Trips</p>
+          </NavLink>
+        )}
+
+        {user && (
+          <NavLink to="/users/profile"
+            className={({ isActive }) => `text-center ${isActive ? "mobileMenu selected" : "mobileMenu"}`}
+          >
+            <i className="nav-icon fa-regular fa-circle-user"></i>
+            <p>Profile</p>
+          </NavLink>
+        )}
+
+        {/* <NavLink to="/"
+          className={({ isActive }) => `text-center ${isActive ? "mobileMenu selected" : "mobileMenu"}`}
+        >
+          <i className="nav-icon fa-solid fa-holly-berry"></i>
+          <p>Plan Trip</p>
+        </NavLink> */}
+
+        {!user &&
+          <NavLink to="/users/login"
+            className={({ isActive }) => `text-center ${isActive ? "mobileMenu selected" : "mobileMenu"}`}
+          >
+            <span><i class="nav-icon nav-link fa-solid fa-suitcase"></i></span>
+            <p>Log in</p>
+
+          </NavLink>}
+      </div>
+
     </>
   )
 }

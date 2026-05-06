@@ -3,13 +3,39 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const isProd = process.env.NODE_ENV === "production";
 
-
-
 module.exports.userDetail = (req, res) => {
   // console.log(req.user)
   res.json(req.user);
 };
 
+module.exports.login = async (req, res, next) => {
+  const { email, password } = req.body;
+  const user = await User.findOne({ email });
+  if (!user) {
+    return res.status(400).json({ message: "Invalid Email" });
+  }
+  // compare password
+  const isMatch = await bcrypt.compare(password, user.password);
+  console.log("isMatch", isMatch);
+
+  if (!isMatch) {
+    return res.status(400).json({ message: "Wrong Password" });
+  }
+  // create token
+  const token = jwt.sign(
+    { id: user._id },
+    process.env.JWT_SECRET,
+    { expiresIn: "7d" }
+  );
+
+  res.cookie("token", token, {
+    httpOnly: true,
+    secure: isProd,
+    sameSite: isProd ? "None" : "Lax",
+    path: "/"
+  });
+  res.status(201).json({ message: "Login Successful", user });
+};
 
 module.exports.signup = async (req, res, next) => {
   const { firstName, lastName, username, email, password } = req.body;
@@ -42,36 +68,6 @@ module.exports.signup = async (req, res, next) => {
 
   res.status(201).json({ message: "Signup Successful", user });
 }
-
-
-module.exports.login = async (req, res, next) => {
-  const { email, password } = req.body;
-  const user = await User.findOne({ email });
-  if (!user) {
-    return res.status(400).json({ message: "Invalid Email" });
-  }
-  // compare password
-  const isMatch = await bcrypt.compare(password, user.password);
-  console.log("isMatch", isMatch);
-
-  if (!isMatch) {
-    return res.status(400).json({ message: "Wrong Password" });
-  }
-  // create token
-  const token = jwt.sign(
-    { id: user._id },
-    process.env.JWT_SECRET,
-    { expiresIn: "7d" }
-  );
-
-  res.cookie("token", token, {
-    httpOnly: true,
-    secure: isProd,
-    sameSite: isProd ? "None" : "Lax",
-    path: "/"
-  });
-  res.status(201).json({ message: "Login Successful", user });
-};
 
 
 module.exports.logout = async (req, res, next) => {

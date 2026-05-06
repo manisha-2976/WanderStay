@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link, useLocation, useParams } from "react-router-dom";
+import { Link, useLocation, NavLink } from "react-router-dom";
 
 export const BottomNavbar = () => {
     const location = useLocation();
@@ -11,33 +11,46 @@ export const BottomNavbar = () => {
 
     return (
         <div
-            className="d-flex d-lg-none justify-content-around align-items-center bg-white border-top shadow"
+            className="d-block pt-3 d-md-none d-flex justify-content-around align-items-center bg-white border-top shadow"
             style={{
                 position: "fixed",
-                bottom: 0,
+                bottom: -1,
                 left: 0,
                 width: "100vw",
                 height: "60px",
-                zIndex: 999999
+                zIndex: 1000,
             }}
         >
-            <Link className="text-decoration-none text-center" to="/host">
-                <p className={isActive("/host") && !isActive("/host/calendar") && !isActive("/host/listings") ? activeMenuClass : menuClass}>
-                    Today
-                </p>
-            </Link>
+            <NavLink to="/host" end
+                className={({ isActive }) => `text-center ${isActive ? "mobileMenu selected" : "mobileMenu"}`}
+            >
+                <i className="nav-icon fa-solid fa-bookmark"></i>
+                <p>Today</p>
+            </NavLink>
 
-            <Link className="text-decoration-none text-center" to="/host/calendar">
-                <p className={isActive("/host/calendar") ? activeMenuClass : menuClass}>
-                    Calendar
-                </p>
-            </Link>
+        
+            <NavLink to="/host/calendar"
+                className={({ isActive }) => `text-center ${isActive ? "mobileMenu selected" : "mobileMenu"}`}
+            >
+                <i className="nav-icon fa-regular fa-calendar"></i>
+                <p>Calendar</p>
+            </NavLink>
 
-            <Link className="text-decoration-none text-center" to="/host/listings">
-                <p className={isActive("/host/listings") ? activeMenuClass : menuClass}>
-                    Listings
-                </p>
-            </Link>
+          
+            <NavLink to="/host/listings"
+                className={({ isActive }) => `text-center ${isActive ? "mobileMenu selected" : "mobileMenu"}`}
+            >
+                <i className="nav-icon fa-regular fa-square-caret-up"></i>
+                <p>Listings</p>
+            </NavLink>
+
+            
+            <NavLink to="/host/menu"
+                className={({ isActive }) => `text-center ${isActive ? "mobileMenu selected" : "mobileMenu"}`}
+            >
+                <i className="nav-icon fa-solid fa-bars"></i>
+                <p>Menu</p>
+            </NavLink>
         </div>
-  );
+    );
 }

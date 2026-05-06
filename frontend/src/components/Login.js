@@ -1,104 +1,98 @@
-import { React, useState } from 'react'
 import axios from "axios";
 import { useForm } from "react-hook-form"
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation, Link } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 
 export const Login = () => {
-    const { fetchUser } = useContext(AuthContext);
-    const navigate = useNavigate();
-    const location = useLocation();
+  const { fetchUser } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const location = useLocation();
 
-    const from = location.state?.from?.pathname || "/"
+  const from = location.state?.from?.pathname || "/"
 
-    const {
-        register,
-        handleSubmit,
-        formState: { isSubmitting, errors },
-    } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { isSubmitting, errors },
+  } = useForm();
 
-    const onSubmit = async (data) => {
-        try {
-            console.log(data);
-            const res = await axios.post(`${process.env.REACT_APP_API_URL}/users/login`, data, 
-            { withCredentials: true}
-            );
-            await fetchUser();
-            navigate(from, { replace: true });
-
-
-        } catch (err) {
-            console.log(err);
-            const message = err.response?.data?.message || "Server error";
-            console.log("SERVER ERROR:", message);
-        }
-    };
+  const onSubmit = async (data) => {
+    try {
+      console.log(data);
+      const res = await axios.post(`${process.env.REACT_APP_API_URL}/users/login`, data,
+        { withCredentials: true }
+      );
+      await fetchUser();
+      navigate(from, { replace: true });
+    } catch (err) {
+      console.log(err);
+      const message = err.response?.data?.message || "Server error";
+      console.log("SERVER ERROR:", message);
+    }
+  };
 
 
-    return (
-        <div>
-            {/* {isSubmitting && <div>Loading...</div>} */}
-            <div className="">
-                <div className="col-4 offset-4 pt-2">
-                    <h3>Login</h3>
-                    <form onSubmit={handleSubmit(onSubmit)} noValidate>
-                        <div>
+  return (
+    <div className="login-page">
+      {isSubmitting && <div>Loading...</div>}
 
-                        <div className="mb-2">
+      <div className="login-card shadow-sm">
+        <h3 className="mb-3 text-center">Login</h3>
 
-                            {/* email */}
-                            <label className="mb-2 form-label">Email</label>
+        <form onSubmit={handleSubmit(onSubmit)} noValidate>
 
-                            <input
-                                type="email"
-                                className={`mt-0 form-control ${errors.email ? "is-invalid" : ""}`}
-                                placeholder="email"
-                                {...register("email", {
-                                    required: "email is required"
-                                })}
-                            />
+          {/* EMAIL */}
+          <div className="mb-3">
+            <label className="form-label">Email</label>
+            <input
+              type="email"
+              className={`form-control ${errors.email ? "is-invalid" : ""}`}
+              placeholder="Enter email"
+              {...register("email", {
+                required: "Email is required"
+              })}
+            />
+            {errors.email && (
+              <div className="invalid-feedback">
+                {errors.email.message}
+              </div>
+            )}
+          </div>
 
-                            {errors.email && (
-                                <div className="invalid-feedback">
-                                    {errors.email.message}
-                                </div>
-                            )}
-                        </div>
+          {/* PASSWORD */}
+          <div className="mb-3">
+            <label className="form-label">Password</label>
+            <input
+              type="password"
+              className={`form-control ${errors.password ? "is-invalid" : ""}`}
+              placeholder="Enter password"
+              {...register("password", {
+                required: "Password is required"
+              })}
+            />
+            {errors.password && (
+              <div className="invalid-feedback">
+                {errors.password.message}
+              </div>
+            )}
+          </div>
 
-                        <div className="mb-2">
+          {/* BUTTON */}
+          <button
+            className="btn btn-dark w-100"
+            disabled={isSubmitting}
+            type="submit"
+          >
+            {isSubmitting ? "Logging in..." : "Login"}
+          </button>
 
-                            {/* password */}
-                            <label className="mb-2 form-label">Password</label>
-
-                            <input
-                                type="password"
-                                className={`mt-0 form-control ${errors.username ? "is-invalid" : ""}`}
-                                placeholder="password"
-                                {...register("password", {
-                                    required: "password is required"
-                                })}
-                            />
-
-                            {errors.password && 
-                            (<div className="invalid-feedback"> {errors.password.message}</div>)}
-                        </div>
-                        </div>
-
-                        {/* SUBMIT */}
-                        
-                        <input
-                            className="btn btn-dark add-btn mt-3 mb-3"
-                            disabled={isSubmitting}
-                            type="submit"
-                            value={isSubmitting ? "Saving..." : "Login"}
-                        />
-                       
-
-
-                    </form>
-                </div>
-            </div>
-        </div>
-    )
+        </form>
+        <p className="text-center mt-3 mb-0">
+          Don’t have an account?
+          <Link className="text-decoration-none" to="/users/signup">Sign up</Link>
+        </p>
+      </div>
+    </div>
+  );
 }
