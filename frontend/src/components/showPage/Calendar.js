@@ -38,10 +38,10 @@ export const Calendar = ({ fullyBookedDates, onDateChange, selectedDates, onClos
       return;
     }
 
-    if (!selectedDates.startDate || (selectedDates.startDate && selectedDates.endDate)) {
+    if (!selectedDates?.startDate || (selectedDates?.startDate && selectedDates?.endDate)) {
       onDateChange({
         startDate,
-        endDate: null   // reset checkout
+        endDate: null
       });
       return;
     }

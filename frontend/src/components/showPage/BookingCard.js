@@ -145,7 +145,7 @@ export const BookingCard = ({
       </div>
 
       {showCalendar && (
-        <div ref={calendarRef} className="position-relative rounded-4 bg-white shadow p-2" style={{ top: "-170px" }}>
+        <div ref={calendarRef} className="position-relative rounded-4 bg-white shadow p-2" style={{ top: "-150px" }}>
           <Calendar
             fullyBookedDates={fullyBookedDates || []}
             onDateChange={setSelectedDates}

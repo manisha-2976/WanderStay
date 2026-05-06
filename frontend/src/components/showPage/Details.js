@@ -142,6 +142,7 @@ export const Details = () => {
                   fullyBookedDates={fullyBookedDates || []}
                   onDateChange={setSelectedDates}
                   selectedDates={selectedDates}
+                  onClose={() => {}}
                 />
               </div>
             </div>
