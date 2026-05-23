@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useCallback, useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./ImageUpload.css";
@@ -21,7 +21,7 @@ export const ImageUpload = () => {
   }, []);
   const currentRoom = rooms.find(room => room.name === roomName);
 
-  const fetchImages = async () => {
+  const fetchImages = useCallback(async () => {
     try {
       const res = await axios.get(`${process.env.REACT_APP_API_URL}/listing/${id}`);
       setListingImages(
@@ -30,11 +30,11 @@ export const ImageUpload = () => {
     } catch (err) {
       console.log(err);
     }
-  };
+  }, [id, roomName]);
 
   useEffect(() => {
     fetchImages();
-  }, [roomName]);
+  }, [fetchImages]);
 
   const currentImages = roomImages[roomName] || [];
   const currentFiles = files[roomName] || [];
@@ -150,7 +150,7 @@ export const ImageUpload = () => {
 
             <h2 className="fw-semibold">{currentRoom?.label || roomName}</h2>
             <button className="rounded p-1 bg-white border-0 shadow" onClick={() => setShowUploader(true)}>
-              <i class="fa-solid fs-5 fa-plus"></i>
+              <i className="fa-solid fs-5 fa-plus"></i>
             </button>
           </div>
 
@@ -158,10 +158,10 @@ export const ImageUpload = () => {
             <div className="d-flex flex-wrap gap-3">
               {listingImages.map(img => (
                 <div key={img._id} className="img-wrapper">
-                  <img src={img.url} className="img-preview" />
+                  <img src={img.url} alt={`${currentRoom?.label || roomName} listing`} className="img-preview" />
 
                   <button className="delete-btn" onClick={() => handleDelete(img._id)}>
-                    <i class="fa-regular fa-trash-can"></i>
+                    <i className="fa-regular fa-trash-can"></i>
                   </button>
 
                 </div>
@@ -189,11 +189,11 @@ export const ImageUpload = () => {
 
             <div className="d-flex justify-content-between mb-2">
               <button className="border-0 bg-white" onClick={() => document.getElementById("fileInput").click()}>
-                <i class="fa-solid fa-plus"></i>
+                <i className="fa-solid fa-plus"></i>
               </button>
               <h6>Upload photo</h6>
               <button className="border-0 bg-white" onClick={() => setShowUploader(false)}>
-                <i class="fa-solid fa-xmark"></i>
+                <i className="fa-solid fa-xmark"></i>
               </button>
             </div>
 
@@ -216,13 +216,13 @@ export const ImageUpload = () => {
                 <div className="d-flex flex-wrap gap-2">
                   {currentImages.map((img, i) => (
                     <div key={i} className="img-wrapper">
-                      <img src={img} className="img-preview" />
+                      <img src={img} alt={`${currentRoom?.label || roomName} preview`} className="img-preview" />
 
                       <button
                         className="delete-btn"
                         onClick={() => handleRemove(i)}
                       >
-                        <i class="fa-solid fa-xmark"></i>
+                        <i className="fa-solid fa-xmark"></i>
                       </button>
                     </div>
                   ))}

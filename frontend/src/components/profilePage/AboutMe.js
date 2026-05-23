@@ -1,10 +1,9 @@
-import { React, useContext } from 'react'
+import { useContext } from 'react'
 import { AuthContext } from "../../context/AuthContext";
-import { Link } from "react-router-dom";
 import { MobileMenu } from './MobileMenu';
 
 export const AboutMe = () => {
-  const { user, logout } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   return (
     <div className='about-container mt-4'>
       <div className='p-2 pb-5 d-flex flex-column justify-content-center  fw-semibold align-items-center  border-bottom'>
@@ -17,7 +16,7 @@ export const AboutMe = () => {
       </div>
 
       <div className='d-flex gap-2 mt-4 review-container'>
-        <span><i class="fa-regular fa-comments"></i></span>
+        <span><i className="fa-regular fa-comments"></i></span>
         <h6>Reviews I've written</h6>
       </div>
       <div className='menu mb-5'><MobileMenu /></div>

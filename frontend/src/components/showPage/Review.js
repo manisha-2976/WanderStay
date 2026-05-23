@@ -6,16 +6,13 @@ import { Rating } from "react-simple-star-rating";
 export const Review = ({ onClose, id }) => {
   const [rating, setRating] = useState(3);
 
-  const { register, handleSubmit, watch, formState: { errors, isSubmitting }, reset } = useForm({
+  const { register, handleSubmit, formState: { errors, isSubmitting }, reset } = useForm({
     defaultValues: {
       review: {
         rating: 3
       }
     }
   });
-
-  //rating value
-  const ratingValue = watch("review.rating");
 
   const onSubmit = async (data) => {
     try {

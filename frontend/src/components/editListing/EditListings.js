@@ -4,10 +4,11 @@ import { useForm } from "react-hook-form";
 import { useParams } from "react-router-dom";
 import { FormInput } from "./FormInput";
 import { PhotoTour } from "./PhotoTour";
+import "./EditListings.css";
 
 export const EditListings = () => {
     const { id } = useParams();
-    const { register, handleSubmit, reset, formState: { errors, isSubmitting } } = useForm();
+    const { register, handleSubmit, reset, formState: { errors } } = useForm();
 
     useEffect(() => {
         const fetchListing = async () => {

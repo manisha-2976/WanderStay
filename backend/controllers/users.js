@@ -34,7 +34,7 @@ module.exports.login = async (req, res, next) => {
     sameSite: isProd ? "None" : "Lax",
     path: "/"
   });
-  res.status(201).json({ message: "Login Successful", user });
+  res.status(201).json({ message: "Login Successful" });
 };
 
 module.exports.signup = async (req, res, next) => {
@@ -66,7 +66,7 @@ module.exports.signup = async (req, res, next) => {
     path: "/"
   });
 
-  res.status(201).json({ message: "Signup Successful", user });
+  res.status(201).json({ message: "Signup Successful" });
 }
 
 

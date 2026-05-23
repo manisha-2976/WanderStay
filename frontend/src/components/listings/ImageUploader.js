@@ -13,11 +13,9 @@ export const ImageUploader = ({ setSelectedImages }) => {
       alert("Max 10 images allowed");
       return;
     }
-
     const newPreviews = fileArray.map((file) =>
       URL.createObjectURL(file)
     );
-
     const updatedImages = [...images, ...fileArray];
 
     setImages(updatedImages);
@@ -42,6 +40,7 @@ export const ImageUploader = ({ setSelectedImages }) => {
     setImages(updatedImages);
     setPreviews(updatedPreviews);
     setSelectedImages(updatedImages);
+    URL.revokeObjectURL(previews[index]);
   };
 
   useEffect(() => {
@@ -52,13 +51,10 @@ export const ImageUploader = ({ setSelectedImages }) => {
 
   return (
     <div className="mt-3">
-      {/* Upload Box */}
-      <div
-        className="upload-box text-center p-4 mb-3"
-        onDrop={handleDrop}
-        onDragOver={(e) => e.preventDefault()}
-      >
-        <p className="mb-2">Drag & drop images here</p>
+      <div className="upload-box text-center p-4 mb-3"
+        onDrop={handleDrop} onDragOver={(e) => e.preventDefault()}>
+
+        <p className="mb-2">Drag & drop images</p>
 
         <input
           type="file"
@@ -82,7 +78,7 @@ export const ImageUploader = ({ setSelectedImages }) => {
                 onClick={() => removeImage(index)}
                 className="btn btn-danger btn-sm position-absolute top-0 end-0"
               >
-                <i class="fa-solid fa-xmark"></i>
+                <i className="fa-solid fa-xmark"></i>
               </button>
 
               {/* Cover */}
@@ -100,9 +96,6 @@ export const ImageUploader = ({ setSelectedImages }) => {
         </label>
 
       </div>
-
-      {/* Preview */}
-
     </div>
   );
 };

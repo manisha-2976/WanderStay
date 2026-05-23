@@ -64,8 +64,8 @@ export const PastTrips = () => {
 
                 <div className='pe-0 me-0 trip-title'>
                   <p className='mb-0 fw-bolder fs-6'>{booking.listing.title}</p>
-                  <p className='mb-0'><i class="fa-solid fa-location-dot"></i> {booking.listing.street}</p>
-                  <p className='mb-0'> <i class="fa-solid fa-user-group"></i> Guests: {booking.guests}</p>
+                  <p className='mb-0'><i className="fa-solid fa-location-dot"></i> {booking.listing.street}</p>
+                  <p className='mb-0'> <i className="fa-solid fa-user-group"></i> Guests: {booking.guests}</p>
                   <p className='mb-0'><b>Total</b>: {booking.totalPrice.toLocaleString("en-IN")}</p>
                 </div>
               </div>

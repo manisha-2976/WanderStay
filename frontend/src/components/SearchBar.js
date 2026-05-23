@@ -40,7 +40,7 @@ export const SearchBar = ({ onSearch }) => {
             <form className="search-form" onSubmit={handleSubmit}>
                 <div className='d-flex filter border shadow-sm'>
                     <div className='hover d-flex align-items-center ps-3'>
-                        <span><i class="fa-solid fa-wand-magic-sparkles fs-5 me-2"></i></span>
+                        <span><i className="fa-solid fa-wand-magic-sparkles fs-5 me-2"></i></span>
                         <div className='d-flex flex-column dest-box'>
                             <label className='fw-semibold'>Where</label>
                             <input

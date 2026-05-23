@@ -102,7 +102,7 @@ export const PhotoTour = () => {
             const roomImages = imagesByRoom[room.name.toLowerCase()] || [];
             return (
               <div key={i} className="room-card"
-                onClick={() => navigate(`/listing/${id}/image/upload/${room.name}`)}
+                onClick={() => navigate(`/host/listing/${id}/image/upload/${room.name}`)}
               >
                 <div className="img-box">
                   {roomImages.length > 0 ? (
@@ -129,7 +129,7 @@ export const PhotoTour = () => {
                 className="border-0 bg-white"
                 onClick={() => setShowModal(false)}
               >
-                <i class="fa-solid fa-xmark"></i>
+                <i className="fa-solid fa-xmark"></i>
               </button>
             </div>
 

@@ -1,4 +1,4 @@
-import { React, useState } from 'react'
+import { useState } from 'react'
 import axios from "axios";
 import { useForm } from "react-hook-form"
 import { useNavigate, Link } from "react-router-dom";
@@ -21,7 +21,7 @@ export const SignUp = () => {
     const onSubmit = async (data) => {
         try {
             console.log(data);
-            const res = await axios.post(`${process.env.REACT_APP_API_URL}/users/signup`, data,
+            await axios.post(`${process.env.REACT_APP_API_URL}/users/signup`, data,
                 {
                     withCredentials: true
                 }

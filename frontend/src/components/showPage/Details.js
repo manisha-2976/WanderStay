@@ -60,11 +60,11 @@ export const Details = () => {
 
           <div className="row mt-1 g-2 mb-2 img-container">
             <div className="col-12 col-md-6">
-              <img src={listing?.images?.[0]?.url} className="w-100 show-img" />
+              <img src={listing?.images?.[0]?.url} alt={listing?.title || "Listing"} className="w-100 show-img" />
             </div>
 
             <div className="col-md-6 d-none d-md-block">
-              <img src={listing?.images?.[1]?.url} className="w-100 show-img" />
+              <img src={listing?.images?.[1]?.url} alt={`${listing?.title || "Listing"} view`} className="w-100 show-img" />
             </div>
           </div>
 
@@ -123,7 +123,7 @@ export const Details = () => {
                   if (!safety) {
                     return (
                       <div key={index} className="amenity-box">
-                        <span><i class="fa-solid fa-shuffle"></i></span>
+                        <span><i className="fa-solid fa-shuffle"></i></span>
                         <span>{item}</span>
                       </div>
                     );

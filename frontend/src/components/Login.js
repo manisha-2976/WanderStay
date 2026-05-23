@@ -20,7 +20,7 @@ export const Login = () => {
   const onSubmit = async (data) => {
     try {
       console.log(data);
-      const res = await axios.post(`${process.env.REACT_APP_API_URL}/users/login`, data,
+      await axios.post(`${process.env.REACT_APP_API_URL}/users/login`, data,
         { withCredentials: true }
       );
       await fetchUser();

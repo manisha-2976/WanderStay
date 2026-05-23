@@ -1,6 +1,6 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
 import axios from "axios";
-import { Link, useSearchParams, useLocation } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import { useSearch } from "../../context/SearchContext";
@@ -8,58 +8,63 @@ import "./Listings.css"
 
 
 export const Listings = () => {
-  const [loading, setLoading] = useState(false);
-  const [allListings, setAllListings] = useState([]);
-  const { getSearchCache, setSearchCache } = useSearch();
   const [searchParams] = useSearchParams();
 
+  const [loading, setLoading] = useState(false);
+  const [allListings, setAllListings] = useState([]);
+
+  const { getSearchCache, setSearchCache } = useSearch();
+
   const query = searchParams.get("query") || "";
-  const guests = Number(searchParams.get("guests")) || 0;
+  const guests = searchParams.get("guests") || 0;
   const startDate = searchParams.get("startDate");
   const endDate = searchParams.get("endDate");
+  const searchKey = searchParams.toString();
 
   useEffect(() => {
-  const fetchData = async () => {
+    const fetchData = async () => {
 
-    const cacheKey = JSON.stringify({ query, startDate, endDate, guests });
-
-    // cache check
-    const cached = getSearchCache(cacheKey);
-    if (cached) {
-      setAllListings(cached);
-      return;
-    }
-
-    try {
-      setLoading(true);
-
-      let res;
+      let cacheKey = "all";
 
       if (query || startDate || guests) {
-        res = await axios.post(
-          `${process.env.REACT_APP_API_URL}/api/ai-search`,
-          { query, startDate, endDate, guests }
-        );
-
-        setAllListings(res.data.listings);
-        setSearchCache(cacheKey, res.data.listings);
-
-      } else {
-        res = await axios.get(`${process.env.REACT_APP_API_URL}`);
-        setAllListings(res.data);
-
-        setSearchCache("all", res.data);
+        cacheKey = JSON.stringify({ query, startDate, endDate, guests });
       }
 
-    } catch (err) {
-      console.log(err);
-    } finally {
-      setLoading(false);
-    }
-  };
+      // cache check
+      const cached = getSearchCache(cacheKey);
+      if (cached) {
+        setAllListings(cached);
+        return;
+      }
 
-  fetchData();
-}, [searchParams.toString()]);
+      try {
+        setLoading(true);
+
+        let res;
+
+        if (query || startDate || guests) {
+          res = await axios.post(
+            `${process.env.REACT_APP_API_URL}/api/ai-search`,
+            { query, startDate, endDate, guests }
+          );
+          setAllListings(res.data.listings);
+          setSearchCache(cacheKey, res.data.listings);
+
+        } else {
+          res = await axios.get(`${process.env.REACT_APP_API_URL}`);
+          setAllListings(res.data);
+          setSearchCache("all", res.data);
+        }
+
+      } catch (err) {
+        console.log(err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, [searchKey, query, startDate, endDate, guests, getSearchCache, setSearchCache]);
 
 
   if (loading) {

@@ -1,4 +1,4 @@
-import { Link, useLocation, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { useContext, useRef, useEffect, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import "./HostNavbar.css"
@@ -26,7 +26,7 @@ export const HostNavbar = () => {
             <nav className="navbar host-nav bg-light border-bottom sticky-top">
                 <div className="container-fluid">
                     <NavLink className="navbar-brand d-flex align-items-center" to="/">
-                        <i class="fa-brands fa-wordpress-simple fs-2 text-primary"></i>
+                        <i className="fa-brands fa-wordpress-simple fs-2 text-primary"></i>
                         <p className="m-0 p-0 fs-6">WanderStay</p>
                     </NavLink>
 
@@ -69,20 +69,23 @@ export const HostNavbar = () => {
                             <div className={`custom-dropdown ${openMenu ? "show" : ""}`}>
                                 <div className="navbar-nav ms-auto">
                                     <NavLink className="nav-link" to="/" onClick={closeMenu}>
-                                        <i class="fa-brands fa-dropbox me-2"></i>Switch to travelling
+                                        <i className="fa-brands fa-dropbox me-2"></i>Switch to travelling
                                     </NavLink>
 
                                     <NavLink className="nav-link d-flex align-items-center" to="/host/newListing" onClick={closeMenu}>
-                                        <span><i class="fa-solid fa-plus pe-4"></i> </span>
+                                        <span><i className="fa-solid fa-plus pe-4"></i> </span>
                                         Create a new listing
                                     </NavLink>
 
                                     <NavLink className="nav-link" to="/users/profile" onClick={closeMenu}>
-                                        <i class="fa-regular fa-user me-2"></i>Profile
+                                        <i className="fa-regular fa-user me-2"></i>Profile
                                     </NavLink>
 
                                     <NavLink className="nav-link" to="/" 
-                                    onClick={() => (closeMenu(), logout())}>
+                                    onClick={() => {
+                                        closeMenu();
+                                        logout();
+                                    }}>
                                         <i className="fa-solid fa-arrow-right-from-bracket me-2"></i>Log out
                                     </NavLink>
                                 </div>

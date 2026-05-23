@@ -8,9 +8,10 @@ import "./NewListing.css"
 export const NewListing = () => {
   const navigate = useNavigate();
 
-  const { register, handleSubmit, formState: { isSubmitting, errors } } = useForm();
   const [selectedImages, setSelectedImages] = useState([]);
 
+  const { register, handleSubmit, formState: { isSubmitting, errors } } = useForm();
+  
   const onSubmit = async (data) => {
     try {
       const formData = new FormData();

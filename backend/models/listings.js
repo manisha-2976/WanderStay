@@ -19,7 +19,6 @@ const listingSchema = new Schema({
   bed: { type: Number, required: true },
   bathroom: { type: Number, required: true },
   price: { type: Number, required: true },
-  bathroom: { type: Number, required: true },
   amenities: [{ type: String}],
   safetyItems: [{ type: String}],
   images: [{

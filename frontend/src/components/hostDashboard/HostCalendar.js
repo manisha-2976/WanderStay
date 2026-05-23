@@ -33,7 +33,7 @@ export const HostCalendar = () => {
         if (!id && listings.length > 0) {
             navigate(`listing/${listings[0]._id}`, { replace: true });
         }
-    }, [listings, id]);
+    }, [listings, id, navigate]);
 
     return (
         <div className='host-calendar-container'>
@@ -59,22 +59,4 @@ export const HostCalendar = () => {
         </div>
     )
 }
-
-
-
-
-{/* {navListing?.images?.length > 0 && (
-<Link
-    to={`/host/calendar/listing/${navListing?._id}`}
-    style={{ top: "-6.5rem", left: "2rem", zIndex: 1050 }}
-    className="position-relative d-lg-none"
->
-    <img
-        src={navListing.images[0].url}
-        alt="listing img"
-        className={`mb-4 rounded ${id === navListing._id ? "shadow" : ""}`}
-        style={{ height: "2rem", width: "2rem" }}
-    />
-</Link>
-)} */}
 

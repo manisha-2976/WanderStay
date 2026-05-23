@@ -55,7 +55,7 @@ export const CustomSettingsPanel = ({
         </div>
 
         <button className="closeBtn" onClick={onClose}>
-          <i class="fa-solid fa-xmark"></i>
+          <i className="fa-solid fa-xmark"></i>
         </button>
       </div>
 
@@ -73,14 +73,14 @@ export const CustomSettingsPanel = ({
             className={`tog-btn ${blocked ? "active" : ""}`}
             onClick={blockDate}
           >
-            <i class="fa-solid fa-xmark"></i>
+            <i className="fa-solid fa-xmark"></i>
           </button>
 
           <button
             className={`tog-btn ${!blocked ? "active" : ""}`}
             onClick={unblockDate}
           >
-            <i class="fa-solid fa-check"></i>
+            <i className="fa-solid fa-check"></i>
           </button>
         </div>
       </div>

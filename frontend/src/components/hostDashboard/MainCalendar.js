@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useCallback, useEffect, useState } from "react"
 import axios from "axios"
 import { MonthView } from "./MonthView"
 import { useParams, Link } from "react-router-dom";
@@ -23,15 +23,7 @@ export const MainCalendar = () => {
 
   const selectedListing = listings?.find(l => l._id === id);
 
-  useEffect(() => {
-    if (id) {
-      setSelectedDate(null);
-      setSelectedDayData(null);
-      loadYearCalendar();
-    }
-  }, [id]);
-
-  const loadYearCalendar = async () => {
+  const loadYearCalendar = useCallback(async () => {
     try {
       const res = await axios.get(
         `${process.env.REACT_APP_API_URL}/listing/${id}/calendar/year`,
@@ -43,7 +35,15 @@ export const MainCalendar = () => {
     } catch (err) {
       console.log(err);
     }
-  };
+  }, [id]);
+
+  useEffect(() => {
+    if (id) {
+      setSelectedDate(null);
+      setSelectedDayData(null);
+      loadYearCalendar();
+    }
+  }, [id, loadYearCalendar]);
 
   const handleSelect = async (day) => {
     if (selectedDate === day.date) {
@@ -158,7 +158,7 @@ export const MainCalendar = () => {
             <div className="d-flex justify-content-between">
               <h6>Select Listing</h6>
               <span onClick={() => setShowListingSelector(false)}>
-                <i class="fa-solid fa-xmark"></i>
+                <i className="fa-solid fa-xmark"></i>
               </span>
             </div>
 

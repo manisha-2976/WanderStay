@@ -8,12 +8,13 @@ import { SearchBar } from './SearchBar';
 import { NavLink } from "react-router-dom";
 import "./Navbar.css"
 
-export const Navbar = () => {
-  const { user, logout } = useContext(AuthContext);
+export const Navbar = () => {  
+  
   const [listings, setListings] = useState([]);
   const [openMenu, setOpenMenu] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
+  const { user, logout } = useContext(AuthContext);
   const navigate = useNavigate();
   const menuRef = useRef();
   const location = useLocation();
@@ -83,7 +84,7 @@ export const Navbar = () => {
       location.pathname.startsWith("/users/signup") 
     );
 
-  // if (shouldHide) return null;
+  // if (isHide) return null;
 
 
   return (
@@ -92,7 +93,7 @@ export const Navbar = () => {
       <nav className="navbar bg-body-light sticky-top border-bottom">
         <div className="container-fluid ps-1 pe-1">
           <Link className="navbar-brand d-flex align-items-center m-0 ms-1" to="/">
-            <i class="fa-brands fa-wordpress-simple fs-2 text-primary"></i>
+            <i className="fa-brands fa-wordpress-simple fs-2 text-primary"></i>
           </Link>
 
           <div className="navbar-nav">
@@ -155,7 +156,15 @@ export const Navbar = () => {
 
                 {user && <Link onClick={closeMenu} className="nav-link" to="/users/trips">Trips</Link>}
                 {user &&
-                  <Link onClick={() => (closeMenu(), logout())} className="nav-link">Log out</Link>}
+                  <Link
+                    onClick={() => {
+                      closeMenu();
+                      logout();
+                    }}
+                    className="nav-link"
+                  >
+                    Log out
+                  </Link>}
               </div>
             </div>
           </div>
@@ -210,7 +219,7 @@ export const Navbar = () => {
           <NavLink to="/users/login"
             className={({ isActive }) => `text-center ${isActive ? "mobileMenu selected" : "mobileMenu"}`}
           >
-            <span><i class="nav-icon nav-link fa-solid fa-suitcase"></i></span>
+            <span><i className="nav-icon nav-link fa-solid fa-suitcase"></i></span>
             <p>Log in</p>
 
           </NavLink>}

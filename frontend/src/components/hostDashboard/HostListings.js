@@ -28,7 +28,7 @@ export const HostListings = () => {
 
   const handleDelete = async (id) => {
     try {
-      const res = await axios.delete(`${process.env.REACT_APP_API_URL}/listing/${id}`, { withCredentials: true });
+      await axios.delete(`${process.env.REACT_APP_API_URL}/listing/${id}`, { withCredentials: true });
       setListings(prev => prev.filter(listing => listing._id !== id));
     } catch (e) {
       console.log(e);
@@ -39,7 +39,7 @@ export const HostListings = () => {
     <div className='host-listing-container mb-5'>
       <div className='heading'>
         <h2 className='mb-4 fw-bold'>Your Listings</h2>
-        <Link className="link" to="/host/newListing"><i class="fa-solid fa-plus"></i></Link>
+        <Link className="link" to="/host/newListing"><i className="fa-solid fa-plus"></i></Link>
       </div>
       <div className='row mb-4 fw-semibold listing-header' style={{ width: "97%" }}>
         <div className='col-md-5'>Listing</div>
@@ -76,7 +76,7 @@ export const HostListings = () => {
 
                 <div className='col-md-2 d-flex align-items-center justify-content-start gap-3'>
                   <p className='mb-0 list-status'>hiiii mnbm mnbm</p>
-                  <i class="fa-solid fa-angle-right"></i>
+                  <i className="fa-solid fa-angle-right"></i>
                 </div>
 
               </div>

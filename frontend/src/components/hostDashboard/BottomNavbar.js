@@ -1,14 +1,7 @@
 import React from 'react'
-import { Link, useLocation, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 export const BottomNavbar = () => {
-    const location = useLocation();
-
-    const menuClass = "menu";
-    const activeMenuClass = "menu selected";
-
-    const isActive = (path) => location.pathname.startsWith(path);
-
     return (
         <div
             className="d-block pt-3 d-md-none d-flex justify-content-around align-items-center bg-white border-top shadow"

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import axios from "axios";
 import {  useNavigate } from 'react-router-dom'
 
@@ -9,11 +9,7 @@ export const PriceSetting = ({ listingId, reload }) => {
     const [weeklyDiscount, setWeeklyDiscount] = useState("");
     const [monthlyDiscount, setMonthlyDiscount] = useState("");
 
-    useEffect(() => {
-        loadPricing();
-    }, [listingId]);
-
-    const loadPricing = async () => {
+    const loadPricing = useCallback(async () => {
         const res = await axios.get(
             `${process.env.REACT_APP_API_URL}/listing/${listingId}/get/price`
         );
@@ -22,7 +18,11 @@ export const PriceSetting = ({ listingId, reload }) => {
         setWeekendPrice(res.data.weekendPrice);
         setWeeklyDiscount(res.data.weeklyDiscount);
         setMonthlyDiscount(res.data.monthlyDiscount);
-    };
+    }, [listingId]);
+
+    useEffect(() => {
+        loadPricing();
+    }, [loadPricing]);
 
     // update function
     const updateField = async (field, value) => {
