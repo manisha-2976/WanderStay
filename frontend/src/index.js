@@ -6,6 +6,7 @@ import { App } from './app';
 
 import { AuthProvider } from "./context/AuthContext";
 import { SearchProvider } from './context/SearchContext';
+import { Toaster } from 'react-hot-toast';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -14,6 +15,7 @@ root.render(
     <AuthProvider>
       <SearchProvider>
         <App />
+        <Toaster position='top-center'/>
       </SearchProvider>
     </AuthProvider>
   </BrowserRouter>

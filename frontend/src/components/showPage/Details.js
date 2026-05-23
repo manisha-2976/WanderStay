@@ -1,13 +1,14 @@
-import { useEffect, useState, } from "react";
+import { lazy, Suspense, useEffect, useState, } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { Calendar } from "./Calendar";
 import { BookingCard } from "./BookingCard";
-import { Mapbox } from "./Mapbox";
 import { amenitiesMap } from "./AmenitiesIcons";
 import { safetyMap } from "./AmenitiesIcons";
 import { Rating } from "react-simple-star-rating";
 import "./Details.css";
+
+const Mapbox = lazy(() => import("./Mapbox").then(module => ({ default: module.Mapbox })));
 
 export const Details = () => {
   const { id } = useParams();
@@ -160,10 +161,12 @@ export const Details = () => {
         </div>
 
         <div className="map mb-5">
-          <Mapbox
-            coordinates={listing?.geometry.coordinates}
-            city={listing?.city}
-          />
+          <Suspense fallback={<div className="map-container bg-light" style={{ maxHeight: "400px", width: "100%" }} />}>
+            <Mapbox
+              coordinates={listing?.geometry.coordinates}
+              city={listing?.city}
+            />
+          </Suspense>
         </div>
 
         <div className="mb-5">

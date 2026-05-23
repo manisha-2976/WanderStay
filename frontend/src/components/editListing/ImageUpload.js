@@ -158,7 +158,12 @@ export const ImageUpload = () => {
             <div className="d-flex flex-wrap gap-3">
               {listingImages.map(img => (
                 <div key={img._id} className="img-wrapper">
-                  <img src={img.url} alt={`${currentRoom?.label || roomName} listing`} className="img-preview" />
+                  <img
+                    src={img.url}
+                    loading="lazy"
+                    alt={`${currentRoom?.label || roomName} listing`}
+                    className="img-preview"
+                  />
 
                   <button className="delete-btn" onClick={() => handleDelete(img._id)}>
                     <i className="fa-regular fa-trash-can"></i>
@@ -216,7 +221,12 @@ export const ImageUpload = () => {
                 <div className="d-flex flex-wrap gap-2">
                   {currentImages.map((img, i) => (
                     <div key={i} className="img-wrapper">
-                      <img src={img} alt={`${currentRoom?.label || roomName} preview`} className="img-preview" />
+                      <img
+                        src={img}
+                        loading="lazy"
+                        alt={`${currentRoom?.label || roomName} preview`}
+                        className="img-preview"
+                      />
 
                       <button
                         className="delete-btn"

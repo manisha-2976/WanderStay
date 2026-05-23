@@ -78,6 +78,7 @@ export const MainCalendar = () => {
               <img
                 src={selectedListing.image}
                 alt=""
+                loading="lazy"
                 className="listing-thumb"
               />
               <span className="listing-title">
@@ -171,7 +172,7 @@ export const MainCalendar = () => {
                   window.location.href = `/host/calendar/listing/${l._id}`;
                 }}
               >
-                <img src={l.image} alt="" />
+                <img src={l.image} alt="" loading="lazy" />
                 <span>{l.title}</span>
               </div>
             ))}

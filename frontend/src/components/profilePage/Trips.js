@@ -56,7 +56,13 @@ export const Trips = () => {
               <div className='trip row m-0 pb-4 pt-3'>
                 <div className="col-5 col-md-5 d-flex gap-3 align-items-center ps-0">
 
-                  <img src={booking.listing.images[0].url} className="card-img-top" alt="listing img" style={{ height: "4rem", width: "5rem" }} />
+                  <img
+                    src={booking.listing.images[0].url}
+                    loading="lazy"
+                    className="card-img-top"
+                    alt="listing img"
+                    style={{ height: "4rem", width: "5rem" }}
+                  />
 
                   <div className='pe-0 me-0 trip-title'>
                     <p className='mb-0 fw-bolder fs-6'>{booking.listing.title}</p>
@@ -89,7 +95,7 @@ export const Trips = () => {
 
               <div className='d-flex gap-2 text-white'>
                 <Link to={`/listing/${booking.listing._id}`} className='text-decoration-none text-white'>
-                  <p className='bg-white text-black border p-2 rounded'>Trip details</p>
+                  <p className='bg-white text-black border p-2 rounded cursor-pointer'>Trip details</p>
                 </Link>
                 <p className='bg-primary cursor-pointer p-2 rounded'>Contact Owner</p>
               </div>

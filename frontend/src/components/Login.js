@@ -35,8 +35,6 @@ export const Login = () => {
 
   return (
     <div className="login-page">
-      {isSubmitting && <div>Loading...</div>}
-
       <div className="login-card shadow-sm">
         <h3 className="mb-3 text-center">Login</h3>
 

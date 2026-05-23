@@ -5,7 +5,6 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 export const Mapbox = ({ coordinates, city }) => {
     const mapContainerRef = useRef(null);
     const mapRef = useRef(null);
-    console.log(coordinates);
 
     useEffect(() => {
         if (!coordinates || !city) return;

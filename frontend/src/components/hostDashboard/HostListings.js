@@ -57,7 +57,13 @@ export const HostListings = () => {
 
                 <div className="col-md-5 d-flex gap-4 align-items-center">
 
-                  <img src={listing?.image} className="card-img-top" alt="listing img" style={{ height: "5rem", width: "5rem" }} />
+                  <img
+                    src={listing?.image}
+                    loading="lazy"
+                    className="card-img-top"
+                    alt="listing img"
+                    style={{ height: "5rem", width: "5rem" }}
+                  />
                   <div>
                   <p className='mb-0 fw-bolder title'>{listing?.title}</p>
                   <small className='mb-0 mob-location'>{listing?.street}&nbsp; &nbsp;{listing?.city}</small> <br />

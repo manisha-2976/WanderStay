@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useMemo, useState, useRef, useEffect } from "react";
 import { Calendar } from "./Calendar";
+import toast from "react-hot-toast";
 
 export const BookingCard = ({
   listing,
@@ -11,6 +12,7 @@ export const BookingCard = ({
 
   const [showCalendar, setShowCalendar] = useState(false);
   const [guests, setGuests] = useState(1);
+  const [isBooking, setIsBooking] = useState(false);
 
   const calendarRef = useRef();
 
@@ -26,10 +28,18 @@ export const BookingCard = ({
 
   // total price
   const totalPrice = nights * (listing?.price || 0);
+
   const handleReserve = async () => {
     if (!selectedDates?.startDate || !selectedDates?.endDate) {
-      return alert("Select dates");
+      toast.error("Please select dates");
+      return;
     }
+
+    if (isBooking) return;
+
+    setIsBooking(true);
+    const toastId = toast.loading("Checking availability...");
+
     try {
       const check = await axios.post(
         `${process.env.REACT_APP_API_URL}/listing/checkAvailability`,
@@ -40,29 +50,31 @@ export const BookingCard = ({
         }, { withCredentials: true });
 
       if (!check.data.available) {
-        return alert("Dates not available");
+        toast.error("Dates are not available", { id: toastId });
+        return;
       }
 
-      const res = await axios.post(`${process.env.REACT_APP_API_URL}/listing/book`,
+      await axios.post(`${process.env.REACT_APP_API_URL}/listing/book`,
         {
           listingId: listing._id,
           checkIn: selectedDates.startDate,
           checkOut: selectedDates.endDate,
           guests
-        }, { withCredentials: true });
-      console.log("booking details", res.data);
+      }, { withCredentials: true });
 
-      alert("Booking successful!");
+      toast.success("Booking confirmed!", { id: toastId });
 
     } catch (err) {
-      console.log(err);
       if (err.response && err.response.data?.message) {
-        console.log(err.response.data.message);
+        toast.error(err.response.data.message, { id: toastId });
       } else {
-        alert("Booking failed");
+        toast.error("Booking failed. Please try again", { id: toastId });
       }
+    } finally {
+      setIsBooking(false);
     }
   };
+
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -76,6 +88,8 @@ export const BookingCard = ({
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
+
+
 
   return (
     <div>
@@ -128,18 +142,18 @@ export const BookingCard = ({
                 value={guests}
                 onChange={(e) => setGuests(e.target.value)}
                 className="w-100 p-1 border-0"
-                style={{outline: "none"}}
+                style={{ outline: "none" }}
                 placeholder="Add guests"
               />
             </div>
           </div>
 
           {/* reserve button */}
-          <button
+          <button disabled={isBooking}
             className="btn reserve-btn bg-primary text-white w-100 mt-3"
             onClick={handleReserve}
           >
-            Reserve
+            {isBooking ? "Reserving..." : "Reserve"}
           </button>
         </div>
       </div>

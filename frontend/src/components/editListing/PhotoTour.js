@@ -106,7 +106,7 @@ export const PhotoTour = () => {
               >
                 <div className="img-box">
                   {roomImages.length > 0 ? (
-                    <img src={roomImages[0].url} alt="cover" />
+                    <img src={roomImages[0].url} loading="lazy" alt="cover" />
                   ) : (
                     <span>Add photos</span>
                   )}

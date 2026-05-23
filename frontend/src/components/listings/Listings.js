@@ -96,7 +96,12 @@ export const Listings = () => {
             <Link key={listing._id}
               to={`/listing/${listing._id}`} style={{ textDecoration: "none" }} >
               <div className="card listing-card">
-                <img src={listing?.image} className="card-img-top listing-img" alt="listing img" />
+                <img
+                  src={listing?.image}
+                  loading="lazy"
+                  className="card-img-top listing-img"
+                  alt="listing img"
+                />
                 <div className="card-body">
                   <p className="card-text"><b>{listing?.title}, {listing?.city}</b> <br /> &#8377;{listing?.price?.toLocaleString("en-IN")}/night</p>
                 </div>

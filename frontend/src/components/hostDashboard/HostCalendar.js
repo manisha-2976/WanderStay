@@ -44,6 +44,7 @@ export const HostCalendar = () => {
                         <Link key={listing._id || index} to={`/host/calendar/listing/${listing?._id}`} >
                             <div>
                                 <img src={listing.image} alt="listing img"
+                                    loading="lazy"
                                     className={`mb-4 rounded-4 ${id === listing._id ? "shadow" : ""}`}
                                     style={{ height: "90px", width: "100%", objectFit: "cover" }} />
                             </div>
