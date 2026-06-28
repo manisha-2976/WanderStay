@@ -4,15 +4,18 @@ import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import './index.css';
 import { Route, Routes } from "react-router-dom";
+import { FontAwesomeStyles } from './components/FontAwesomeStyles';
 import { ProtectedRoute } from './components/ProtectedRoute';
-import { HostNavbar } from './components/hostDashboard/HostNavbar';
-import { BottomNavbar } from './components/hostDashboard/BottomNavbar';
+import { Listings } from './components/listings/Listings';
 
 const lazyNamed = (importer, exportName) =>
   lazy(() => importer().then(module => ({ default: module[exportName] })));
 
-const Listings = lazyNamed(() => import('./components/listings/Listings'), 'Listings');
+
 const Show = lazyNamed(() => import('./components/showPage/Show'), 'Show');
+const AppToaster = lazy(() => import('./components/AppToaster'));
+const HostNavbar = lazyNamed(() => import('./components/hostDashboard/HostNavbar'), 'HostNavbar');
+const BottomNavbar = lazyNamed(() => import('./components/hostDashboard/BottomNavbar'), 'BottomNavbar');
 const SignUp = lazyNamed(() => import('./components/SignUp'), 'SignUp');
 const Login = lazyNamed(() => import('./components/Login'), 'Login');
 const Trips = lazyNamed(() => import('./components/profilePage/Trips'), 'Trips');
@@ -38,14 +41,29 @@ const PageLoader = () => (
 
 export const App = () => {
   const location = useLocation();
+  const isHostRoute = location.pathname.startsWith("/host");
   const hideFooter = location.pathname.startsWith("/host/calendar") ||
                      location.pathname.startsWith("/host/listing");
-  const showBottomNavbar = location.pathname.startsWith("/host");
+  const showBottomNavbar = isHostRoute;
+  const needsFontAwesome = isHostRoute ||
+    location.pathname.startsWith("/users/profile") ||
+    location.pathname.startsWith("/users/trips");
+  const needsToaster = isHostRoute ||
+    location.pathname.startsWith("/listing/") ||
+    location.pathname.startsWith("/users/login") ||
+    location.pathname.startsWith("/users/signup");
 
   return (
     <>
+      {needsFontAwesome && <FontAwesomeStyles />}
       <div className='d-flex flex-column min-vh-100'>
-        {!location.pathname.startsWith("/host") ? <Navbar /> : <HostNavbar />}
+        {!isHostRoute ? (
+          <Navbar />
+        ) : (
+          <Suspense fallback={null}>
+            <HostNavbar />
+          </Suspense>
+        )}
 
         <main className='flex-grow-1'>
           <Suspense fallback={<PageLoader />}>
@@ -75,7 +93,16 @@ export const App = () => {
         </main>
         {!hideFooter && <Footer />}
       </div>
-      {showBottomNavbar && <BottomNavbar />}
+      {showBottomNavbar && (
+        <Suspense fallback={null}>
+          <BottomNavbar />
+        </Suspense>
+      )}
+      {needsToaster && (
+        <Suspense fallback={null}>
+          <AppToaster />
+        </Suspense>
+      )}
     </>
   )
 }

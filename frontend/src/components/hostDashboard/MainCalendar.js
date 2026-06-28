@@ -5,6 +5,7 @@ import { useParams, Link } from "react-router-dom";
 import { PriceSetting } from "./PriceSetting";
 import { CustomSettingsPanel } from "./CustomSettingsPanel";
 import { useOutletContext } from "react-router-dom";
+import toast from "react-hot-toast";
 import "./MainCalendar.css"
 import "./ListingSelectorOverlay.css"
 import "./CustomPriceSettingOverlay.css"
@@ -29,11 +30,10 @@ export const MainCalendar = () => {
         `${process.env.REACT_APP_API_URL}/listing/${id}/calendar/year`,
         { withCredentials: true }
       );
-      // console.log("API DATA:", res.data);
       setCalendarData(res.data);
 
-    } catch (err) {
-      console.log(err);
+    } catch {
+      toast.error("Unable to load calendar");
     }
   }, [id]);
 
@@ -54,16 +54,20 @@ export const MainCalendar = () => {
     }
     setSelectedDate(day.date);
 
-    const res = await axios.get(
-      `${process.env.REACT_APP_API_URL}/listing/${id}/calendar/day?date=${day.date}`,
-      { withCredentials: true }
-    );
+    try {
+      const res = await axios.get(
+        `${process.env.REACT_APP_API_URL}/listing/${id}/calendar/day?date=${day.date}`,
+        { withCredentials: true }
+      );
 
-    setSelectedDayData(res.data);
+      setSelectedDayData(res.data);
 
-    // show bottom panel for small to medium screen
-    if (window.innerWidth < 992) {
-      setShowCustomPricePanel(true);
+      // show bottom panel for small to medium screen
+      if (window.innerWidth < 992) {
+        setShowCustomPricePanel(true);
+      }
+    } catch {
+      toast.error("Unable to load day settings");
     }
   };
 

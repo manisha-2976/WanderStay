@@ -1,22 +1,40 @@
 import React, { useState, useEffect } from "react";
+import toast from "react-hot-toast";
 
 export const ImageUploader = ({ setSelectedImages }) => {
   const [images, setImages] = useState([]);
   const [previews, setPreviews] = useState([]);
 
   const MAX_IMAGES = 10;
+  const ACCEPTED_IMAGE_TYPES = [
+    "image/jpeg",
+    "image/jpg",
+    "image/png",
+    "image/webp",
+    "image/avif",
+  ];
+  const ACCEPTED_IMAGE_EXTENSIONS = ".jpg,.jpeg,.jfif,.png,.webp,.avif";
 
   const handleFiles = (files) => {
     const fileArray = Array.from(files);
+    const imageFiles = fileArray.filter((file) =>
+      ACCEPTED_IMAGE_TYPES.includes(file.type)
+    );
 
-    if (images.length + fileArray.length > MAX_IMAGES) {
-      alert("Max 10 images allowed");
+    if (imageFiles.length !== fileArray.length) {
+      toast.error("Only JPG/JFIF, PNG, WEBP, or AVIF images are supported");
+    }
+
+    if (!imageFiles.length) return;
+
+    if (images.length + imageFiles.length > MAX_IMAGES) {
+      toast.error("You can upload up to 10 images");
       return;
     }
-    const newPreviews = fileArray.map((file) =>
+    const newPreviews = imageFiles.map((file) =>
       URL.createObjectURL(file)
     );
-    const updatedImages = [...images, ...fileArray];
+    const updatedImages = [...images, ...imageFiles];
 
     setImages(updatedImages);
     setPreviews((prev) => [...prev, ...newPreviews]);
@@ -59,6 +77,7 @@ export const ImageUploader = ({ setSelectedImages }) => {
         <input
           type="file"
           multiple
+          accept={ACCEPTED_IMAGE_EXTENSIONS}
           onChange={handleChange}
           style={{ display: "none" }}
           id="fileInput"

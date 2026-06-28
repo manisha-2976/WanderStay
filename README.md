@@ -53,7 +53,7 @@ The project is built to demonstrate frontend product thinking, responsive UI dev
 - Express.js
 - MongoDB
 - Mongoose
-- Passport authentication
+- JWT authentication
 - Cloudinary image storage
 - Mapbox geocoding and maps
 - OpenAI-powered search utilities
@@ -133,7 +133,7 @@ Create a `.env` file inside the `frontend` folder.
 
 ```env
 REACT_APP_API_URL=http://localhost:8080
-REACT_APP_MAP_TOKEN=your_mapbox_token
+REACT_APP_MAPBOX_TOKEN=your_mapbox_token
 ```
 
 Update variable names if your local backend uses different names.

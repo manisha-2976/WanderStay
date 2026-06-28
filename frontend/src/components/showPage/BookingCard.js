@@ -1,7 +1,12 @@
 import axios from "axios";
-import { useMemo, useState, useRef, useEffect } from "react";
-import { Calendar } from "./Calendar";
+import { lazy, Suspense, useMemo, useState, useRef, useEffect } from "react";
+// import { Calendar } from "./Calendar";
 import toast from "react-hot-toast";
+const Calendar = lazy(() =>
+  import("./Calendar").then(module => ({
+    default: module.Calendar
+  }))
+);
 
 export const BookingCard = ({
   listing,
@@ -60,7 +65,7 @@ export const BookingCard = ({
           checkIn: selectedDates.startDate,
           checkOut: selectedDates.endDate,
           guests
-      }, { withCredentials: true });
+        }, { withCredentials: true });
 
       toast.success("Booking confirmed!", { id: toastId });
 
@@ -159,13 +164,15 @@ export const BookingCard = ({
       </div>
 
       {showCalendar && (
-        <div ref={calendarRef} className="position-relative rounded-4 bg-white shadow p-2" style={{ top: "-150px" }}>
-          <Calendar
-            fullyBookedDates={fullyBookedDates || []}
-            onDateChange={setSelectedDates}
-            selectedDates={selectedDates}
-            onClose={() => setShowCalendar(false)}
-          />
+        <div ref={calendarRef} className="position-relative rounded-4 bg-white shadow p-2">
+          <Suspense fallback={<div className="p-4 text-center">Loading...</div>}>
+            <Calendar
+              fullyBookedDates={fullyBookedDates || []}
+              onDateChange={setSelectedDates}
+              selectedDates={selectedDates}
+              onClose={() => setShowCalendar(false)}
+            />
+          </Suspense>
         </div>
       )}
     </div>

@@ -17,18 +17,18 @@ const sampleListings = [
     amenities: ["wifi", "AC", "pool", "parking", "kitchen"],
     safetyItems: ["fire extinguisher", "first aid kit"],
     images: [{
-      url: "https://images.unsplash.com/photo-1691677749553-1b6c76821339?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      filename: "villa_goa_1",
+      url: "https://res.cloudinary.com/dtaewoa2u/image/upload/v1782492983/wanderStay_DEV/optimized-seed/wp-1.jpg",
+      filename: "wanderStay_DEV/optimized-seed/wp-1",
       category: "additional"
     },
     {
-      url: "https://plus.unsplash.com/premium_photo-1661913412680-c274b6fea096?q=80&w=1031&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      filename: "villa_goa_2",
+      url: "https://res.cloudinary.com/dtaewoa2u/image/upload/v1782492984/wanderStay_DEV/optimized-seed/wp-2.jpg",
+      filename: "wanderStay_DEV/optimized-seed/wp-2",
       category: "additional"
     },
     {
-      url: "https://plus.unsplash.com/premium_photo-1661963080918-263cf79261f9?q=80&w=725&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      filename: "villa_goa_3",
+      url: "https://res.cloudinary.com/dtaewoa2u/image/upload/v1782492985/wanderStay_DEV/optimized-seed/wp-3.jpg",
+      filename: "wanderStay_DEV/optimized-seed/wp-3",
       category: "additional"
     }]
   },
@@ -50,13 +50,13 @@ const sampleListings = [
     amenities: ["wifi", "AC"],
     safetyItems: ["smoke alarm"],
     images: [{
-      url: "https://images.unsplash.com/photo-1574362848149-11496d93a7c7?q=80&w=784&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      filename: "mumbai_apt_1",
+      url: "https://res.cloudinary.com/dtaewoa2u/image/upload/v1782492986/wanderStay_DEV/optimized-seed/wp-4.jpg",
+      filename: "wanderStay_DEV/optimized-seed/wp-4",
       category: "additional"
     },
     {
-      url: "https://housing-images.n7net.in/01c16c28/704ef88e1fd70b2226d047e7d1a77cb7/v0/medium/1.5_bhk_apartment-for-rent-andheri_west-Mumbai-bedroom.jpg",
-      filename: "mumbai_apt_2",
+      url: "https://res.cloudinary.com/dtaewoa2u/image/upload/v1782492987/wanderStay_DEV/optimized-seed/wp-5.jpg",
+      filename: "wanderStay_DEV/optimized-seed/wp-5",
       category: "additional"
     }]
   },
@@ -79,13 +79,13 @@ const sampleListings = [
     amenities: ["wifi", "AC", "pool", "parking", "kitchen"],
     safetyItems: ["fire extinguisher", "first aid kit"],
     images: [{
-      url: "https://cf.bstatic.com/xdata/images/hotel/max1024x768/27207806.jpg?k=c855ce4ef9c5463151365cdb867d41522f77456d35d9a5ea4940aa1d38e3d258&o=",
-      filename: "villa_candolim_1",
+      url: "https://res.cloudinary.com/dtaewoa2u/image/upload/v1782492989/wanderStay_DEV/optimized-seed/wp-6.jpg",
+      filename: "wanderStay_DEV/optimized-seed/wp-6",
       category: "additional"
     },
     {
-      url: "https://cf.bstatic.com/xdata/images/hotel/max1024x768/27207763.jpg?k=28323a31fd795c970f26fe261a641d97e7321f27bc4002c9c32bfaa05fdcecd7&o=",
-      filename: "villa_candolim_2",
+      url: "https://res.cloudinary.com/dtaewoa2u/image/upload/v1782492990/wanderStay_DEV/optimized-seed/wp-7.jpg",
+      filename: "wanderStay_DEV/optimized-seed/wp-7",
       category: "additional"
     }]
   },
@@ -107,13 +107,13 @@ const sampleListings = [
     amenities: ["wifi", "AC"],
     safetyItems: ["smoke alarm"],
     images: [{
-      url: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?q=80&w=780&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      filename: "mumbai_studio_2",
+      url: "https://res.cloudinary.com/dtaewoa2u/image/upload/v1782492991/wanderStay_DEV/optimized-seed/wp-8.jpg",
+      filename: "wanderStay_DEV/optimized-seed/wp-8",
       category: "additional"
     },
     {
-      url: "https://images.unsplash.com/photo-1630699375019-c334927264df?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      filename: "mumbai_studio_1",
+      url: "https://res.cloudinary.com/dtaewoa2u/image/upload/v1782492993/wanderStay_DEV/optimized-seed/wp-9.jpg",
+      filename: "wanderStay_DEV/optimized-seed/wp-9",
       category: "additional"
     }]
   },
@@ -135,13 +135,13 @@ const sampleListings = [
     amenities: ["wifi", "AC", "kitchen"],
     safetyItems: ["first aid kit"],
     images: [{
-      url: "https://images.unsplash.com/photo-1648367819123-19d2ffe43f3a?q=80&w=435&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      filename: "goa_heritage_1",
+      url: "https://res.cloudinary.com/dtaewoa2u/image/upload/v1782492994/wanderStay_DEV/optimized-seed/wp-10.jpg",
+      filename: "wanderStay_DEV/optimized-seed/wp-10",
       category: "additional"
     },
     {
-      url: "https://images.unsplash.com/photo-1614082242765-7c98ca0f3df3?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      filename: "goa_heritage_2",
+      url: "https://res.cloudinary.com/dtaewoa2u/image/upload/v1782492995/wanderStay_DEV/optimized-seed/wp-11.jpg",
+      filename: "wanderStay_DEV/optimized-seed/wp-11",
       category: "additional"
     }]
   },
@@ -163,13 +163,13 @@ const sampleListings = [
     amenities: ["wifi", "AC", "parking", "gym"],
     safetyItems: ["fire extinguisher"],
     images: [{
-      url: "https://images.unsplash.com/photo-1751104902006-968539a64c3b?q=80&w=1032&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      filename: "powai_apartment_1",
+      url: "https://res.cloudinary.com/dtaewoa2u/image/upload/v1782492996/wanderStay_DEV/optimized-seed/wp-12.jpg",
+      filename: "wanderStay_DEV/optimized-seed/wp-12",
       category: "additional"
     },
     {
-      url: "https://images.unsplash.com/photo-1560185893-a55cbc8c57e8?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      filename: "powai_apartment_2",
+      url: "https://res.cloudinary.com/dtaewoa2u/image/upload/v1782492998/wanderStay_DEV/optimized-seed/wp-13.jpg",
+      filename: "wanderStay_DEV/optimized-seed/wp-13",
       category: "additional"
     }]
   },
@@ -191,13 +191,13 @@ const sampleListings = [
     amenities: ["wifi", "AC", "pool", "parking", "kitchen"],
     safetyItems: ["fire extinguisher", "first aid kit"],
     images: [{
-      url: "https://images.unsplash.com/photo-1543489822-c49534f3271f?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YmVhY2glMjB2aWxsYXxlbnwwfHwwfHx8MA%3D%3D",
-      filename: "anjuna_villa_2",
+      url: "https://res.cloudinary.com/dtaewoa2u/image/upload/v1782492999/wanderStay_DEV/optimized-seed/wp-14.jpg",
+      filename: "wanderStay_DEV/optimized-seed/wp-14",
       category: "additional"
     },
     {
-      url: "https://plus.unsplash.com/premium_photo-1682377521697-bc598b52b08a?q=80&w=915&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      filename: "anjuna_villa_1",
+      url: "https://res.cloudinary.com/dtaewoa2u/image/upload/v1782493000/wanderStay_DEV/optimized-seed/wp-15.jpg",
+      filename: "wanderStay_DEV/optimized-seed/wp-15",
       category: "additional"
     }]
   },
@@ -220,13 +220,13 @@ const sampleListings = [
     amenities: ["wifi", "AC", "parking", "kitchen"],
     safetyItems: ["fire extinguisher", "first aid kit"],
     images: [{
-      url: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      filename: "baga_villa_1",
+      url: "https://res.cloudinary.com/dtaewoa2u/image/upload/v1782493001/wanderStay_DEV/optimized-seed/wp-16.jpg",
+      filename: "wanderStay_DEV/optimized-seed/wp-16",
       category: "additional"
     },
     {
-      url: "https://images.unsplash.com/photo-1616594039964-ae9021a400a0?q=80&w=580&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      filename: "baga_villa_2",
+      url: "https://res.cloudinary.com/dtaewoa2u/image/upload/v1782493002/wanderStay_DEV/optimized-seed/wp-17.jpg",
+      filename: "wanderStay_DEV/optimized-seed/wp-17",
       category: "additional"
     }]
   },
@@ -248,13 +248,13 @@ const sampleListings = [
     amenities: ["wifi", "AC"],
     safetyItems: ["smoke alarm"],
     images: [{
-      url: "https://images.unsplash.com/photo-1618773928121-c32242e63f39?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8aG90ZWwlMjByb29tfGVufDB8fDB8fHww",
-      filename: "bandra_room_1",
+      url: "https://res.cloudinary.com/dtaewoa2u/image/upload/v1782493003/wanderStay_DEV/optimized-seed/wp-18.jpg",
+      filename: "wanderStay_DEV/optimized-seed/wp-18",
       category: "additional"
     },
     {
-      url: "https://images.unsplash.com/photo-1600494448868-9fbd1ac2d9f5?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      filename: "bandra_room_2",
+      url: "https://res.cloudinary.com/dtaewoa2u/image/upload/v1782493005/wanderStay_DEV/optimized-seed/wp-19.jpg",
+      filename: "wanderStay_DEV/optimized-seed/wp-19",
       category: "additional"
     }]
   },
@@ -276,13 +276,13 @@ const sampleListings = [
     amenities: ["wifi", "AC", "kitchen"],
     safetyItems: ["fire extinguisher"],
     images: [{
-      url: "https://images.unsplash.com/photo-1580216643062-cf460548a66a?q=80&w=327&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      filename: "goregaon_apt_1",
+      url: "https://res.cloudinary.com/dtaewoa2u/image/upload/v1782493006/wanderStay_DEV/optimized-seed/wp-20.jpg",
+      filename: "wanderStay_DEV/optimized-seed/wp-20",
       category: "additional"
     },
     {
-      url: "https://images.unsplash.com/photo-1616486029423-aaa4789e8c9a?q=80&w=1032&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      filename: "goregaon_apt_2",
+      url: "https://res.cloudinary.com/dtaewoa2u/image/upload/v1782493007/wanderStay_DEV/optimized-seed/wp-21.jpg",
+      filename: "wanderStay_DEV/optimized-seed/wp-21",
       category: "additional"
     }]
   },
@@ -304,13 +304,13 @@ const sampleListings = [
     amenities: ["wifi", "AC", "pool", "parking"],
     safetyItems: ["fire extinguisher", "first aid kit"],
     images: [{
-      url: "https://plus.unsplash.com/premium_photo-1682377521697-bc598b52b08a?q=80&w=915&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      filename: "siolim_villa_1",
+      url: "https://res.cloudinary.com/dtaewoa2u/image/upload/v1782493008/wanderStay_DEV/optimized-seed/wp-22.jpg",
+      filename: "wanderStay_DEV/optimized-seed/wp-22",
       category: "additional"
     },
     {
-      url: "https://plus.unsplash.com/premium_photo-1682377521720-3a43955c8329?q=80&w=866&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      filename: "siolim_villa_2",
+      url: "https://res.cloudinary.com/dtaewoa2u/image/upload/v1782493010/wanderStay_DEV/optimized-seed/wp-23.jpg",
+      filename: "wanderStay_DEV/optimized-seed/wp-23",
       category: "additional"
     }]
   },
@@ -332,13 +332,13 @@ const sampleListings = [
     amenities: ["wifi", "AC"],
     safetyItems: ["smoke alarm"],
     images: [{
-      url: "https://www.pajasaapartments.com/wp-content/uploads/2019/04/Studio-Service-Apartment-Andheri-Mumbai.jpeg",
-      filename: "andheri_studio_1",
+      url: "https://res.cloudinary.com/dtaewoa2u/image/upload/v1782493011/wanderStay_DEV/optimized-seed/wp-24.jpg",
+      filename: "wanderStay_DEV/optimized-seed/wp-24",
       category: "additional"
     },
     {
-      url: "https://www.pajasaapartments.com/wp-content/uploads/2019/04/Studio-Serviced-Apartment-in-Andheri-Mumbai.jpeg",
-      filename: "andheri_studio_2",
+      url: "https://res.cloudinary.com/dtaewoa2u/image/upload/v1782493012/wanderStay_DEV/optimized-seed/wp-25.jpg",
+      filename: "wanderStay_DEV/optimized-seed/wp-25",
       category: "additional"
     }]
   },
@@ -360,13 +360,13 @@ const sampleListings = [
     amenities: ["wifi", "AC", "parking"],
     safetyItems: ["first aid kit"],
     images: [{
-      url: "https://images.unsplash.com/photo-1510069551606-f9ec0a62fe28?q=80&w=873&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      filename: "vagator_cottage_1",
+      url: "https://res.cloudinary.com/dtaewoa2u/image/upload/v1782493013/wanderStay_DEV/optimized-seed/wp-26.jpg",
+      filename: "wanderStay_DEV/optimized-seed/wp-26",
       category: "additional"
     },
     {
-      url: "https://images.unsplash.com/photo-1580953546435-96ba8e1415da?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      filename: "vagator_cottage_2",
+      url: "https://res.cloudinary.com/dtaewoa2u/image/upload/v1782493014/wanderStay_DEV/optimized-seed/wp-27.jpg",
+      filename: "wanderStay_DEV/optimized-seed/wp-27",
       category: "additional"
     }]
   },
@@ -388,13 +388,13 @@ const sampleListings = [
     amenities: ["wifi", "AC", "parking", "gym"],
     safetyItems: ["fire extinguisher"],
     images: [{
-      url: "https://plus.unsplash.com/premium_photo-1661963542944-0d1fc8e66f83?q=80&w=830&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      filename: "worli_apt_1",
+      url: "https://res.cloudinary.com/dtaewoa2u/image/upload/v1782493015/wanderStay_DEV/optimized-seed/wp-28.jpg",
+      filename: "wanderStay_DEV/optimized-seed/wp-28",
       category: "additional"
     },
     {
-      url: "https://images.unsplash.com/photo-1647962431451-d0fdaf1cf21c?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      filename: "worli_apt_2",
+      url: "https://res.cloudinary.com/dtaewoa2u/image/upload/v1782493017/wanderStay_DEV/optimized-seed/wp-29.jpg",
+      filename: "wanderStay_DEV/optimized-seed/wp-29",
       category: "additional"
     }]
   },
@@ -417,13 +417,13 @@ const sampleListings = [
     amenities: ["wifi", "AC"],
     safetyItems: ["smoke alarm"],
     images: [{
-      url: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=435&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      filename: "karolbagh_room",
+      url: "https://res.cloudinary.com/dtaewoa2u/image/upload/v1782493018/wanderStay_DEV/optimized-seed/wp-30.jpg",
+      filename: "wanderStay_DEV/optimized-seed/wp-30",
       category: "additional"
     },
     {
-      url: "https://images.unsplash.com/photo-1566665797739-1674de7a421a?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      filename: "karolbagh_room_2",
+      url: "https://res.cloudinary.com/dtaewoa2u/image/upload/v1782493019/wanderStay_DEV/optimized-seed/wp-31.jpg",
+      filename: "wanderStay_DEV/optimized-seed/wp-31",
       category: "additional"
     }]
   },
@@ -445,13 +445,13 @@ const sampleListings = [
     amenities: ["wifi", "AC", "kitchen", "parking"],
     safetyItems: ["fire extinguisher"],
     images: [{
-      url: "https://images.unsplash.com/photo-1598928636135-d146006ff4be?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      filename: "gk_apartment",
+      url: "https://res.cloudinary.com/dtaewoa2u/image/upload/v1782493020/wanderStay_DEV/optimized-seed/wp-32.jpg",
+      filename: "wanderStay_DEV/optimized-seed/wp-32",
       category: "additional"
     },
     {
-      url: "https://images.unsplash.com/photo-1574362848149-11496d93a7c7?q=80&w=784&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      filename: "gk_apartment_2",
+      url: "https://res.cloudinary.com/dtaewoa2u/image/upload/v1782493022/wanderStay_DEV/optimized-seed/wp-33.jpg",
+      filename: "wanderStay_DEV/optimized-seed/wp-33",
       category: "additional"
     }]
   },
@@ -473,13 +473,13 @@ const sampleListings = [
     amenities: ["wifi", "AC", "parking"],
     safetyItems: ["first aid kit"],
     images: [{
-      url: "https://images.unsplash.com/photo-1568605114967-8130f3a36994?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      filename: "jaipur_haveli",
+      url: "https://res.cloudinary.com/dtaewoa2u/image/upload/v1782493023/wanderStay_DEV/optimized-seed/wp-34.jpg",
+      filename: "wanderStay_DEV/optimized-seed/wp-34",
       category: "additional"
     },
     {
-      url: "https://plus.unsplash.com/premium_photo-1661962841993-99a07c27c9f4?q=80&w=1031&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      filename: "jaipur_haveli_2",
+      url: "https://res.cloudinary.com/dtaewoa2u/image/upload/v1782493024/wanderStay_DEV/optimized-seed/wp-35.jpg",
+      filename: "wanderStay_DEV/optimized-seed/wp-35",
       category: "additional"
     }]
   },
@@ -501,13 +501,13 @@ const sampleListings = [
     amenities: ["wifi", "AC", "pool", "parking", "garden"],
     safetyItems: ["fire extinguisher", "first aid kit"],
     images: [{
-      url: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      filename: "amer_villa",
+      url: "https://res.cloudinary.com/dtaewoa2u/image/upload/v1782493025/wanderStay_DEV/optimized-seed/wp-36.jpg",
+      filename: "wanderStay_DEV/optimized-seed/wp-36",
       category: "additional"
     },
     {
-      url: "https://images.unsplash.com/photo-1602774895672-b553538bceb9?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      filename: "amer_villa_2",
+      url: "https://res.cloudinary.com/dtaewoa2u/image/upload/v1782493026/wanderStay_DEV/optimized-seed/wp-37.jpg",
+      filename: "wanderStay_DEV/optimized-seed/wp-37",
       category: "additional"
     }]
   },
@@ -529,13 +529,8 @@ const sampleListings = [
     amenities: ["wifi"],
     safetyItems: ["smoke alarm"],
     images: [{
-      url: "https://plus.unsplash.com/premium_photo-1670076505419-99468d952c61?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      filename: "paharganj_hostel",
-      category: "additional"
-    },
-    {
-      url: "https://images.unsplash.com/photo-1560448070-8b02c1d9a7e4?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      filename: "paharganj_hostel_2",
+      url: "https://res.cloudinary.com/dtaewoa2u/image/upload/v1782493027/wanderStay_DEV/optimized-seed/wp-38.jpg",
+      filename: "wanderStay_DEV/optimized-seed/wp-38",
       category: "additional"
     }]
   },
@@ -558,13 +553,13 @@ const sampleListings = [
     amenities: ["wifi", "AC"],
     safetyItems: ["smoke alarm"],
     images: [{
-      url: "https://plus.unsplash.com/premium_photo-1671269705771-1ae9b3162118?q=80&w=625&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      filename: "lajpat_room_1",
+      url: "https://res.cloudinary.com/dtaewoa2u/image/upload/v1782493030/wanderStay_DEV/optimized-seed/wp-40.jpg",
+      filename: "wanderStay_DEV/optimized-seed/wp-40",
       category: "additional"
     },
     {
-      url: "https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      filename: "lajpat_room_2",
+      url: "https://res.cloudinary.com/dtaewoa2u/image/upload/v1782493031/wanderStay_DEV/optimized-seed/wp-41.jpg",
+      filename: "wanderStay_DEV/optimized-seed/wp-41",
       category: "additional"
     }]
   },
@@ -586,18 +581,18 @@ const sampleListings = [
     amenities: ["wifi", "AC", "kitchen", "parking"],
     safetyItems: ["fire extinguisher"],
     images: [{
-      url: "https://plus.unsplash.com/premium_photo-1678963247798-0944cf6ba34d?q=80&w=439&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      filename: "dwarka_apt_1",
+      url: "https://res.cloudinary.com/dtaewoa2u/image/upload/v1782493032/wanderStay_DEV/optimized-seed/wp-42.jpg",
+      filename: "wanderStay_DEV/optimized-seed/wp-42",
       category: "additional"
     },
     {
-      url: "https://images.unsplash.com/photo-1631510390389-c1e4fb20ff31?q=80&w=792&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      filename: "dwarka_apt_2",
+      url: "https://res.cloudinary.com/dtaewoa2u/image/upload/v1782493033/wanderStay_DEV/optimized-seed/wp-43.jpg",
+      filename: "wanderStay_DEV/optimized-seed/wp-43",
       category: "additional"
     },
     {
-      url: "https://plus.unsplash.com/premium_photo-1764500048252-7bff86b7b09c?q=80&w=445&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      filename: "dwarka_apt_3",
+      url: "https://res.cloudinary.com/dtaewoa2u/image/upload/v1782493035/wanderStay_DEV/optimized-seed/wp-44.jpg",
+      filename: "wanderStay_DEV/optimized-seed/wp-44",
       category: "additional"
     }]
   },
@@ -619,13 +614,13 @@ const sampleListings = [
     amenities: ["wifi", "AC", "parking"],
     safetyItems: ["fire extinguisher"],
     images: [{
-      url: "https://images.unsplash.com/photo-1616594039964-ae9021a400a0?q=80&w=580&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      filename: "cp_hotel_1",
+      url: "https://res.cloudinary.com/dtaewoa2u/image/upload/v1782493036/wanderStay_DEV/optimized-seed/wp-45.jpg",
+      filename: "wanderStay_DEV/optimized-seed/wp-45",
       category: "additional"
     },
     {
-      url: "https://images.unsplash.com/photo-1617228069096-4638a7ffc906?q=80&w=871&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      filename: "cp_hotel_2",
+      url: "https://res.cloudinary.com/dtaewoa2u/image/upload/v1782493037/wanderStay_DEV/optimized-seed/wp-46.jpg",
+      filename: "wanderStay_DEV/optimized-seed/wp-46",
       category: "additional"
     }]
   },
@@ -647,13 +642,13 @@ const sampleListings = [
     amenities: ["wifi", "AC", "parking"],
     safetyItems: ["first aid kit"],
     images: [{
-      url: "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      filename: "bani_park_1",
+      url: "https://res.cloudinary.com/dtaewoa2u/image/upload/v1782493038/wanderStay_DEV/optimized-seed/wp-47.jpg",
+      filename: "wanderStay_DEV/optimized-seed/wp-47",
       category: "additional"
     },
     {
-      url: "https://images.unsplash.com/photo-1631889993959-41b4e9c6e3c5?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      filename: "bani_park_2",
+      url: "https://res.cloudinary.com/dtaewoa2u/image/upload/v1782493039/wanderStay_DEV/optimized-seed/wp-48.jpg",
+      filename: "wanderStay_DEV/optimized-seed/wp-48",
       category: "additional"
     }]
   },
@@ -675,13 +670,13 @@ const sampleListings = [
     amenities: ["wifi", "AC", "parking", "garden"],
     safetyItems: ["fire extinguisher", "first aid kit"],
     images: [{
-      url: "https://plus.unsplash.com/premium_photo-1661954372617-15780178eb2e?q=80&w=1160&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      filename: "civil_villa_1",
+      url: "https://res.cloudinary.com/dtaewoa2u/image/upload/v1782493040/wanderStay_DEV/optimized-seed/wp-49.jpg",
+      filename: "wanderStay_DEV/optimized-seed/wp-49",
       category: "additional"
     },
     {
-      url: "https://images.unsplash.com/photo-1598928506311-c55ded91a20c?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      filename: "civil_villa_2",
+      url: "https://res.cloudinary.com/dtaewoa2u/image/upload/v1782493042/wanderStay_DEV/optimized-seed/wp-50.jpg",
+      filename: "wanderStay_DEV/optimized-seed/wp-50",
       category: "additional"
     }]
   },
@@ -703,13 +698,13 @@ const sampleListings = [
     amenities: ["wifi"],
     safetyItems: ["smoke alarm"],
     images: [{
-      url: "https://images.unsplash.com/photo-1673687782286-674e29c9bf9e?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      filename: "saket_shared_1",
+      url: "https://res.cloudinary.com/dtaewoa2u/image/upload/v1782493044/wanderStay_DEV/optimized-seed/wp-51.jpg",
+      filename: "wanderStay_DEV/optimized-seed/wp-51",
       category: "additional"
     },
     {
-      url: "https://images.unsplash.com/photo-1600488999585-e4364713b90a?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      filename: "saket_shared_2",
+      url: "https://res.cloudinary.com/dtaewoa2u/image/upload/v1782493045/wanderStay_DEV/optimized-seed/wp-52.jpg",
+      filename: "wanderStay_DEV/optimized-seed/wp-52",
       category: "additional"
     }]
   },
@@ -731,13 +726,13 @@ const sampleListings = [
     amenities: ["wifi", "AC", "kitchen"],
     safetyItems: ["fire extinguisher"],
     images: [{
-      url: "https://images.unsplash.com/photo-1515263487990-61b07816b324?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      filename: "raja_park_1",
+      url: "https://res.cloudinary.com/dtaewoa2u/image/upload/v1782493046/wanderStay_DEV/optimized-seed/wp-53.jpg",
+      filename: "wanderStay_DEV/optimized-seed/wp-53",
       category: "additional"
     },
     {
-      url: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      filename: "raja_park_2",
+      url: "https://res.cloudinary.com/dtaewoa2u/image/upload/v1782493047/wanderStay_DEV/optimized-seed/wp-54.jpg",
+      filename: "wanderStay_DEV/optimized-seed/wp-54",
       category: "additional"
     }]
   },
@@ -760,13 +755,13 @@ const sampleListings = [
     amenities: ["wifi", "heater", "parking"],
     safetyItems: ["first aid kit"],
     images: [{
-      url: "https://images.unsplash.com/photo-1515496281361-241a540151a5?q=80&w=871&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      filename: "listingImage",
+      url: "https://res.cloudinary.com/dtaewoa2u/image/upload/v1782493049/wanderStay_DEV/optimized-seed/wp-55.jpg",
+      filename: "wanderStay_DEV/optimized-seed/wp-55",
       category: "additional"
     },
     {
-      url: "https://images.unsplash.com/photo-1704241723786-b0dac5f1fcf5?q=80&w=1031&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      filename: "listingImage",
+      url: "https://res.cloudinary.com/dtaewoa2u/image/upload/v1782493050/wanderStay_DEV/optimized-seed/wp-56.jpg",
+      filename: "wanderStay_DEV/optimized-seed/wp-56",
       category: "additional"
     }]
   },
@@ -788,13 +783,13 @@ const sampleListings = [
     amenities: ["wifi", "heater"],
     safetyItems: ["smoke alarm"],
     images: [{
-      url: "https://images.unsplash.com/photo-1597256817041-0c75c0633658?q=80&w=849&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      filename: "listingImage",
+      url: "https://res.cloudinary.com/dtaewoa2u/image/upload/v1782493052/wanderStay_DEV/optimized-seed/wp-57.jpg",
+      filename: "wanderStay_DEV/optimized-seed/wp-57",
       category: "additional"
     },
     {
-      url: "https://images.unsplash.com/photo-1629140727571-9b5c6f6267b4?q=80&w=327&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      filename: "listingImage",
+      url: "https://res.cloudinary.com/dtaewoa2u/image/upload/v1782493053/wanderStay_DEV/optimized-seed/wp-58.jpg",
+      filename: "wanderStay_DEV/optimized-seed/wp-58",
       category: "additional"
     }]
   },
@@ -816,13 +811,13 @@ const sampleListings = [
     amenities: ["wifi", "heater", "parking"],
     safetyItems: ["fire extinguisher"],
     images: [{
-      url: "https://plus.unsplash.com/premium_photo-1675716926733-469add3ea1c0?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      filename: "listingImage",
+      url: "https://res.cloudinary.com/dtaewoa2u/image/upload/v1782493054/wanderStay_DEV/optimized-seed/wp-59.jpg",
+      filename: "wanderStay_DEV/optimized-seed/wp-59",
       category: "additional"
     },
     {
-      url: "https://plus.unsplash.com/premium_photo-1725408069039-17853912f8ce?q=80&w=869&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      filename: "listingImage",
+      url: "https://res.cloudinary.com/dtaewoa2u/image/upload/v1782493055/wanderStay_DEV/optimized-seed/wp-60.jpg",
+      filename: "wanderStay_DEV/optimized-seed/wp-60",
       category: "additional"
     }]
   },
@@ -844,13 +839,13 @@ const sampleListings = [
     amenities: ["wifi", "heater", "parking", "kitchen"],
     safetyItems: ["fire extinguisher", "first aid kit"],
     images: [{
-      url: "https://images.unsplash.com/photo-1556630279-0ecfac70eaf2?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      filename: "listingImage",
+      url: "https://res.cloudinary.com/dtaewoa2u/image/upload/v1782493056/wanderStay_DEV/optimized-seed/wp-61.jpg",
+      filename: "wanderStay_DEV/optimized-seed/wp-61",
       category: "additional"
     },
     {
-      url: "https://plus.unsplash.com/premium_photo-1722680738736-66a4cdc08923?q=80&w=791&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      filename: "listingImage",
+      url: "https://res.cloudinary.com/dtaewoa2u/image/upload/v1782493058/wanderStay_DEV/optimized-seed/wp-62.jpg",
+      filename: "wanderStay_DEV/optimized-seed/wp-62",
       category: "additional"
     }]
   },
@@ -872,13 +867,13 @@ const sampleListings = [
     amenities: ["wifi", "heater"],
     safetyItems: ["first aid kit"],
     images: [{
-      url: "https://images.unsplash.com/photo-1698970105874-3b67848fb913?q=80&w=435&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      filename: "listingImage",
+      url: "https://res.cloudinary.com/dtaewoa2u/image/upload/v1782493059/wanderStay_DEV/optimized-seed/wp-63.jpg",
+      filename: "wanderStay_DEV/optimized-seed/wp-63",
       category: "additional"
     },
     {
-      url: "https://plus.unsplash.com/premium_photo-1668196796572-36e355bd719a?q=80&w=775&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      filename: "listingImage",
+      url: "https://res.cloudinary.com/dtaewoa2u/image/upload/v1782493061/wanderStay_DEV/optimized-seed/wp-64.jpg",
+      filename: "wanderStay_DEV/optimized-seed/wp-64",
       category: "additional"
     }]
   },
@@ -901,13 +896,13 @@ const sampleListings = [
     amenities: ["wifi", "heater", "parking"],
     safetyItems: ["first aid kit"],
     images: [{
-      url: "https://images.unsplash.com/photo-1677820915366-27d887c9b872?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8b2xkJTIwbWFuYWxpfGVufDB8fDB8fHww",
-      filename: "listingImage",
+      url: "https://res.cloudinary.com/dtaewoa2u/image/upload/v1782493062/wanderStay_DEV/optimized-seed/wp-65.jpg",
+      filename: "wanderStay_DEV/optimized-seed/wp-65",
       category: "additional"
     },
     {
-      url: "https://images.unsplash.com/photo-1672859772739-1879813239eb?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      filename: "listingImage",
+      url: "https://res.cloudinary.com/dtaewoa2u/image/upload/v1782493064/wanderStay_DEV/optimized-seed/wp-66.jpg",
+      filename: "wanderStay_DEV/optimized-seed/wp-66",
       category: "additional"
     }]
   },
@@ -929,13 +924,13 @@ const sampleListings = [
     amenities: ["wifi", "heater"],
     safetyItems: ["smoke alarm"],
     images: [{
-      url: "https://images.unsplash.com/photo-1651475599186-7283220effdd?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      filename: "listingImage",
+      url: "https://res.cloudinary.com/dtaewoa2u/image/upload/v1782493065/wanderStay_DEV/optimized-seed/wp-67.jpg",
+      filename: "wanderStay_DEV/optimized-seed/wp-67",
       category: "additional"
     },
     {
-      url: "https://images.unsplash.com/photo-1711943729004-e392d32b46c8?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      filename: "listingImage",
+      url: "https://res.cloudinary.com/dtaewoa2u/image/upload/v1782493066/wanderStay_DEV/optimized-seed/wp-68.jpg",
+      filename: "wanderStay_DEV/optimized-seed/wp-68",
       category: "additional"
     }]
   },
@@ -957,13 +952,13 @@ const sampleListings = [
     amenities: ["wifi", "heater", "kitchen"],
     safetyItems: ["fire extinguisher"],
     images: [{
-      url: "https://images.unsplash.com/photo-1695272811289-8a44997be013?q=80&w=435&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      filename: "listingImage",
+      url: "https://res.cloudinary.com/dtaewoa2u/image/upload/v1782493068/wanderStay_DEV/optimized-seed/wp-69.jpg",
+      filename: "wanderStay_DEV/optimized-seed/wp-69",
       category: "additional"
     },
     {
-      url: "https://images.unsplash.com/photo-1726090401458-7abb00f7450c?q=80&w=871&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      filename: "listingImage",
+      url: "https://res.cloudinary.com/dtaewoa2u/image/upload/v1782493069/wanderStay_DEV/optimized-seed/wp-70.jpg",
+      filename: "wanderStay_DEV/optimized-seed/wp-70",
       category: "additional"
     }]
   },
@@ -985,13 +980,13 @@ const sampleListings = [
     amenities: ["wifi", "heater", "parking"],
     safetyItems: ["first aid kit"],
     images: [{
-      url: "https://images.unsplash.com/photo-1739662088066-2d0f468f96e7?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      filename: "listingImage",
+      url: "https://res.cloudinary.com/dtaewoa2u/image/upload/v1782493071/wanderStay_DEV/optimized-seed/wp-71.jpg",
+      filename: "wanderStay_DEV/optimized-seed/wp-71",
       category: "additional"
     },
     {
-      url: "https://images.unsplash.com/photo-1594037666209-211d7c8c257d?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      filename: "listingImage",
+      url: "https://res.cloudinary.com/dtaewoa2u/image/upload/v1782493072/wanderStay_DEV/optimized-seed/wp-72.jpg",
+      filename: "wanderStay_DEV/optimized-seed/wp-72",
       category: "additional"
     }]
   },
@@ -1013,13 +1008,13 @@ const sampleListings = [
     amenities: ["wifi", "heater", "parking", "kitchen"],
     safetyItems: ["fire extinguisher", "first aid kit"],
     images: [{
-      url: "https://plus.unsplash.com/premium_photo-1734549548001-8b351b111dc9?q=80&w=871&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      filename: "listingImage",
+      url: "https://res.cloudinary.com/dtaewoa2u/image/upload/v1782493073/wanderStay_DEV/optimized-seed/wp-73.jpg",
+      filename: "wanderStay_DEV/optimized-seed/wp-73",
       category: "additional"
     },
     {
-      url: "https://plus.unsplash.com/premium_photo-1734549547856-068dadb976eb?q=80&w=871&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      filename: "listingImage",
+      url: "https://res.cloudinary.com/dtaewoa2u/image/upload/v1782493074/wanderStay_DEV/optimized-seed/wp-74.jpg",
+      filename: "wanderStay_DEV/optimized-seed/wp-74",
       category: "additional"
     }]
   },
@@ -1042,13 +1037,13 @@ const sampleListings = [
     amenities: ["wifi", "breakfast", "scenic views"],
     safetyItems: ["first aid kit"],
     images: [{
-      url: "https://plus.unsplash.com/premium_photo-1694475205503-d6c6a71f03bc?q=80&w=901&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      filename: "listingImage",
+      url: "https://res.cloudinary.com/dtaewoa2u/image/upload/v1782493076/wanderStay_DEV/optimized-seed/wp-75.jpg",
+      filename: "wanderStay_DEV/optimized-seed/wp-75",
       category: "additional"
     },
     {
-      url: "https://plus.unsplash.com/premium_photo-1697729442042-c071ef0415b0?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      filename: "listingImage",
+      url: "https://res.cloudinary.com/dtaewoa2u/image/upload/v1782493077/wanderStay_DEV/optimized-seed/wp-76.jpg",
+      filename: "wanderStay_DEV/optimized-seed/wp-76",
       category: "additional"
     }]
   },
@@ -1070,13 +1065,13 @@ const sampleListings = [
     amenities: ["wifi", "breakfast", "parking", "scenic views"],
     safetyItems: ["fire extinguisher"],
     images: [{
-      url: "https://images.unsplash.com/photo-1570565151086-cda88c54270f?q=80&w=812&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      filename: "listingImage",
+      url: "https://res.cloudinary.com/dtaewoa2u/image/upload/v1782493079/wanderStay_DEV/optimized-seed/wp-77.jpg",
+      filename: "wanderStay_DEV/optimized-seed/wp-77",
       category: "additional"
     },
     {
-      url: "https://images.unsplash.com/photo-1557973350-f61cc5d1a5ff?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      filename: "listingImage",
+      url: "https://res.cloudinary.com/dtaewoa2u/image/upload/v1782493080/wanderStay_DEV/optimized-seed/wp-78.jpg",
+      filename: "wanderStay_DEV/optimized-seed/wp-78",
       category: "additional"
     }]
   },
@@ -1098,13 +1093,13 @@ const sampleListings = [
     amenities: ["wifi", "pool", "breakfast", "parking"],
     safetyItems: ["fire extinguisher", "first aid kit"],
     images: [{
-      url: "https://plus.unsplash.com/premium_photo-1682377521724-ececd24a83b4?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      filename: "listingImage",
+      url: "https://res.cloudinary.com/dtaewoa2u/image/upload/v1782493082/wanderStay_DEV/optimized-seed/wp-79.jpg",
+      filename: "wanderStay_DEV/optimized-seed/wp-79",
       category: "additional"
     },
     {
-      url: "https://plus.unsplash.com/premium_photo-1687960117069-567a456fe5f3?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      filename: "listingImage",
+      url: "https://res.cloudinary.com/dtaewoa2u/image/upload/v1782493083/wanderStay_DEV/optimized-seed/wp-80.jpg",
+      filename: "wanderStay_DEV/optimized-seed/wp-80",
       category: "additional"
     }]
   },
@@ -1126,13 +1121,13 @@ const sampleListings = [
     amenities: ["wifi", "breakfast", "scenic views"],
     safetyItems: ["first aid kit"],
     images: [{
-      url: "https://images.unsplash.com/photo-1562182384-08115de5ee97?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      filename: "listingImage",
+      url: "https://res.cloudinary.com/dtaewoa2u/image/upload/v1782493084/wanderStay_DEV/optimized-seed/wp-81.jpg",
+      filename: "wanderStay_DEV/optimized-seed/wp-81",
       category: "additional"
     },
     {
-      url: "https://images.unsplash.com/photo-1674498260932-6f7d8eed6d9f?q=80&w=773&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      filename: "listingImage",
+      url: "https://res.cloudinary.com/dtaewoa2u/image/upload/v1782493085/wanderStay_DEV/optimized-seed/wp-82.jpg",
+      filename: "wanderStay_DEV/optimized-seed/wp-82",
       category: "additional"
     }]
   },
@@ -1154,13 +1149,13 @@ const sampleListings = [
     amenities: ["wifi", "breakfast", "parking"],
     safetyItems: ["smoke alarm"],
     images: [{
-      url: "https://plus.unsplash.com/premium_photo-1733493684000-9e32eaf89c60?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      filename: "listingImage",
+      url: "https://res.cloudinary.com/dtaewoa2u/image/upload/v1782493087/wanderStay_DEV/optimized-seed/wp-83.jpg",
+      filename: "wanderStay_DEV/optimized-seed/wp-83",
       category: "additional"
     },
     {
-      url: "https://images.unsplash.com/photo-1568495248636-6432b97bd949?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      filename: "listingImage",
+      url: "https://res.cloudinary.com/dtaewoa2u/image/upload/v1782493088/wanderStay_DEV/optimized-seed/wp-84.jpg",
+      filename: "wanderStay_DEV/optimized-seed/wp-84",
       category: "additional"
     }]
   },
@@ -1185,13 +1180,13 @@ const sampleListings = [
     amenities: ["wifi", "pool", "breakfast", "scenic views", "parking"],
     safetyItems: ["fire extinguisher", "first aid kit"],
     images: [{
-      url: "https://images.unsplash.com/photo-1637946094815-291767647026?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      filename: "listingImage",
+      url: "https://res.cloudinary.com/dtaewoa2u/image/upload/v1782493089/wanderStay_DEV/optimized-seed/wp-85.jpg",
+      filename: "wanderStay_DEV/optimized-seed/wp-85",
       category: "additional"
     },
     {
-      url: "https://plus.unsplash.com/premium_photo-1686090449403-43c24a6a4f79?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      filename: "listingImage",
+      url: "https://res.cloudinary.com/dtaewoa2u/image/upload/v1782493091/wanderStay_DEV/optimized-seed/wp-86.jpg",
+      filename: "wanderStay_DEV/optimized-seed/wp-86",
       category: "additional"
     }]
   },
@@ -1213,13 +1208,13 @@ const sampleListings = [
     amenities: ["wifi", "breakfast", "scenic views", "parking"],
     safetyItems: ["first aid kit"],
     images: [{
-      url: "https://images.unsplash.com/photo-1641232458416-feace752b346?q=80&w=1632&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      filename: "listingImage",
+      url: "https://res.cloudinary.com/dtaewoa2u/image/upload/v1782493092/wanderStay_DEV/optimized-seed/wp-87.jpg",
+      filename: "wanderStay_DEV/optimized-seed/wp-87",
       category: "additional"
     },
     {
-      url: "https://plus.unsplash.com/premium_photo-1675616563084-63d1f129623d?q=80&w=869&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      filename: "listingImage",
+      url: "https://res.cloudinary.com/dtaewoa2u/image/upload/v1782493093/wanderStay_DEV/optimized-seed/wp-88.jpg",
+      filename: "wanderStay_DEV/optimized-seed/wp-88",
       category: "additional"
     }]
   },
@@ -1241,13 +1236,13 @@ const sampleListings = [
     amenities: ["wifi", "pool", "breakfast", "scenic views"],
     safetyItems: ["fire extinguisher"],
     images: [{
-      url: "https://plus.unsplash.com/premium_photo-1687960116497-0dc41e1808a2?q=80&w=871&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      filename: "listingImage",
+      url: "https://res.cloudinary.com/dtaewoa2u/image/upload/v1782493094/wanderStay_DEV/optimized-seed/wp-89.jpg",
+      filename: "wanderStay_DEV/optimized-seed/wp-89",
       category: "additional"
     },
     {
-      url: "https://plus.unsplash.com/premium_photo-1687960116880-086e6fb4b404?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      filename: "listingImage",
+      url: "https://res.cloudinary.com/dtaewoa2u/image/upload/v1782493095/wanderStay_DEV/optimized-seed/wp-90.jpg",
+      filename: "wanderStay_DEV/optimized-seed/wp-90",
       category: "additional"
     }]
   },
@@ -1269,13 +1264,13 @@ const sampleListings = [
     amenities: ["wifi", "breakfast", "scenic views", "parking"],
     safetyItems: ["first aid kit"],
     images: [{
-      url: "https://images.unsplash.com/photo-1570127828934-c60aa3e1e5af?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      filename: "listingImage",
+      url: "https://res.cloudinary.com/dtaewoa2u/image/upload/v1782493097/wanderStay_DEV/optimized-seed/wp-91.jpg",
+      filename: "wanderStay_DEV/optimized-seed/wp-91",
       category: "additional"
     },
     {
-      url: "https://plus.unsplash.com/premium_photo-1686090448517-2f692cc45187?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      filename: "listingImage",
+      url: "https://res.cloudinary.com/dtaewoa2u/image/upload/v1782493098/wanderStay_DEV/optimized-seed/wp-92.jpg",
+      filename: "wanderStay_DEV/optimized-seed/wp-92",
       category: "additional"
     }]
   },
@@ -1297,13 +1292,13 @@ const sampleListings = [
     amenities: ["wifi", "pool", "breakfast", "scenic views", "parking"],
     safetyItems: ["fire extinguisher", "first aid kit"],
     images: [{
-      url: "https://plus.unsplash.com/premium_photo-1682377521625-c656fc1ff3e1?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      filename: "listingImage",
+      url: "https://res.cloudinary.com/dtaewoa2u/image/upload/v1782493099/wanderStay_DEV/optimized-seed/wp-93.jpg",
+      filename: "wanderStay_DEV/optimized-seed/wp-93",
       category: "additional"
     },
     {
-      url: "https://plus.unsplash.com/premium_photo-1682377521552-49d35c2c9704?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      filename: "listingImage",
+      url: "https://res.cloudinary.com/dtaewoa2u/image/upload/v1782493101/wanderStay_DEV/optimized-seed/wp-94.jpg",
+      filename: "wanderStay_DEV/optimized-seed/wp-94",
       category: "additional"
     }]
   },
@@ -1327,13 +1322,13 @@ const sampleListings = [
     amenities: ["wifi", "fan"],
     safetyItems: ["smoke alarm"],
     images: [{
-      url: "https://images.unsplash.com/photo-1619810230359-b2c2f61c49cd?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      filename: "listingImage",
+      url: "https://res.cloudinary.com/dtaewoa2u/image/upload/v1782493102/wanderStay_DEV/optimized-seed/wp-95.jpg",
+      filename: "wanderStay_DEV/optimized-seed/wp-95",
       category: "additional"
     },
     {
-      url: "https://plus.unsplash.com/premium_photo-1675615949691-342910bfaded?q=80&w=392&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      filename: "listingImage",
+      url: "https://res.cloudinary.com/dtaewoa2u/image/upload/v1782493103/wanderStay_DEV/optimized-seed/wp-96.jpg",
+      filename: "wanderStay_DEV/optimized-seed/wp-96",
       category: "additional"
     }]
   },
@@ -1355,13 +1350,13 @@ const sampleListings = [
     amenities: ["wifi", "fan"],
     safetyItems: ["smoke alarm"],
     images: [{
-      url: "https://images.unsplash.com/photo-1629140727571-9b5c6f6267b4?q=80&w=327&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      filename: "listingImage",
+      url: "https://res.cloudinary.com/dtaewoa2u/image/upload/v1782493104/wanderStay_DEV/optimized-seed/wp-97.jpg",
+      filename: "wanderStay_DEV/optimized-seed/wp-97",
       category: "additional"
     },
     {
-      url: "https://images.unsplash.com/photo-1660697261323-e703308416e3?q=80&w=435&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      filename: "listingImage",
+      url: "https://res.cloudinary.com/dtaewoa2u/image/upload/v1782493105/wanderStay_DEV/optimized-seed/wp-98.jpg",
+      filename: "wanderStay_DEV/optimized-seed/wp-98",
       category: "additional"
     }]
   },
@@ -1383,13 +1378,13 @@ const sampleListings = [
     amenities: ["wifi", "fan"],
     safetyItems: ["first aid kit"],
     images: [{
-      url: "https://images.unsplash.com/photo-1531835551805-16d864c8d311?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      filename: "listingImage",
+      url: "https://res.cloudinary.com/dtaewoa2u/image/upload/v1782493106/wanderStay_DEV/optimized-seed/wp-99.jpg",
+      filename: "wanderStay_DEV/optimized-seed/wp-99",
       category: "additional"
     },
     {
-      url: "https://images.unsplash.com/photo-1560448075-bb485b067938?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      filename: "listingImage",
+      url: "https://res.cloudinary.com/dtaewoa2u/image/upload/v1782493107/wanderStay_DEV/optimized-seed/wp-100.jpg",
+      filename: "wanderStay_DEV/optimized-seed/wp-100",
       category: "additional"
     }]
   },
@@ -1411,13 +1406,13 @@ const sampleListings = [
     amenities: ["wifi", "fan"],
     safetyItems: ["first aid kit"],
     images: [{
-      url: "https://images.unsplash.com/photo-1706186839147-0d708602587b?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      filename: "listingImage",
+      url: "https://res.cloudinary.com/dtaewoa2u/image/upload/v1782493108/wanderStay_DEV/optimized-seed/wp-101.jpg",
+      filename: "wanderStay_DEV/optimized-seed/wp-101",
       category: "additional"
     },
     {
-      url: "https://images.unsplash.com/photo-1540518614846-7eded433c457?q=80&w=857&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      filename: "listingImage",
+      url: "https://res.cloudinary.com/dtaewoa2u/image/upload/v1782493110/wanderStay_DEV/optimized-seed/wp-102.jpg",
+      filename: "wanderStay_DEV/optimized-seed/wp-102",
       category: "additional"
     }]
   },
@@ -1439,13 +1434,13 @@ const sampleListings = [
     amenities: ["wifi", "fan"],
     safetyItems: ["smoke alarm"],
     images: [{
-      url: "https://images.unsplash.com/photo-1658595148963-13b7da6dcd6d?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      filename: "listingImage",
+      url: "https://res.cloudinary.com/dtaewoa2u/image/upload/v1782493111/wanderStay_DEV/optimized-seed/wp-103.jpg",
+      filename: "wanderStay_DEV/optimized-seed/wp-103",
       category: "additional"
     },
     {
-      url: "https://images.unsplash.com/photo-1643949719317-4342d8d4031e?q=80&w=464&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      filename: "listingImage",
+      url: "https://res.cloudinary.com/dtaewoa2u/image/upload/v1782493112/wanderStay_DEV/optimized-seed/wp-104.jpg",
+      filename: "wanderStay_DEV/optimized-seed/wp-104",
       category: "additional"
     }]
   },
@@ -1468,13 +1463,13 @@ const sampleListings = [
     amenities: ["wifi", "fan"],
     safetyItems: ["smoke alarm"],
     images: [{
-      url: "https://images.unsplash.com/photo-1566665797739-1674de7a421a?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      filename: "listingImage",
+      url: "https://res.cloudinary.com/dtaewoa2u/image/upload/v1782493113/wanderStay_DEV/optimized-seed/wp-105.jpg",
+      filename: "wanderStay_DEV/optimized-seed/wp-105",
       category: "additional"
     },
     {
-      url: "https://images.unsplash.com/photo-1587527901949-ab0341697c1e?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      filename: "listingImage",
+      url: "https://res.cloudinary.com/dtaewoa2u/image/upload/v1782493114/wanderStay_DEV/optimized-seed/wp-106.jpg",
+      filename: "wanderStay_DEV/optimized-seed/wp-106",
       category: "additional"
     }]
   },
@@ -1496,13 +1491,13 @@ const sampleListings = [
     amenities: ["wifi", "fan"],
     safetyItems: ["first aid kit"],
     images: [{
-      url: "https://images.unsplash.com/photo-1572716903354-232e0a5f74b2?q=80&w=327&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      filename: "listingImage",
+      url: "https://res.cloudinary.com/dtaewoa2u/image/upload/v1782493116/wanderStay_DEV/optimized-seed/wp-107.jpg",
+      filename: "wanderStay_DEV/optimized-seed/wp-107",
       category: "additional"
     },
     {
-      url: "https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?q=80&w=871&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      filename: "listingImage",
+      url: "https://res.cloudinary.com/dtaewoa2u/image/upload/v1782493117/wanderStay_DEV/optimized-seed/wp-108.jpg",
+      filename: "wanderStay_DEV/optimized-seed/wp-108",
       category: "additional"
     }]
   },
@@ -1524,13 +1519,13 @@ const sampleListings = [
     amenities: ["wifi", "fan"],
     safetyItems: ["smoke alarm"],
     images: [{
-      url: "https://images.unsplash.com/photo-1611892440504-42a792e24d32?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      filename: "listingImage",
+      url: "https://res.cloudinary.com/dtaewoa2u/image/upload/v1782493118/wanderStay_DEV/optimized-seed/wp-109.jpg",
+      filename: "wanderStay_DEV/optimized-seed/wp-109",
       category: "additional"
     },
     {
-      url: "https://plus.unsplash.com/premium_photo-1681980021035-5db5823c974b?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      filename: "listingImage",
+      url: "https://res.cloudinary.com/dtaewoa2u/image/upload/v1782493120/wanderStay_DEV/optimized-seed/wp-110.jpg",
+      filename: "wanderStay_DEV/optimized-seed/wp-110",
       category: "additional"
     }]
   },
@@ -1552,13 +1547,13 @@ const sampleListings = [
     amenities: ["wifi", "fan"],
     safetyItems: ["first aid kit"],
     images: [{
-      url: "https://images.unsplash.com/photo-1663811397207-418a92396ad5?q=80&w=1528&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      filename: "listingImage",
+      url: "https://res.cloudinary.com/dtaewoa2u/image/upload/v1782493121/wanderStay_DEV/optimized-seed/wp-111.jpg",
+      filename: "wanderStay_DEV/optimized-seed/wp-111",
       category: "additional"
     },
     {
-      url: "https://images.unsplash.com/photo-1724582586508-8f06117dc979?q=80&w=464&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      filename: "listingImage",
+      url: "https://res.cloudinary.com/dtaewoa2u/image/upload/v1782493122/wanderStay_DEV/optimized-seed/wp-112.jpg",
+      filename: "wanderStay_DEV/optimized-seed/wp-112",
       category: "additional"
     }]
   },
@@ -1580,13 +1575,13 @@ const sampleListings = [
     amenities: ["wifi", "fan"],
     safetyItems: ["smoke alarm"],
     images: [{
-      url: "https://images.unsplash.com/photo-1686240202140-d7dd0ccf684f?q=80&w=435&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      filename: "listingImage",
+      url: "https://res.cloudinary.com/dtaewoa2u/image/upload/v1782493124/wanderStay_DEV/optimized-seed/wp-113.jpg",
+      filename: "wanderStay_DEV/optimized-seed/wp-113",
       category: "additional"
     },
     {
-      url: "https://plus.unsplash.com/premium_photo-1675537843200-78c1a0ea1736?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      filename: "listingImage",
+      url: "https://res.cloudinary.com/dtaewoa2u/image/upload/v1782493125/wanderStay_DEV/optimized-seed/wp-114.jpg",
+      filename: "wanderStay_DEV/optimized-seed/wp-114",
       category: "additional"
     }]
   },
@@ -1609,13 +1604,13 @@ const sampleListings = [
     amenities: ["wifi", "heater", "parking", "scenic views"],
     safetyItems: ["first aid kit"],
     images: [{
-      url: "https://images.unsplash.com/photo-1677820915366-27d887c9b872?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDE0fHx8ZW58MHx8fHx8",
-      filename: "listingImage",
+      url: "https://res.cloudinary.com/dtaewoa2u/image/upload/v1782493126/wanderStay_DEV/optimized-seed/wp-115.jpg",
+      filename: "wanderStay_DEV/optimized-seed/wp-115",
       category: "additional"
     },
     {
-      url: "https://plus.unsplash.com/premium_photo-1684445035187-c4bc7c96bc5d?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      filename: "listingImage",
+      url: "https://res.cloudinary.com/dtaewoa2u/image/upload/v1782493127/wanderStay_DEV/optimized-seed/wp-116.jpg",
+      filename: "wanderStay_DEV/optimized-seed/wp-116",
       category: "additional"
     }]
   },
@@ -1637,13 +1632,13 @@ const sampleListings = [
     amenities: ["wifi", "heater"],
     safetyItems: ["smoke alarm"],
     images: [{
-      url: "https://lh3.googleusercontent.com/p/AF1QipOzX7FoT6PCipVBUPUkxLJpH5GMIy3VK9WtAuiw=w252-h251-k-no",
-      filename: "listingImage",
+      url: "https://res.cloudinary.com/dtaewoa2u/image/upload/v1782493128/wanderStay_DEV/optimized-seed/wp-117.png",
+      filename: "wanderStay_DEV/optimized-seed/wp-117",
       category: "additional"
     },
     {
-      url: "https://lh6.googleusercontent.com/proxy/SHZmbqChTpQiJxrNu-b10SxtQKdoqYJAOzI5w_7-ET3xisjFaUVKz4_DuQIY9fGm3rYPVAZJkNjRcc4coRRY9SzOIUJqBM3zJgJSkN1zCWtvKrQkaYZB6GlPY8HEkRnsOOtoL_8fL10uFs67TOT3PZuLYRls9Q=w253-h190-k-no",
-      filename: "listingImage",
+      url: "https://res.cloudinary.com/dtaewoa2u/image/upload/v1782493129/wanderStay_DEV/optimized-seed/wp-118.jpg",
+      filename: "wanderStay_DEV/optimized-seed/wp-118",
       category: "additional"
     }]
   },
@@ -1665,13 +1660,13 @@ const sampleListings = [
     amenities: ["wifi", "heater", "scenic views"],
     safetyItems: ["first aid kit"],
     images: [{
-      url: "https://a0.muscache.com/im/pictures/hosting/Hosting-1578187887650554190/original/62c8c018-9008-406f-a758-d79234eadd26.jpeg?im_w=960",
-      filename: "listingImage",
+      url: "https://res.cloudinary.com/dtaewoa2u/image/upload/v1782493131/wanderStay_DEV/optimized-seed/wp-119.webp",
+      filename: "wanderStay_DEV/optimized-seed/wp-119",
       category: "additional"
     },
     {
-      url: "https://a0.muscache.com/im/pictures/hosting/Hosting-1578187887650554190/original/26de1e2e-db13-42ce-a4b8-9ea1f4f7caef.jpeg?im_w=720",
-      filename: "listingImage",
+      url: "https://res.cloudinary.com/dtaewoa2u/image/upload/v1782493132/wanderStay_DEV/optimized-seed/wp-120.webp",
+      filename: "wanderStay_DEV/optimized-seed/wp-120",
       category: "additional"
     }]
   },
@@ -1693,13 +1688,8 @@ const sampleListings = [
     amenities: ["wifi", "heater"],
     safetyItems: ["smoke alarm"],
     images: [{
-      url: "https://lh3.googleusercontent.com/gps-cs-s/AHVAweo5O1m7xMsCA7MlRkBFnvzokXszNwecEfYPadpjXn-V_9-CP9FeYU2z9rh_x7i0T9-2JyFBIxaCGlivfR_yOM2EJjpmcuAiJVSh9-TMRA-CioDzERFMsMxLJ8-X5dl4uv_laUY=w252-h504-k-no",
-      filename: "listingImage",
-      category: "additional"
-    },
-    {
-      url: "https://lh3.googleusercontent.com/p/AF1QipO0LZU7tXX4KnDvpDv06dbIGeXBCZr7XCo3YFST=w252-h189-k-no",
-      filename: "listingImage",
+      url: "https://res.cloudinary.com/dtaewoa2u/image/upload/v1782493133/wanderStay_DEV/optimized-seed/wp-122.jpg",
+      filename: "wanderStay_DEV/optimized-seed/wp-122",
       category: "additional"
     }]
   },
@@ -1721,13 +1711,13 @@ const sampleListings = [
     amenities: ["wifi", "heater", "parking", "scenic views"],
     safetyItems: ["fire extinguisher", "first aid kit"],
     images: [{
-      url: "https://www.saffronstays.com/_next/image?url=https%3A%2F%2Fik.imagekit.io%2F5tgxhsqev%2Fsaffronstays-media%2Fimage%2Fupload%2F1765376823631601336%3Ftr%3Dq-40%2Cf-webp&w=640&q=75",
-      filename: "listingImage",
+      url: "https://res.cloudinary.com/dtaewoa2u/image/upload/v1782493134/wanderStay_DEV/optimized-seed/wp-123.webp",
+      filename: "wanderStay_DEV/optimized-seed/wp-123",
       category: "additional"
     },
     {
-      url: "https://www.saffronstays.com/_next/image?url=https%3A%2F%2Fik.imagekit.io%2F5tgxhsqev%2Fsaffronstays-media%2Fimage%2Fupload%2F1765376827998760470%3Ftr%3Dq-40%2Cf-webp&w=640&q=75",
-      filename: "listingImage",
+      url: "https://res.cloudinary.com/dtaewoa2u/image/upload/v1782493135/wanderStay_DEV/optimized-seed/wp-124.webp",
+      filename: "wanderStay_DEV/optimized-seed/wp-124",
       category: "additional"
     }]
   }

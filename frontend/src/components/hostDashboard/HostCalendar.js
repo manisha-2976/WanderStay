@@ -4,6 +4,7 @@ import axios from "axios"
 import { useNavigate } from 'react-router-dom'
 import { useParams } from "react-router-dom";
 import { Outlet } from "react-router-dom";
+import toast from "react-hot-toast";
 
 
 export const HostCalendar = () => {
@@ -23,9 +24,8 @@ export const HostCalendar = () => {
             );
             setListings(res.data);
         } catch (err) {
-            console.log(err);
             const message = err.response?.data?.message || "Server error";
-            console.log(message);
+            toast.error(message);
         }
     };
 

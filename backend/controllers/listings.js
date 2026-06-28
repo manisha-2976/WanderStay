@@ -4,17 +4,20 @@ const mapToken = process.env.MAP_TOKEN
 const geocodingClient = mbxGeocoding({ accessToken: mapToken });
 const { formatArray } = require("../utils/formatArray");
 const openai = require("../utils/openaiService");
+const { getOptimizedImageUrl } = require("../utils/imageUrl");
 
 
 module.exports.index = async (req, res, next) => {
-  let listings = await Listing.find({}).select("title price images city").limit(40);
+  res.set("Cache-Control", "public, max-age=60, stale-while-revalidate=300");
+
+  const listings = await Listing.find({}).select("title price images city").slice("images", 1).limit(32).lean();
 
   const allListings = listings.map(listing => ({
     _id: listing._id,
     title: listing.title,
     price: listing.price,
     city: listing.city,
-    image: listing.images?.[0]?.url
+    image: getOptimizedImageUrl(listing.images?.[0]?.url, 320)
   }));
   res.json(allListings);
 }
@@ -83,7 +86,7 @@ module.exports.createListing = async (req, res, next) => {
 module.exports.showListing = async (req, res, next) => {
   let { id } = req.params;
   const listing = await Listing.findById(id)
-  .select("title price images description street city country guest bedroom bed bathroom amenities  safetyItems geometry reviews host")
+  .select("title price images description street city country guest bedroom bed bathroom amenities safetyItems geometry reviews host")
   .populate({path: "reviews",
       populate: {
         path: "user",
@@ -92,8 +95,23 @@ module.exports.showListing = async (req, res, next) => {
   .populate({
       path: "host",
       select: "firstName lastName"
+    }).slice("images", 2).lean();
+
+  if (!listing) {
+    return res.status(404).json({
+      message: "Listing not found"
     });
-  res.json(listing);
+  }
+
+  const optimizedImages = listing.images.map(image => ({
+    ...image,
+    url: getOptimizedImageUrl(image.url, 800)
+  }));
+
+  res.json({
+    ...listing,
+    images: optimizedImages
+  });
 }
 
 module.exports.hostListing = async (req, res) => {
@@ -103,7 +121,7 @@ module.exports.hostListing = async (req, res) => {
 
   const listings = hostListings.map(l => ({
     _id: l._id,
-    image: l.images?.[0]?.url || null,
+    image: getOptimizedImageUrl(l.images?.[0]?.url, 360) || null,
     title: l.title,
     street: l.street,
     city: l.city,

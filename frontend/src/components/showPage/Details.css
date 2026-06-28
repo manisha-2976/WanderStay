@@ -1,40 +1,39 @@
-.btns {
-  display: flex;
-}
-
-p {
-  font-size: 14px !important;
-}
-
-.delete {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-/* .card-text{
-  font-size: 14px;
+/* .detPage-calendar,
+.map-section {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 500px;
 } */
 
-.image-box {
-  flex: 1;
+.details-container p {
+  font-size: 14px !important;
 }
 
 .show-img {
   height: 22rem;
   object-fit: cover;
-  object-fit: cover;
   width: 100%;
 }
 
-/* AMENITIES ************ */
+.listing-facts {
+  color: rgb(14, 13, 13);
+}
+
+.host-avatar {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+}
+
+.listing-description {
+  white-space: pre-line;
+}
+
 .amenities-container {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 12px;
 }
 
-/* Box */
 .amenity-box {
   display: flex;
   align-items: center;
@@ -44,18 +43,15 @@ p {
   padding: 10px;
 }
 
-/* Icon */
 .icon {
   font-size: 18px;
 }
 
-/* Text */
 .label {
   color: #1c1c1c;
   font-size: 14px;
 }
 
-/* Booking-card */
 .booking-card {
   position: sticky;
   top: 90px;
@@ -67,8 +63,13 @@ p {
   width: 100% !important;
 }
 
+.map-placeholder {
+  max-height: 400px;
+}
+
 @media (max-width: 576px) {
-  .show-img .map-container{
+  .show-img,
+  .map-container {
     max-height: 15rem !important;
   }
 

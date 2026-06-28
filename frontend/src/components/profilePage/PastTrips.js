@@ -9,6 +9,7 @@ export const PastTrips = () => {
   const [loading, setLoading] = useState(true);
   const [showReview, setShowReview] = useState(false);
   const [listingId, setListingId] = useState(null);
+  const [error, setError] = useState("");
 
   useEffect(() => {
     const fetchBookings = async () => {
@@ -20,9 +21,8 @@ export const PastTrips = () => {
 
         setBookings(res.data);
       } catch (err) {
-        console.log(err);
         const message = err.response?.data?.message || "Server error";
-        console.log(message);
+        setError(message);
       } finally {
         setLoading(false);
       }
@@ -47,6 +47,8 @@ export const PastTrips = () => {
 
       {loading ? (
         <p>Loading past trips...</p>
+      ) : error ? (
+        <p className="text-danger">{error}</p>
       ) : pastBookings.length === 0 ? (
         <p>You have no past trips.</p>
       ) : (

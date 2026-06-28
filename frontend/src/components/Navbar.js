@@ -2,10 +2,13 @@ import { useEffect, useState, useRef } from 'react'
 import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { Link } from "react-router-dom";
-import axios from "axios";
 import { useNavigate, useLocation } from "react-router-dom";
 import { SearchBar } from './SearchBar';
 import { NavLink } from "react-router-dom";
+import { ReactComponent as CircleUserIcon } from "../assets/icons/circle-user.svg";
+import { ReactComponent as RocketIcon } from "../assets/icons/rocket.svg";
+import { ReactComponent as SuitcaseIcon } from "../assets/icons/suitcase.svg";
+import { ReactComponent as WordPressIcon } from "../assets/icons/wordpress-simple.svg";
 import "./Navbar.css"
 
 export const Navbar = () => {  
@@ -27,11 +30,16 @@ export const Navbar = () => {
   useEffect(() => {
     const fetchListings = async () => {
       try {
-        const res = await axios.get(`${process.env.REACT_APP_API_URL}/host/listings`,
-          { withCredentials: true });
-        setListings(res.data);
-      } catch (err) {
-        console.log(err);
+        const response = await fetch(
+          `${process.env.REACT_APP_API_URL}/host/listings`,
+          { credentials: "include" }
+        );
+
+        if (!response.ok) throw new Error();
+
+        setListings(await response.json());
+      } catch {
+        setListings([]);
       }
     }
     if (user) {
@@ -93,7 +101,7 @@ export const Navbar = () => {
       <nav className="navbar bg-body-light sticky-top border-bottom">
         <div className="container-fluid ps-1 pe-1">
           <Link className="navbar-brand d-flex align-items-center m-0 ms-1" to="/">
-            <i className="fa-brands fa-wordpress-simple fs-2 text-primary"></i>
+            <WordPressIcon className="brand-icon text-primary" aria-hidden="true" focusable="false" />
           </Link>
 
           <div className="navbar-nav">
@@ -186,7 +194,7 @@ export const Navbar = () => {
         <NavLink to="/"
           className={({ isActive }) => `navMenu text-center ${isActive ? "mobileMenu selected" : "mobileMenu"}`}
         >
-          <i className="nav-icon fa-solid fa-rocket"></i>
+          <RocketIcon className="nav-icon" aria-hidden="true" focusable="false" />
           <p>Explore</p>
         </NavLink>
 
@@ -194,7 +202,7 @@ export const Navbar = () => {
           <NavLink to="/users/trips"
             className={({ isActive }) => `text-center ${isActive ? "mobileMenu selected" : "mobileMenu"}`}
           >
-            <span><i className="nav-icon fa-solid fa-suitcase"></i></span>
+            <SuitcaseIcon className="nav-icon" aria-hidden="true" focusable="false" />
             <p>Trips</p>
           </NavLink>
         )}
@@ -203,23 +211,16 @@ export const Navbar = () => {
           <NavLink to="/users/profile"
             className={({ isActive }) => `text-center ${isActive ? "mobileMenu selected" : "mobileMenu"}`}
           >
-            <i className="nav-icon fa-regular fa-circle-user"></i>
+            <CircleUserIcon className="nav-icon" aria-hidden="true" focusable="false" />
             <p>Profile</p>
           </NavLink>
         )}
-
-        {/* <NavLink to="/"
-          className={({ isActive }) => `text-center ${isActive ? "mobileMenu selected" : "mobileMenu"}`}
-        >
-          <i className="nav-icon fa-solid fa-holly-berry"></i>
-          <p>Plan Trip</p>
-        </NavLink> */}
 
         {!user &&
           <NavLink to="/users/login"
             className={({ isActive }) => `text-center ${isActive ? "mobileMenu selected" : "mobileMenu"}`}
           >
-            <span><i className="nav-icon nav-link fa-solid fa-suitcase"></i></span>
+            <SuitcaseIcon className="nav-icon" aria-hidden="true" focusable="false" />
             <p>Log in</p>
 
           </NavLink>}

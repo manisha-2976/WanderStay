@@ -7,6 +7,7 @@ const openai = new OpenAI({
 
 const Listing = require("../models/listings.js");
 const Booking = require("../models/bookings.js");
+const { getOptimizedImageUrl } = require("../utils/imageUrl");
 // const getFiltersFromAI = require("../utils/openai.js");
 
 const normalizeStart = (date) => {
@@ -112,7 +113,7 @@ router.post("/ai-search", async (req, res) => {
       _id: l._id,
       title: l.title,
       price: l.price,
-      image: l.images?.[0]?.url || null,
+      image: getOptimizedImageUrl(l.images?.[0]?.url, 500) || null,
       guest: l.guest,
       city: l.city
     }));

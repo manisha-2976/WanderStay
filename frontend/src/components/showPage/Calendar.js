@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
 import { DateRange } from "react-date-range";
+import toast from "react-hot-toast";
 import "./Calendar.css";
 
 export const Calendar = ({ fullyBookedDates, onDateChange, selectedDates, onClose }) => {
@@ -34,7 +35,7 @@ export const Calendar = ({ fullyBookedDates, onDateChange, selectedDates, onClos
     const startKey = startDate?.toLocaleDateString("en-CA");
 
     if (fullyBookedDates?.includes(startKey)) {
-      alert("This date is fully booked");
+      toast.error("This date is fully booked");
       return;
     }
 

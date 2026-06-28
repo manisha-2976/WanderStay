@@ -1,14 +1,40 @@
-import { lazy, Suspense, useEffect, useState, } from "react";
+import { lazy, Suspense, useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { Calendar } from "./Calendar";
 import { BookingCard } from "./BookingCard";
-import { amenitiesMap } from "./AmenitiesIcons";
-import { safetyMap } from "./AmenitiesIcons";
+import { amenitiesMap, safetyMap } from "./AmenitiesIcons";
+import { FaRandom } from "react-icons/fa";
 import { Rating } from "react-simple-star-rating";
 import "./Details.css";
 
 const Mapbox = lazy(() => import("./Mapbox").then(module => ({ default: module.Mapbox })));
+
+const normalizeKey = (item) => item?.toLowerCase().replace(/\s+/g, "_");
+
+const FeatureList = ({ className, title, items, definitions, showUnknown = false }) => {
+  if (items.length === 0) return null;
+
+  return (
+    <section className={className}>
+      <h6 className="fw-semibold">{title}</h6>
+      <div className="amenities-container">
+        {items.map((item, index) => {
+          const feature = definitions[normalizeKey(item)];
+
+          if (!feature && !showUnknown) return null;
+
+          return (
+            <div key={`${item}-${index}`} className="amenity-box">
+              <span className="icon">{feature?.icon || <FaRandom />}</span>
+              <span className="label">{feature?.label || item}</span>
+            </div>
+          );
+        })}
+      </div>
+    </section>
+  );
+};
 
 export const Details = () => {
   const { id } = useParams();
@@ -16,6 +42,7 @@ export const Details = () => {
   const [listing, setListing] = useState(null);
   const [fullyBookedDates, setFullyBookedDates] = useState([]);
   const [selectedDates, setSelectedDates] = useState(null);
+  const [error, setError] = useState("");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -26,129 +53,112 @@ export const Details = () => {
         ]);
 
         setListing(listingRes.data);
-        setFullyBookedDates(calendarRes.data.fullyBookedDates);
+        setFullyBookedDates(calendarRes.data.bookedDates || []);
 
-      } catch (error) {
-        console.error(error);
+      } catch {
+        setError("Unable to load listing details");
       }
     };
 
     fetchData();
   }, [id]);
 
+  if (error) {
+    return <p className="text-danger text-center mt-4">{error}</p>;
+  }
+
   if (!listing) {
     return null;
   }
 
-  const amenitiesList = Array.isArray(listing?.amenities)
+  const amenitiesList = Array.isArray(listing.amenities)
     ? listing.amenities
     : [];
 
-  const safetyList = Array.isArray(listing?.safetyItems)
+  const safetyList = Array.isArray(listing.safetyItems)
     ? listing.safetyItems
     : [];
 
-  const normalizeKey = (item) => {
-    return item?.toLowerCase().replace(/\s+/g, "_");
-  };
+  const [primaryImage, secondaryImage] = listing.images || [];
 
   return (
     <div className="mt-3">
       <div className="details-container p-5 pt-3">
-        <h4> <b>{listing?.title}</b> </h4>
+        <h4><b>{listing.title}</b></h4>
 
-        <div className="show-card border-bottom mb-5 pb-5">
+        <div className="border-bottom mb-5 pb-5">
 
-          <div className="row mt-1 g-2 mb-2 img-container">
-            <div className="col-12 col-md-6">
-              <img src={listing?.images?.[0]?.url} alt={listing?.title || "Listing"} className="w-100 show-img" />
+          <div className="row mt-1 g-2 mb-2">
+            <div className={secondaryImage ? "col-12 col-md-6" : "col-12"}>
+              <img loading="eager"
+                fetchPriority="high"
+                decoding="async"
+                width="800"
+                height="600"
+                src={primaryImage?.url} alt={listing.title} className="w-100 show-img" />
             </div>
 
-            <div className="col-md-6 d-none d-md-block">
-              <img src={listing?.images?.[1]?.url} alt={`${listing?.title || "Listing"} view`} className="w-100 show-img" />
-            </div>
+            {secondaryImage && (
+              <div className="col-md-6 d-none d-md-block">
+                <img
+                  loading="lazy"
+                  fetchPriority="low"
+                  decoding="async"
+                  src={secondaryImage.url} alt={`${listing.title} view`} className="w-100 show-img" />
+              </div>
+            )}
           </div>
 
-          {/* LEFT PANEL*/}
           <div className="row m-0">
             <div className="col-12 col-md-7 col-lg-7 p-0">
               <h5 className="card-text mb-1"><b>
-                {listing?.street}, {listing?.city}, {listing?.country}</b>
+                {listing.street}, {listing.city}, {listing.country}</b>
               </h5>
-              <div style={{ color: "rgb(14, 13, 13)" }} className="d-flex gap-3" >
-                <p>{listing?.guest} guests</p>
-                <p>{listing?.bedroom} bedroom</p>
-                <p>{listing?.bed} bed</p>
-                <p>{listing?.bathroom} bathroom</p>
+              <div className="listing-facts d-flex gap-3">
+                <p>{listing.guest} guests</p>
+                <p>{listing.bedroom} bedroom</p>
+                <p>{listing.bed} bed</p>
+                <p>{listing.bathroom} bathroom</p>
               </div>
-              <h6 className="card-text mt-2 fw-semibold">&#8377; {listing?.price?.toLocaleString("en-IN")}/night</h6>
+              <h6 className="card-text mt-2 fw-semibold">&#8377; {listing.price?.toLocaleString("en-IN")}/night</h6>
 
               <div className="d-flex pt-3 mb-4 mt-4 gap-4 border-bottom border-top pb-3">
-                <img src={listing?.images?.[0]?.url} alt="Listing_image" style={{ height: "60px", width: "60px" }} className="rounded-5" />
+                <img src={primaryImage?.url} alt="" className="host-avatar rounded-5" />
                 <div className="pt-2">
-                  <h6 className="mb-0">hosted by {listing?.host?.firstName} {listing?.host?.lastName}</h6>
+                  <h6 className="mb-0">hosted by {listing.host?.firstName} {listing.host?.lastName}</h6>
                   <small>super host . trusted 1 year</small>
                 </div>
               </div>
 
-              <p style={{ whiteSpace: "pre-line" }} className="card-text">
-                {listing?.description?.replace(/\.\s*/g, ".\n\n")}
+              <p className="card-text listing-description">
+                {listing.description?.replace(/\.\s*/g, ".\n\n")}
               </p>
 
-              <div className="mt-3">
-                {amenitiesList.length > 0 && <h6 className="fw-semibold amenities-heading">What this place offers</h6>}
+              <FeatureList
+                className="mt-3"
+                title="What this place offers"
+                items={amenitiesList}
+                definitions={amenitiesMap}
+              />
 
-                <div className="amenities-container">
-                  {amenitiesList.map((item, index) => {
-                    const key = normalizeKey(item);
-                    const amenity = amenitiesMap[key];
-
-                    if (!amenity) return null;
-
-                    return (
-                      <div key={index} className="amenity-box">
-                        <span className="icon">{amenity.icon}</span>
-                        <span className="label">{amenity.label}</span>
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-
-              <div className="amenities-container mt-4">
-                {safetyList.length > 0 && <h6 className="fw-semibold">Safety items</h6>} <br></br>
-                {safetyList.map((item, index) => {
-                  const key = normalizeKey(item);
-                  const safety = safetyMap[key];
-
-                  if (!safety) {
-                    return (
-                      <div key={index} className="amenity-box">
-                        <span><i className="fa-solid fa-shuffle"></i></span>
-                        <span>{item}</span>
-                      </div>
-                    );
-                  }
-                  return (
-                    <div key={index} className="amenity-box">
-                      <span className="icon">{safety.icon}</span>
-                      <span className="label">{safety.label}</span>
-                    </div>
-                  );
-                })}
-              </div>
+              <FeatureList
+                className="mt-4"
+                title="Safety items"
+                items={safetyList}
+                definitions={safetyMap}
+                showUnknown
+              />
 
               <div className="mt-5 detPage-calendar">
                 <Calendar
-                  fullyBookedDates={fullyBookedDates || []}
+                  fullyBookedDates={fullyBookedDates}
                   onDateChange={setSelectedDates}
                   selectedDates={selectedDates}
-                  onClose={() => {}}
+                  onClose={() => { }}
                 />
               </div>
             </div>
 
-            {/* RIGHT PANEL */}
             <div className="col-12 col-md-5 col-lg-5 d-flex justify-content-end pe-0 pt-3 booking-card">
               <BookingCard
                 listing={listing}
@@ -160,11 +170,11 @@ export const Details = () => {
           </div>
         </div>
 
-        <div className="map mb-5">
-          <Suspense fallback={<div className="map-container bg-light" style={{ maxHeight: "400px", width: "100%" }} />}>
+        <div className="map-section mb-5">
+          <Suspense fallback={<div className="map-container map-placeholder bg-light" />}>
             <Mapbox
-              coordinates={listing?.geometry.coordinates}
-              city={listing?.city}
+              coordinates={listing.geometry?.coordinates}
+              city={listing.city}
             />
           </Suspense>
         </div>
@@ -174,11 +184,11 @@ export const Details = () => {
 
           <div className="row g-3">
 
-            {listing?.reviews?.map((review, index) => (
+            {listing.reviews?.map((review, index) => (
 
               <div
                 key={review._id || index}
-                className="col-12 col-sm-6 col-lg-5"  // responsive columns
+                className="col-12 col-sm-6 col-lg-5"
               >
                 <div className="card h-100 border-0 p-3">
 

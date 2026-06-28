@@ -19,11 +19,6 @@
   overflow: visible;
 }
 
-.fa-compass {
-  color: red;
-  font-size: 2rem;
-}
-
 .nav-link {
   color: #222222;
 }
@@ -118,9 +113,15 @@
 }
 
 .nav-icon {
-  font-size: 18px;
-  /* color: black; */
-  /* background: white; */
+  width: 18px;
+  height: 18px;
+  display: inline-block;
+}
+
+.brand-icon {
+  width: 32px;
+  height: 32px;
+  display: block;
 }
 
 .mobile-navbar p {

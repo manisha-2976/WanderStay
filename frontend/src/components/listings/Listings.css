@@ -3,6 +3,33 @@
   margin-bottom: 2rem;
 }
 
+.listing-skeleton {
+  background-color: #e7e7e7;
+  animation: listing-skeleton-pulse 1.2s ease-in-out infinite;
+}
+
+.listing-skeleton-image {
+  height: 200px;
+  border-radius: 8px;
+}
+
+.listing-skeleton-line {
+  width: 100%;
+  height: 20px;
+  margin-top: 10px;
+  border-radius: 4px;
+}
+
+.listing-skeleton-line-short {
+  width: 50%;
+}
+
+@keyframes listing-skeleton-pulse {
+  50% {
+    opacity: .55;
+  }
+}
+
 .listing-card:hover {
   opacity: .9;
   transition-duration: .4s;
@@ -33,8 +60,11 @@
 }
 
 .listing-img {
-  height: 13rem;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: 1rem;
   object-fit: cover;
+  display: block;
 }
 
 @media (max-width: 768px) {

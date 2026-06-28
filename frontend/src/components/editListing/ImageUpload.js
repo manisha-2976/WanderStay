@@ -1,9 +1,16 @@
 import React, { useCallback, useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
+import toast from "react-hot-toast";
 import "./ImageUpload.css";
 
 const MAX_TOTAL_SIZE = 10 * 1024 * 1024;
+const ACCEPTED_IMAGE_TYPES = [
+  "image/jpeg",
+  "image/jpg",
+  "image/png",
+];
+const ACCEPTED_IMAGE_EXTENSIONS = ".jpg,.jpeg,.jfif,.png,.webp,.avif";
 
 export const ImageUpload = () => {
   const { roomName, id } = useParams();
@@ -27,8 +34,8 @@ export const ImageUpload = () => {
       setListingImages(
         res.data.images.filter(img => img.category === roomName.toLowerCase())
       );
-    } catch (err) {
-      console.log(err);
+    } catch {
+      toast.error("Unable to load room images");
     }
   }, [id, roomName]);
 
@@ -51,11 +58,18 @@ export const ImageUpload = () => {
 
   // ---------- file ----------
   const handleFiles = (selected) => {
-    const imageFiles = selected.filter(f => f.type.startsWith("image/"));
+    const imageFiles = selected.filter(f => ACCEPTED_IMAGE_TYPES.includes(f.type));
+
+    if (imageFiles.length !== selected.length) {
+      toast.error("Only JPG, PNG, JPEG images are supported");
+    }
+
+    if (!imageFiles.length) return;
 
     const size = imageFiles.reduce((t, f) => t + f.size, 0);
     if (getTotalSize() + size > MAX_TOTAL_SIZE) {
-      return alert("Total size > 10MB");
+      toast.error("Total upload size must be 10MB or less");
+      return;
     }
 
     updateState(setRoomImages, imageFiles.map(f => URL.createObjectURL(f)));
@@ -69,7 +83,10 @@ export const ImageUpload = () => {
   };
 
   const handleUpload = async () => {
-    if (!currentFiles.length) return alert("No files");
+    if (!currentFiles.length) {
+      toast.error("Please select at least one image");
+      return;
+    }
 
     try {
       const formData = new FormData();
@@ -85,8 +102,9 @@ export const ImageUpload = () => {
       setShowUploader(false);
 
       fetchImages();
+      toast.success("Images uploaded");
     } catch {
-      alert("Upload failed");
+      toast.error("Upload failed. Please try again");
     }
   };
 
@@ -105,8 +123,9 @@ export const ImageUpload = () => {
         `${process.env.REACT_APP_API_URL}/listing/${id}/image/${imageId}`, { withCredentials: true }
       );
       fetchImages();
+      toast.success("Image deleted");
     } catch {
-      alert("Delete failed");
+      toast.error("Delete failed. Please try again");
     }
   };
 
@@ -212,6 +231,7 @@ export const ImageUpload = () => {
             >
 
               <input id="fileInput" type="file" multiple hidden
+                accept={ACCEPTED_IMAGE_EXTENSIONS}
                 onChange={(e) => handleFiles([...e.target.files])}
               />
 

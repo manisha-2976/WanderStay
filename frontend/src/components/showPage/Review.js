@@ -2,6 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useForm } from "react-hook-form";
 import { Rating } from "react-simple-star-rating";
+import toast from "react-hot-toast";
 
 export const Review = ({ onClose, id }) => {
   const [rating, setRating] = useState(3);
@@ -25,8 +26,10 @@ export const Review = ({ onClose, id }) => {
       );
 
       reset();
-    } catch (err) {
-      console.error(err);
+      toast.success("Review submitted");
+      onClose?.();
+    } catch {
+      toast.error("Unable to submit review");
     }
   };
 
@@ -84,7 +87,7 @@ export const Review = ({ onClose, id }) => {
                   {isSubmitting ? "Submitting..." : "Submit"}
                 </button>
 
-                <button className="btn btn-danger" onClick={onClose}>
+                <button type="button" className="btn btn-danger" onClick={onClose}>
                   Cancel
                 </button>
               </div>

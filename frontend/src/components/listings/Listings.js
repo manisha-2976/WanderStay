@@ -1,8 +1,5 @@
 import { useState, useEffect } from 'react'
-import axios from "axios";
 import { Link, useSearchParams } from "react-router-dom";
-import Skeleton from "react-loading-skeleton";
-import "react-loading-skeleton/dist/skeleton.css";
 import { useSearch } from "../../context/SearchContext";
 import "./Listings.css"
 
@@ -12,6 +9,7 @@ export const Listings = () => {
 
   const [loading, setLoading] = useState(false);
   const [allListings, setAllListings] = useState([]);
+  const [error, setError] = useState("");
 
   const { getSearchCache, setSearchCache } = useSearch();
 
@@ -39,25 +37,39 @@ export const Listings = () => {
 
       try {
         setLoading(true);
+        setError("");
 
-        let res;
+        let listings;
 
         if (query || startDate || guests) {
-          res = await axios.post(
+          const response = await fetch(
             `${process.env.REACT_APP_API_URL}/api/ai-search`,
-            { query, startDate, endDate, guests }
+            {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ query, startDate, endDate, guests })
+            }
           );
-          setAllListings(res.data.listings);
-          setSearchCache(cacheKey, res.data.listings);
+
+          if (!response.ok) throw new Error();
+
+          const data = await response.json();
+          listings = data.listings;
 
         } else {
-          res = await axios.get(`${process.env.REACT_APP_API_URL}`);
-          setAllListings(res.data);
-          setSearchCache("all", res.data);
+          const response = await fetch(process.env.REACT_APP_API_URL);
+
+          if (!response.ok) throw new Error();
+
+          listings = await response.json();
         }
 
-      } catch (err) {
-        console.log(err);
+        setAllListings(listings);
+        setSearchCache(cacheKey, listings);
+
+      } catch {
+        setAllListings([]);
+        setError("Unable to load listings. Please try again.");
       } finally {
         setLoading(false);
       }
@@ -72,13 +84,17 @@ export const Listings = () => {
       <div className="row">
         {Array(10).fill().map((_, i) => (
           <div className="col-6 col-md-3 mb-4" key={i}>
-            <Skeleton height={200} />
-            <Skeleton height={20} style={{ marginTop: "10px" }} />
-            <Skeleton width="50%" />
+            <div className="listing-skeleton listing-skeleton-image" />
+            <div className="listing-skeleton listing-skeleton-line" />
+            <div className="listing-skeleton listing-skeleton-line listing-skeleton-line-short" />
           </div>
         ))}
       </div>
     );
+  }
+
+  if (error) {
+    return <h4 className="text-center mt-4 text-danger">{error}</h4>;
   }
 
   if (!loading && allListings.length === 0) {
@@ -91,16 +107,19 @@ export const Listings = () => {
       <h3>Listings</h3>
       <div className='row row-cols-lg-4 row-cols-md-3 row-cols-2'>
         {allListings.map((listing, index) => {
+           const isPriorityImage = index === 0
 
           return (
             <Link key={listing._id}
               to={`/listing/${listing._id}`} style={{ textDecoration: "none" }} >
               <div className="card listing-card">
                 <img
+                  className='listing-img'
                   src={listing?.image}
-                  loading="lazy"
-                  className="card-img-top listing-img"
-                  alt="listing img"
+                  loading={isPriorityImage ? "eager" : "lazy"}
+                  fetchPriority={isPriorityImage ? "high" : undefined}
+                  decoding="async"
+                  alt={listing?.title || "Listing"}
                 />
                 <div className="card-body">
                   <p className="card-text"><b>{listing?.title}, {listing?.city}</b> <br /> &#8377;{listing?.price?.toLocaleString("en-IN")}/night</p>

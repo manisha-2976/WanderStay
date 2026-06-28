@@ -7,15 +7,19 @@ cloudinary.config({
     api_secret: process.env.CLOUD_API_SECRET,
 });
 
+const allowedImageFormats = ["png", "jpg", "jpeg", "jfif", "webp", "avif"];
+
 const storage = new CloudinaryStorage({
     cloudinary: cloudinary,
     params: {
       folder: 'wanderStay_DEV',
-      allowerdformats: ["png", "jpg", "jpeg"],
+      resource_type: "image",
+      allowedFormats: allowedImageFormats,
     },
   });
 
   module.exports = {
     cloudinary,
     storage,
+    allowedImageFormats,
   }

@@ -8,13 +8,12 @@ module.exports.isLoggedIn = async(req, res, next) => {
 //  console.log("Raw Header:", req.headers.cookie);
 
  if (!token) {
-    console.log("no token")
     return res.status(401).json({ message: "Not authenticated" });
   }
 
  try{
   const decoded = jwt.verify(token, process.env.JWT_SECRET);
-  const user = await User.findById(decoded.id).select("-password");
+  const user = await User.findById(decoded.id).select("firstName lastName username email");
   if (!user) {
       return res.status(404).json({ message: "User not found" });
     }

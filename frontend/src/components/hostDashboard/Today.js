@@ -8,6 +8,7 @@ import "./Today.css";
 
 export const Today = () => {
   const [data, setData] = useState(null);
+  const [error, setError] = useState("");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -15,14 +16,14 @@ export const Today = () => {
         const res = await axios.get(`${process.env.REACT_APP_API_URL}/host/overview`, 
           { withCredentials: true });
         setData(res.data)
-        console.log(res.data)
       } catch (err) {
-        console.log(err)
+        setError(err.response?.data?.message || "Unable to load dashboard");
       }
     };
     fetchData();
   }, []);
 
+  if (error) return <p className="text-danger text-center mt-4">{error}</p>;
   if (!data) return null;
 
   return (
@@ -32,7 +33,6 @@ export const Today = () => {
             <p className="text-muted mb-1">Today's Check-ins</p>
             <div className="d-flex justify-content-between">
               <h3 className="fw-bold">{data.dashboard.todaysCheckins.length}</h3>
-              <small className="text-danger">↓ 2%</small>
             </div>
           </div>
 

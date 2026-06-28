@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
+import toast from "react-hot-toast";
 import "./PhotoTour.css";
 import {
   FaBed, FaTree, FaBuilding, FaFilm, FaBath, FaUtensils, FaCouch, FaImages, FaHome
@@ -36,7 +37,6 @@ export const PhotoTour = () => {
 
   useEffect(() => {
     localStorage.setItem("rooms", JSON.stringify(rooms));
-    console.log(rooms);
   }, [rooms]);
 
   // ---------- FETCH IMAGES FROM DB ----------
@@ -57,8 +57,8 @@ export const PhotoTour = () => {
 
         setImagesByRoom(grouped);
 
-      } catch (err) {
-        console.log(err);
+      } catch {
+        toast.error("Unable to load listing photos");
       }
     };
 
@@ -77,7 +77,6 @@ export const PhotoTour = () => {
     }
 
     setRooms([...rooms, { name: selectedRoom.name, label: selectedRoom.label }]);
-    console.log("rooms:", rooms);
     setShowModal(false);
     setSelectedRoom(null);
   };

@@ -8,7 +8,7 @@ export const AuthProvider = ({ children }) => {
 
   const fetchUser = async () => {
     try {
-      const res = await fetch(`${process.env.REACT_APP_API_URL}/users/me`, {credentials: "include"});
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/users/me`, { credentials: "include" });
 
       if (!res.ok) throw new Error();
 
@@ -21,8 +21,16 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
+  // useEffect(() => {
+  //   fetchUser();
+  // }, []);
+
   useEffect(() => {
-    fetchUser();
+    const timer = setTimeout(() => {
+      fetchUser();
+    }, 1500);
+
+    return () => clearTimeout(timer);
   }, []);
 
   const logout = async () => {

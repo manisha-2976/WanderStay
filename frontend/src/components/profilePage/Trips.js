@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 
 export const Trips = () => {
   const [bookings, setBookings] = useState([]);
+  const [error, setError] = useState("");
+
   useEffect(() => {
     const fetchBookings = async () => {
       try {
@@ -14,14 +16,22 @@ export const Trips = () => {
 
         setBookings(res.data);
       } catch (err) {
-        console.log(err);
         const message = err.response?.data?.message || "Server error";
-        console.log(message);
+        setError(message);
       }
     };
 
     fetchBookings();
   }, []);
+
+  if (error) {
+    return (
+      <div className='ps-4 pt-2'>
+        <h2 className='mb-4 mt-4 fw-bold'>Trips</h2>
+        <p className="text-danger">{error}</p>
+      </div>
+    );
+  }
 
   if (bookings.length === 0) {
     return (

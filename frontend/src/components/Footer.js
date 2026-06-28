@@ -1,12 +1,15 @@
 import React from 'react'
+import facebookIcon from "../assets/icons/square-facebook.svg";
+import instagramIcon from "../assets/icons/square-instagram.svg";
+import linkedinIcon from "../assets/icons/linkedin.svg";
 
 export const Footer = () => {
     return (
         <div className="f-info">
             <div className="f-info-socials">
-                <i className="fa-brands fa-square-facebook"></i>
-                <i className="fa-brands fa-square-instagram"></i>
-                <i className="fa-brands fa-square-linkedin"></i>
+                <img className="footer-social-icon" src={facebookIcon} alt="" loading="lazy" />
+                <img className="footer-social-icon" src={instagramIcon} alt="" loading="lazy" />
+                <img className="footer-social-icon" src={linkedinIcon} alt="" loading="lazy" />
             </div>
             <div className="f-info-brand">
                 &copy; Wanderstay Privated Limited

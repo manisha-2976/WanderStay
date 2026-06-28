@@ -1,7 +1,6 @@
 body {
   margin: 0;
-  font-family: "Plus Jakarta Sans", sans-serif;
-  font-optical-sizing: auto;
+  font-family: "Plus Jakarta Sans", system-ui, Arial, sans-serif;
   font-weight: 400;
   font-style: normal;
   overflow-x: hidden !important;
@@ -59,8 +58,9 @@ code {
   justify-content: center;
 }
 
-.f-info-socials i {
-  font-size: 1.2rem;
+.footer-social-icon {
+  width: 1.2rem;
+  height: 1.2rem;
   margin-right: 1rem;
 }
 

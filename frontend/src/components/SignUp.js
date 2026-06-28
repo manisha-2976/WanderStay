@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form"
 import { useNavigate, Link } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
+import toast from "react-hot-toast";
 
 
 export const SignUp = () => {
@@ -20,19 +21,19 @@ export const SignUp = () => {
 
     const onSubmit = async (data) => {
         try {
-            console.log(data);
             await axios.post(`${process.env.REACT_APP_API_URL}/users/signup`, data,
                 {
                     withCredentials: true
                 }
             );
             await fetchUser();
+            toast.success("Account created");
             navigate("/");
         } catch (err) {
             reset();
             const message = err.response?.data?.message || "Server error";
             setMessage(message)
-            console.log("SERVER ERROR:", message);
+            toast.error(message);
         }
     };
 

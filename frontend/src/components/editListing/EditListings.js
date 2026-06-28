@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import axios from "axios";
 import { useForm } from "react-hook-form";
 import { useParams } from "react-router-dom";
+import toast from "react-hot-toast";
 import { FormInput } from "./FormInput";
 import { PhotoTour } from "./PhotoTour";
 import "./EditListings.css";
@@ -27,10 +28,8 @@ export const EditListings = () => {
                     weeklyDiscount: res.data.weeklyDiscount,
                     monthlyDiscount: res.data.monthlyDiscount,
                 });
-
-                console.log(res.data);
-            } catch (error) {
-                console.error("Error fetching listing:", error);
+            } catch {
+                toast.error("Unable to load listing details");
             }
         };
 
@@ -48,10 +47,9 @@ export const EditListings = () => {
                 { withCredentials: true }
             );
 
-            alert(`${field} updated successfully`);
-        } catch (err) {
-            console.log(err);
-            alert("Update failed");
+            toast.success(`${field} updated successfully`);
+        } catch {
+            toast.error("Update failed. Please try again");
         }
     };
 

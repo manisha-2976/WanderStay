@@ -79,8 +79,17 @@
   transform: scale(0.95);
 }
 
-.fa-wand-magic-sparkles {
+.search-leading-icon {
+  width: 20px;
+  height: 20px;
+  margin-right: .5rem;
+  flex-shrink: 0;
   color: #87d4e2;
+}
+
+.search-submit-icon {
+  width: 14px;
+  height: 14px;
 }
 
 .search-container {

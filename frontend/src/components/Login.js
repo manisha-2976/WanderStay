@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form"
 import { useNavigate, useLocation, Link } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
+import toast from "react-hot-toast";
 
 export const Login = () => {
   const { fetchUser } = useContext(AuthContext);
@@ -19,16 +20,15 @@ export const Login = () => {
 
   const onSubmit = async (data) => {
     try {
-      console.log(data);
       await axios.post(`${process.env.REACT_APP_API_URL}/users/login`, data,
         { withCredentials: true }
       );
       await fetchUser();
+      toast.success("Login successful");
       navigate(from, { replace: true });
     } catch (err) {
-      console.log(err);
       const message = err.response?.data?.message || "Server error";
-      console.log("SERVER ERROR:", message);
+      toast.error(message);
     }
   };
 

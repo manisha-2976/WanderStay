@@ -2,6 +2,7 @@ import { React, useState } from 'react'
 import axios from "axios";
 import { useForm } from "react-hook-form"
 import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 import { ImageUploader } from './ImageUploader';
 import "./NewListing.css"
 
@@ -27,9 +28,10 @@ export const NewListing = () => {
           "Content-Type": "multipart/form-data"
         }
       });
+      toast.success("Listing created");
       navigate("/host/listings");
     } catch (err) {
-      console.log(err);
+      toast.error(err.response?.data?.message || "Unable to create listing");
     }
   };
 

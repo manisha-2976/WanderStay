@@ -1,6 +1,21 @@
-import { useState, useRef, useEffect } from "react";
-import { Calendar } from "./showPage/Calendar";
+import { lazy, Suspense, useState, useRef, useEffect } from "react";
+import { ReactComponent as SearchIcon } from "../assets/icons/magnifying-glass.svg";
+import { ReactComponent as WandIcon } from "../assets/icons/wand-magic-sparkles.svg";
 import "./SearchBar.css"
+
+const SearchCalendar = lazy(() =>
+    import("./showPage/Calendar").then((module) => ({
+        default: module.Calendar
+    }))
+);
+
+const CalendarLoader = () => (
+    <div className="d-flex justify-content-center align-items-center p-4">
+        <div className="spinner-border spinner-border-sm text-dark" role="status">
+            <span className="visually-hidden">Loading calendar</span>
+        </div>
+    </div>
+);
 
 export const SearchBar = ({ onSearch }) => {
 
@@ -40,7 +55,7 @@ export const SearchBar = ({ onSearch }) => {
             <form className="search-form" onSubmit={handleSubmit}>
                 <div className='d-flex filter border shadow-sm'>
                     <div className='hover d-flex align-items-center ps-3'>
-                        <span><i className="fa-solid fa-wand-magic-sparkles fs-5 me-2"></i></span>
+                        <WandIcon className="search-leading-icon" aria-hidden="true" focusable="false" />
                         <div className='d-flex flex-column dest-box'>
                             <label className='fw-semibold'>Where</label>
                             <input
@@ -86,8 +101,8 @@ export const SearchBar = ({ onSearch }) => {
                                     onChange={(e) => setGuests(e.target.value)} />
                             </div>
 
-                            <button type="submit" className="search-icon">
-                                <i className="fa-solid fa-magnifying-glass"></i>
+                            <button type="submit" className="search-icon" aria-label="Search">
+                                <SearchIcon className="search-submit-icon" aria-hidden="true" focusable="false" />
                             </button>
                         </div>
                     </div>
@@ -96,11 +111,13 @@ export const SearchBar = ({ onSearch }) => {
 
             {showCalendar && (
                 <div className="search-calendar rounded-4 bg-white" ref={calendarRef}>
-                    <Calendar fullyBookedDates={fullyBookedDates || []}
-                        onDateChange={setSelectedDates}
-                        selectedDates={selectedDates}
-                        onClose={() => setShowCalendar(false)}
-                    />
+                    <Suspense fallback={<CalendarLoader />}>
+                        <SearchCalendar fullyBookedDates={fullyBookedDates || []}
+                            onDateChange={setSelectedDates}
+                            selectedDates={selectedDates}
+                            onClose={() => setShowCalendar(false)}
+                        />
+                    </Suspense>
                 </div>
             )}
         </div>

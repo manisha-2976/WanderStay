@@ -2,6 +2,7 @@ import React from 'react'
 import { useState, useEffect } from 'react'
 import axios from "axios";
 import { Link } from "react-router-dom";
+import toast from "react-hot-toast";
 import "./HostListings.css";
 
 export const HostListings = () => {
@@ -17,9 +18,8 @@ export const HostListings = () => {
 
         setListings(res.data);
       } catch (err) {
-        console.log(err);
         const message = err.response?.data?.message || "Server error";
-        console.log(message);
+        toast.error(message);
       }
     };
 
@@ -30,8 +30,9 @@ export const HostListings = () => {
     try {
       await axios.delete(`${process.env.REACT_APP_API_URL}/listing/${id}`, { withCredentials: true });
       setListings(prev => prev.filter(listing => listing._id !== id));
-    } catch (e) {
-      console.log(e);
+      toast.success("Listing deleted");
+    } catch {
+      toast.error("Unable to delete listing");
     }
   };
 
@@ -60,14 +61,14 @@ export const HostListings = () => {
                   <img
                     src={listing?.image}
                     loading="lazy"
-                    className="card-img-top"
+                    className="card-img-top rounded-2"
                     alt="listing img"
                     style={{ height: "5rem", width: "5rem" }}
                   />
                   <div>
-                  <p className='mb-0 fw-bolder title'>{listing?.title}</p>
-                  <small className='mb-0 mob-location'>{listing?.street}&nbsp; &nbsp;{listing?.city}</small> <br />
-                  <small className='mb-0 mob-status'>hiiii mnbm mnbm</small>
+                    <p className='mb-0 fw-bolder title'>{listing?.title}</p>
+                    <small className='mb-0 mob-location'>{listing?.street}&nbsp; &nbsp;{listing?.city}</small> <br />
+                    <small className='mb-0 mob-status'>Approved</small>
                   </div>
 
                 </div>
@@ -81,14 +82,14 @@ export const HostListings = () => {
                 </div>
 
                 <div className='col-md-2 d-flex align-items-center justify-content-start gap-3'>
-                  <p className='mb-0 list-status'>hiiii mnbm mnbm</p>
+                  <p className='mb-0 list-status'>Approved</p>
                   <i className="fa-solid fa-angle-right"></i>
                 </div>
 
               </div>
             </Link>
 
-            <div  style={{ cursor: "pointer" }} onClick={() => handleDelete(listing._id)}><i className="fa-regular fs-5 fa-trash-can"></i></div>
+            <div style={{ cursor: "pointer" }} onClick={() => handleDelete(listing._id)}><i className="fa-regular fs-5 fa-trash-can"></i></div>
 
           </div>
         );
