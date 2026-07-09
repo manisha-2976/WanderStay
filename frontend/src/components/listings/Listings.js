@@ -13,23 +13,19 @@ export const Listings = () => {
 
   const { getSearchCache, setSearchCache } = useSearch();
 
-  const query = searchParams.get("query") || "";
-  const guests = searchParams.get("guests") || 0;
+  const query = (searchParams.get("query") || "").trim();
+  const guests = Number(searchParams.get("guests")) || 0;
   const startDate = searchParams.get("startDate");
   const endDate = searchParams.get("endDate");
-  const searchKey = searchParams.toString();
+  const hasSearch = Boolean(query || startDate || endDate || guests);
+  const searchKey = hasSearch
+    ? JSON.stringify({ type: "search", query, startDate, endDate, guests })
+    : "home:listings";
 
   useEffect(() => {
     const fetchData = async () => {
-
-      let cacheKey = "all";
-
-      if (query || startDate || guests) {
-        cacheKey = JSON.stringify({ query, startDate, endDate, guests });
-      }
-
       // cache check
-      const cached = getSearchCache(cacheKey);
+      const cached = getSearchCache(searchKey);
       if (cached) {
         setAllListings(cached);
         return;
@@ -41,7 +37,7 @@ export const Listings = () => {
 
         let listings;
 
-        if (query || startDate || guests) {
+        if (hasSearch) {
           const response = await fetch(
             `${process.env.REACT_APP_API_URL}/api/ai-search`,
             {
@@ -65,7 +61,7 @@ export const Listings = () => {
         }
 
         setAllListings(listings);
-        setSearchCache(cacheKey, listings);
+        setSearchCache(searchKey, listings);
 
       } catch {
         setAllListings([]);
@@ -76,7 +72,7 @@ export const Listings = () => {
     };
 
     fetchData();
-  }, [searchKey, query, startDate, endDate, guests, getSearchCache, setSearchCache]);
+  }, [searchKey, query, startDate, endDate, guests, hasSearch, getSearchCache, setSearchCache]);
 
 
   if (loading) {

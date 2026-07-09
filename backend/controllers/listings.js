@@ -8,9 +8,14 @@ const { getOptimizedImageUrl } = require("../utils/imageUrl");
 
 
 module.exports.index = async (req, res, next) => {
-  res.set("Cache-Control", "public, max-age=60, stale-while-revalidate=300");
+  // res.set("Cache-Control", "public, max-age=60, stale-while-revalidate=300");
 
-  const listings = await Listing.find({}).select("title price images city").slice("images", 1).limit(32).lean();
+  const listings = await Listing.find({})
+    .sort({ _id: -1 })
+    .select("title price images city")
+    .slice("images", 1)
+    .limit(32)
+    .lean();
 
   const allListings = listings.map(listing => ({
     _id: listing._id,
